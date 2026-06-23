@@ -1,0 +1,44 @@
+.login-panel h2,
+.section-heading h2,
+.restaurant-cover h1 {
+  margin: 0;
+}
+
+.login-panel label {
+  display: block;
+  margin: 20px 0;
+  color: #6b6058;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.field {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 8px;
+  padding: 12px;
+  border: 1px solid #decfbc;
+  border-radius: 8px;
+  background: white;
+}
+
+.form-error {
+  color: #b73321;
+  font-weight: 700;
+}
+
+.address-form {
+  display: grid;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.address-form input,
+.address-form textarea,
+.schedule-input {
+  border: 1px solid #e1d4c4;
+  border-radius: 8px;
+  padding: 10px;
+  background: white;
+}

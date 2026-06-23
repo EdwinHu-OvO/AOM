@@ -1,0 +1,42 @@
+# macOS
+.DS_Store
+
+# Editors and IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build outputs
+dist/
+build/
+out/
+coverage/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment and local config
+.env
+.env.*
+!.env.example
+
+# Temporary files
+.cache/
+.tmp/
+tmp/
+temp/
+
+# Runtime artifacts
+*.trace
+*.har
+screenshots/
+recordings/

@@ -1,0 +1,57 @@
+.toast {
+  position: fixed;
+  top: 88px;
+  left: 50%;
+  z-index: 12;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  padding: 10px 18px;
+  background: #2b806b;
+  color: white;
+  font-weight: 800;
+  box-shadow: 0 12px 28px rgba(43, 128, 107, 0.24);
+}
+
+.floating-cart {
+  position: fixed;
+  right: 26px;
+  bottom: 26px;
+  z-index: 12;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  align-items: center;
+  gap: 10px;
+  border: 0;
+  border-radius: 999px;
+  padding: 14px 18px;
+  background: #e24b2d;
+  color: white;
+  font-weight: 900;
+  box-shadow: 0 18px 44px rgba(226, 75, 45, 0.3);
+}
+
+.floating-cart span {
+  display: inline-grid;
+  place-items: center;
+  min-width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.page-sidebar {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  height: 100%;
+}
+
+.page-sidebar h2,
+.page-sidebar p {
+  margin: 0;
+}
+
+.page-sidebar span {
+  color: #7b6d61;
+  font-weight: 800;
+}

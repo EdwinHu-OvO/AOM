@@ -1,0 +1,176 @@
+.store-card {
+  display: grid;
+  grid-template-columns: 74px 1fr;
+  gap: 12px;
+  width: 100%;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding: 10px;
+  text-align: left;
+  background: white;
+}
+
+.store-column {
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  height: 100%;
+}
+
+.store-card.selected {
+  border-color: #e24b2d;
+  box-shadow: 0 0 0 2px rgba(226, 75, 45, 0.12);
+}
+
+.store-art {
+  min-height: 74px;
+  border-radius: 8px;
+}
+
+.store-body,
+.metrics,
+.product-title,
+.totals,
+.address-card span,
+.order-card {
+  display: grid;
+  gap: 5px;
+}
+
+.metrics {
+  grid-template-columns: repeat(3, auto);
+  justify-content: start;
+}
+
+.metrics span,
+.restaurant-cover span {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.restaurant-cover,
+.product-row,
+.cart-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.restaurant-cover {
+  min-height: 168px;
+  margin-bottom: 18px;
+  padding: 20px;
+  border-radius: 8px;
+  color: white;
+}
+
+.product-row,
+.cart-row,
+.address-card,
+.order-card {
+  border: 1px solid #eadfce;
+  border-radius: 8px;
+  background: white;
+}
+
+.menu-column,
+.side-section {
+  border-radius: 8px;
+  background: #fffdf8;
+}
+
+.menu-column {
+  overflow: auto;
+}
+
+.store-list,
+.product-list,
+.address-list,
+.cart-items,
+.order-list {
+  overflow: auto;
+}
+
+.checkout-column {
+  min-height: 0;
+  overflow: auto;
+}
+
+.product-row,
+.cart-row {
+  align-items: center;
+  padding: 14px;
+}
+
+.product-title {
+  grid-template-columns: auto auto;
+  justify-content: start;
+}
+
+.product-title span {
+  border-radius: 999px;
+  padding: 2px 8px;
+  background: #fff0c9;
+  color: #8c5b00;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.product-row button,
+.quantity button {
+  display: inline-grid;
+  place-items: center;
+  border: 0;
+  border-radius: 999px;
+  background: #231f20;
+  color: white;
+}
+
+.product-row button {
+  min-width: 36px;
+  height: 36px;
+}
+
+.quantity {
+  display: grid;
+  grid-template-columns: 26px 24px 26px;
+  align-items: center;
+  text-align: center;
+}
+
+.quantity button {
+  height: 26px;
+}
+
+.address-card {
+  display: grid;
+  grid-template-columns: 22px 1fr;
+  gap: 9px;
+  width: 100%;
+  padding: 10px;
+  text-align: left;
+}
+
+.address-card.selected {
+  border-color: #2b806b;
+}
+
+.cart-section {
+  border-color: #231f20;
+}
+
+.totals {
+  margin: 8px 0 12px;
+  padding-top: 12px;
+  border-top: 1px solid #eadfce;
+}
+
+.totals span,
+.totals strong {
+  display: flex;
+  justify-content: space-between;
+}
+
+.order-card {
+  padding: 10px;
+}
