@@ -1,0 +1,17 @@
+{
+  "requestId": "request:invoke-search-001",
+  "sessionId": "session:demo-001",
+  "targetId": "target:platerun-electron",
+  "method": "aom.invoke",
+  "params": {
+    "capabilityId": "capability:search_product",
+    "inputs": {
+      "keyword": "keyboard"
+    }
+  },
+  "requester": {
+    "type": "agent",
+    "id": "agent:codex"
+  }
+}
+

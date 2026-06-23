@@ -54,7 +54,7 @@ AOM/
 
 交付物：
 - 协议对象：`TargetDescriptor`、`RawEvent`、`RawRuntimeSnapshot`、`RawAction`、`RawActionResult`、`AOMNode`、`AOMEdge`、`AOMCapability`、`GatewayRequest`、`GatewayDecision`、`GatewayResponse`。
-- 通信方式：JSON-RPC over WebSocket 负责请求响应，JSONL 或 WebSocket stream 负责事件流。
+- 通信方式：采用 transport abstraction；MVP 可用 loopback WebSocket JSON-RPC 和 JSONL/WebSocket event stream，内部高权限链路后续优先 Unix Domain Socket/Named Pipe，Adapter Host 管理的 Probe 子进程可用 stdio JSONL。
 - 权限等级：Level 0 read-only、Level 1 observe、Level 2 safe action、Level 3 sensitive action、Level 4 debug/internal。
 
 验收标准：

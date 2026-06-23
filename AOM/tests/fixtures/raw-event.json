@@ -1,0 +1,24 @@
+{
+  "eventId": "raw:event:click-001",
+  "targetId": "target:platerun-electron",
+  "platform": "electron",
+  "timestamp": 1792512000000,
+  "sequence": 1,
+  "type": "surface_click",
+  "source": {
+    "adapterId": "adapter:electron-host",
+    "probeId": "probe:electron-cdp",
+    "sourceType": "accessibility"
+  },
+  "subject": {
+    "rawId": "raw:view:search-button",
+    "kind": "button",
+    "label": "Search"
+  },
+  "payload": {
+    "button": "left",
+    "screen": "Home"
+  },
+  "evidenceIds": ["evidence:raw-click-001"]
+}
+
