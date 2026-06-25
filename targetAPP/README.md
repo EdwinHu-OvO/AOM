@@ -36,3 +36,11 @@ pnpm build
 ```
 
 `pnpm test` runs TypeScript checks for both the renderer and Electron/backend code. `pnpm build` compiles the Electron main/backend code and builds the Vite renderer bundle.
+
+## Package for macOS
+
+```bash
+pnpm dist:mac
+```
+
+The arm64 development bundle is written to `release/mac-arm64/PlateRun.app`. The local package is not code-signed and uses Electron's default icon until product signing and artwork are configured.

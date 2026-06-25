@@ -38,6 +38,65 @@ pub struct RawRef {
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 #[serde(rename_all = "camelCase")]
+pub struct RawArtifactDescriptor {
+    pub artifact_id: String,
+    pub kind: String,
+    pub locator: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub format: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub digest: Option<String>,
+    #[serde(default)]
+    pub metadata: BTreeMap<String, Value>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[serde(rename_all = "camelCase")]
+pub struct RawStaticNode {
+    pub raw_id: String,
+    pub kind: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub label: Option<String>,
+    pub artifact_id: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub artifact_offset: Option<String>,
+    #[serde(default)]
+    pub attributes: BTreeMap<String, Value>,
+    #[serde(default)]
+    pub evidence_ids: Vec<String>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[serde(rename_all = "camelCase")]
+pub struct RawStaticEdge {
+    pub raw_id: String,
+    pub from_raw_id: String,
+    pub to_raw_id: String,
+    pub relationship: String,
+    #[serde(default)]
+    pub evidence_ids: Vec<String>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[serde(rename_all = "camelCase")]
+pub struct RawStaticSnapshot {
+    pub snapshot_id: String,
+    pub target_id: String,
+    pub platform: String,
+    pub timestamp: u64,
+    pub adapter_id: String,
+    #[serde(default)]
+    pub artifacts: Vec<RawArtifactDescriptor>,
+    #[serde(default)]
+    pub nodes: Vec<RawStaticNode>,
+    #[serde(default)]
+    pub edges: Vec<RawStaticEdge>,
+    #[serde(default)]
+    pub evidence_ids: Vec<String>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[serde(rename_all = "camelCase")]
 pub struct RawEvent {
     pub event_id: String,
     pub target_id: String,
@@ -59,13 +118,30 @@ pub struct RawEvent {
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 #[serde(rename_all = "camelCase")]
+pub struct RawRuntimeNode {
+    pub raw_id: String,
+    pub kind: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub role: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub label: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub value: Option<Value>,
+    #[serde(default)]
+    pub attributes: BTreeMap<String, Value>,
+    #[serde(default)]
+    pub children: Vec<String>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[serde(rename_all = "camelCase")]
 pub struct RawRuntimeSnapshot {
     pub snapshot_id: String,
     pub target_id: String,
     pub platform: String,
     pub timestamp: u64,
     #[serde(default)]
-    pub nodes: Vec<Value>,
+    pub nodes: Vec<RawRuntimeNode>,
     #[serde(default)]
     pub evidence_ids: Vec<String>,
 }

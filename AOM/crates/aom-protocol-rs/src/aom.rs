@@ -9,6 +9,14 @@ pub struct EvidenceRef {
     pub source_event_id: String,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub summary: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub tool_name: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub tool_version: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub source_locator: Option<String>,
+    #[serde(default)]
+    pub metadata: BTreeMap<String, Value>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
@@ -100,4 +108,3 @@ pub struct AOMCapability {
     #[serde(default)]
     pub evidence_ids: Vec<String>,
 }
-

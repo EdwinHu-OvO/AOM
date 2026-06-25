@@ -1,0 +1,13 @@
+{
+  "commandType": "initialize",
+  "data": {
+    "target": {
+      "targetId": "target:platerun-electron",
+      "platform": "electron",
+      "appName": "PlateRun"
+    },
+    "artifactLocator": "../targetAPP/release/mac-arm64/PlateRun.app",
+    "executablePath": "../targetAPP/release/mac-arm64/PlateRun.app/Contents/MacOS/PlateRun",
+    "adapterId": "adapter:electron-artifact"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "inspectionId": "inspection:fixture:001",
+  "inputLocator": "UnknownApp/resources",
+  "containerType": "directory",
+  "runtimeCandidates": [
+    {
+      "runtime": "electron",
+      "confidence": 0.85
+    },
+    {
+      "runtime": "generic_web",
+      "confidence": 0.45
+    }
+  ],
+  "recommendedAdapter": "adapter:electron-artifact",
+  "evidence": [
+    {
+      "evidenceId": "evidence:artifact:format:1",
+      "detector": "container-magic",
+      "kind": "container",
+      "value": "filesystem directory",
+      "locator": "UnknownApp/resources"
+    },
+    {
+      "evidenceId": "evidence:artifact:fingerprint:1",
+      "detector": "web-runtime-fingerprint",
+      "kind": "path",
+      "value": "resources/app.asar"
+    }
+  ]
+}

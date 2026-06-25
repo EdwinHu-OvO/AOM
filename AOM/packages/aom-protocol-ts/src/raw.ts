@@ -31,6 +31,45 @@ export interface RawRef {
   label?: string;
 }
 
+export interface RawArtifactDescriptor {
+  artifactId: string;
+  kind: string;
+  locator: string;
+  format?: string;
+  digest?: string;
+  metadata: Record<string, JsonValue>;
+}
+
+export interface RawStaticNode {
+  rawId: string;
+  kind: string;
+  label?: string;
+  artifactId: string;
+  artifactOffset?: string;
+  attributes: Record<string, JsonValue>;
+  evidenceIds: string[];
+}
+
+export interface RawStaticEdge {
+  rawId: string;
+  fromRawId: string;
+  toRawId: string;
+  relationship: string;
+  evidenceIds: string[];
+}
+
+export interface RawStaticSnapshot {
+  snapshotId: string;
+  targetId: string;
+  platform: string;
+  timestamp: number;
+  adapterId: string;
+  artifacts: RawArtifactDescriptor[];
+  nodes: RawStaticNode[];
+  edges: RawStaticEdge[];
+  evidenceIds: string[];
+}
+
 export interface RawEvent {
   eventId: string;
   targetId: string;
@@ -45,12 +84,22 @@ export interface RawEvent {
   evidenceIds: string[];
 }
 
+export interface RawRuntimeNode {
+  rawId: string;
+  kind: string;
+  role?: string;
+  label?: string;
+  value?: JsonValue;
+  attributes: Record<string, JsonValue>;
+  children: string[];
+}
+
 export interface RawRuntimeSnapshot {
   snapshotId: string;
   targetId: string;
   platform: string;
   timestamp: number;
-  nodes: JsonValue[];
+  nodes: RawRuntimeNode[];
   evidenceIds: string[];
 }
 

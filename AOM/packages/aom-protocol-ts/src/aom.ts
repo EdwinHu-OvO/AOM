@@ -4,6 +4,10 @@ export interface EvidenceRef {
   evidenceId: string;
   sourceEventId: string;
   summary?: string;
+  toolName?: string;
+  toolVersion?: string;
+  sourceLocator?: string;
+  metadata: Record<string, JsonValue>;
 }
 
 export type AOMNodeType =
@@ -64,4 +68,3 @@ export interface AOMCapability {
   confidence: number;
   evidenceIds: string[];
 }
-

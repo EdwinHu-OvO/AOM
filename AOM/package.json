@@ -6,10 +6,10 @@
   "scripts": {
     "build": "pnpm -r build",
     "test": "pnpm -r test",
+    "test:integration:electron": "pnpm build && node tests/integration/electron-runtime.mjs",
     "typecheck": "pnpm -r typecheck"
   },
   "devDependencies": {
     "typescript": "^5.7.0"
   }
 }
-

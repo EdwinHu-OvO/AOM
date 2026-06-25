@@ -3,6 +3,14 @@
 version = 4
 
 [[package]]
+name = "aom-adapter-host"
+version = "0.1.0"
+dependencies = [
+ "aom-protocol-rs",
+ "serde_json",
+]
+
+[[package]]
 name = "aom-protocol-rs"
 version = "0.1.0"
 dependencies = [

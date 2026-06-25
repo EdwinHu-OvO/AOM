@@ -1,14 +1,31 @@
 use aom_protocol_rs::{
-    AOMCapability, AOMEdge, AOMEdgeType, AOMNode, AOMNodeType, CapabilityRiskLevel,
-    GatewayDecision, GatewayDecisionKind, GatewayRequest, PermissionLevel, ProtocolMessage,
-    ProtocolMessageKind, ProtocolPayload, RawAction, RawActionResult, RawActionType, RawEvent,
-    RawEventType, RawRuntimeSnapshot,
+    AOMCapability, AOMEdge, AOMEdgeType, AOMNode, AOMNodeType, AnalyzerCommand, ArtifactInspection,
+    CapabilityRiskLevel, GatewayDecision, GatewayDecisionKind, GatewayRequest, PermissionLevel,
+    ProtocolMessage, ProtocolMessageKind, ProtocolPayload, RawAction, RawActionResult,
+    RawActionType, RawEvent, RawEventType, RawRuntimeSnapshot, RawStaticSnapshot, WebRuntimeFamily,
 };
 use std::collections::BTreeMap;
 
 fn fixture(name: &str) -> String {
     let path = format!("{}/../../tests/fixtures/{name}", env!("CARGO_MANIFEST_DIR"));
     std::fs::read_to_string(path).expect("fixture should be readable")
+}
+
+#[test]
+fn analyzer_command_fixture_deserializes() {
+    let command: AnalyzerCommand = serde_json::from_str(&fixture("analyzer-command.json"))
+        .expect("analyzer command fixture should parse");
+
+    match command {
+        AnalyzerCommand::Initialize(config) => {
+            assert_eq!(config.target.target_id, "target:platerun-electron");
+            assert_eq!(
+                config.adapter_id.as_deref(),
+                Some("adapter:electron-artifact")
+            );
+        }
+        _ => panic!("expected initialize command"),
+    }
 }
 
 #[test]
@@ -28,6 +45,31 @@ fn gateway_request_fixture_deserializes() {
 
     assert_eq!(request.method, "aom.invoke");
     assert_eq!(request.params["capabilityId"], "capability:search_product");
+}
+
+#[test]
+fn raw_static_snapshot_fixture_deserializes() {
+    let snapshot: RawStaticSnapshot = serde_json::from_str(&fixture("raw-static-snapshot.json"))
+        .expect("raw static snapshot fixture should parse");
+
+    assert_eq!(snapshot.adapter_id, "adapter:electron-artifact");
+    assert_eq!(snapshot.nodes[1].kind, "api_endpoint");
+    assert_eq!(snapshot.edges[0].relationship, "declares");
+}
+
+#[test]
+fn artifact_inspection_fixture_deserializes() {
+    let inspection: ArtifactInspection = serde_json::from_str(&fixture("artifact-inspection.json"))
+        .expect("artifact inspection fixture should parse");
+
+    assert_eq!(
+        inspection.runtime_candidates[0].runtime,
+        WebRuntimeFamily::Electron
+    );
+    assert_eq!(
+        inspection.recommended_adapter.as_deref(),
+        Some("adapter:electron-artifact")
+    );
 }
 
 #[test]
@@ -55,6 +97,12 @@ fn protocol_message_wraps_gateway_request_without_transport_details() {
 #[test]
 fn protocol_payload_covers_phase_zero_objects() {
     let payloads = vec![
+        ProtocolPayload::ArtifactInspection(
+            serde_json::from_str(&fixture("artifact-inspection.json")).unwrap(),
+        ),
+        ProtocolPayload::RawStaticSnapshot(
+            serde_json::from_str(&fixture("raw-static-snapshot.json")).unwrap(),
+        ),
         ProtocolPayload::RawRuntimeSnapshot(RawRuntimeSnapshot {
             snapshot_id: "snapshot:001".to_string(),
             target_id: "target:platerun-electron".to_string(),

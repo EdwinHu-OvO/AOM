@@ -1,0 +1,28 @@
+{
+  "name": "@aom/electron-probe",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "aom-electron-analyzer": "dist/bin/aom-electron-analyzer.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "test": "pnpm run typecheck && pnpm run build && node tests/static.mjs && node tests/runtime.mjs && node tests/stdio.mjs",
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@aom/protocol": "workspace:*",
+    "@electron/asar": "^4.2.0",
+    "@electron/fuses": "^2.1.2",
+    "chrome-remote-interface": "^0.34.0",
+    "playwright": "^1.61.0",
+    "typescript": "^5.7.0"
+  },
+  "devDependencies": {
+    "@types/chrome-remote-interface": "^0.34.0",
+    "@types/node": "^22.10.0"
+  }
+}

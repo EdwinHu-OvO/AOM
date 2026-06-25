@@ -103,3 +103,15 @@ The protocol layer must not depend on one transport. Message schemas should be s
 - Keep request/response and event stream envelopes transport-neutral.
 - Use JSON for MVP because schemas are still changing.
 - Revisit gRPC/Protobuf after the Electron MVP and Gateway policy model stabilize.
+
+## Phase 1 Implementation
+
+The managed Electron Analyzer boundary now uses stdio JSONL.
+
+- Shared `AnalyzerCommand` and `AnalyzerReply` types exist in Rust and TypeScript.
+- Adapter Host launches and owns the TypeScript child process.
+- One command and one reply occupy one line each.
+- Tool stderr is inherited for diagnostics; stdout is reserved for protocol frames.
+- EOF, malformed JSON and analyzer error replies become typed Adapter Host errors.
+- Static and runtime proxy objects share one supervised analyzer process.
+- The transport remains replaceable; Adapter Host traits and Raw protocol objects do not depend on stdio.

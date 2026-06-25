@@ -6,7 +6,8 @@
 - 已记录跨进程通信决策：`AOM/docs/decisions/0001-cross-process-communication.md`
 - 已创建 Rust crate：`AOM/crates/aom-protocol-rs`
 - 已创建 TypeScript package：`AOM/packages/aom-protocol-ts`
-- 已创建共享 fixtures：`AOM/tests/fixtures/raw-event.json`、`AOM/tests/fixtures/gateway-request.json`
+- 已创建共享 fixtures：`AOM/tests/fixtures/raw-event.json`、`AOM/tests/fixtures/raw-static-snapshot.json`、`AOM/tests/fixtures/gateway-request.json`
+- Phase 1 Analyzer 子进程协议已在 Rust/TypeScript 两端落地。
 
 ## 已完成
 
@@ -17,6 +18,15 @@
 - 验证 Rust/TS 都可读取同一批 JSON fixtures。
 - Phase 0 review 收尾：实现层统一使用 `RawRuntimeSnapshot`，与计划文档命名一致。
 - `ProtocolPayload` 已覆盖 Phase 0 关键对象：Target、RawEvent、RawRuntimeSnapshot、RawAction、RawActionResult、AOMNode、AOMEdge、AOMCapability、EvidenceRef、GatewayRequest、GatewayDecision、GatewayResponse。
+- Phase 1 新增 transport-neutral 静态制品模型：`RawArtifactDescriptor`、`RawStaticNode`、`RawStaticEdge`、`RawStaticSnapshot`。
+- `RawRuntimeSnapshot.nodes` 已从 generic JSON 收紧为 `RawRuntimeNode`。
+- 静态协议不包含源码路径、行列号等必需字段，保证二进制/打包制品 Adapter 可实现。
+- 新增 `ArtifactInspection` 协议：容器类型、架构、runtime candidates、adapter recommendation 和检测 Evidence。
+- Rust/TypeScript envelope 均可传输 `artifact_inspection` payload。
+- 新增 `AnalyzerSessionConfig`、`AnalyzerCommand`、`AnalyzerReply`、`AnalyzerResult` 和 `AnalyzerFailure`。
+- Analyzer stdio 使用 typed JSONL command/reply，不依赖 `ProtocolPayload::Json`。
+- `EvidenceRef` 新增可选 tool name、version、source locator 和 metadata，用于跨进程携带 analyzer provenance。
+- 新增共享 `analyzer-command.json` fixture，验证 Rust/TS 的初始化命令字段和枚举一致。
 
 ## 验证记录
 
@@ -26,7 +36,18 @@
 - `cd AOM && pnpm test`：通过，TypeScript typecheck、build 和 runtime fixture checks 均通过。
 - `cd AOM && pnpm build`：通过，`@aom/protocol` 可生成 `dist/`。
 
+### 2026-06-24
+
+- `cd AOM && cargo test`：通过，包含静态 snapshot fixture 与 Adapter Host 测试。
+- `cd AOM && pnpm test`：通过，包含 Electron 制品 Adapter 与 CDP runtime Probe 测试。
+
+### 2026-06-25
+
+- `cd AOM && cargo test`：通过，包含 Analyzer command fixture、stdio proxy 与 registry 测试。
+- `cd AOM && pnpm test`：通过，包含 Analyzer JSONL server runtime test。
+- 真实 Rust Host -> TypeScript Analyzer 链路可传输静态、动态与工具 Evidence。
+
 ## 后续目标
 
-- Phase 1 启动前，根据 Adapter Host 需要补充 Probe manifest、target status 和 raw event stream envelope。
+- Phase 2 前补充 Probe manifest、target status 和长时 event stream 状态协议。
 - 保持 Rust/TypeScript 类型同步；新增协议字段时必须同步 fixtures 和两侧测试。

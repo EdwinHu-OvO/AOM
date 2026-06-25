@@ -1,0 +1,62 @@
+{
+  "snapshotId": "snapshot:static:001",
+  "targetId": "target:platerun-electron",
+  "platform": "electron",
+  "timestamp": 1750723200000,
+  "adapterId": "adapter:electron-artifact",
+  "artifacts": [
+    {
+      "artifactId": "artifact:renderer-bundle",
+      "kind": "bundle",
+      "locator": "dist/renderer/assets/index.js",
+      "format": "javascript",
+      "digest": "sha256:fixture",
+      "metadata": {
+        "processRole": "renderer"
+      }
+    }
+  ],
+  "nodes": [
+    {
+      "rawId": "static:artifact:renderer-bundle",
+      "kind": "component",
+      "label": "renderer bundle",
+      "artifactId": "artifact:renderer-bundle",
+      "artifactOffset": "module:root",
+      "attributes": {
+        "processRole": "renderer"
+      },
+      "evidenceIds": [
+        "evidence:static:artifact:renderer-bundle"
+      ]
+    },
+    {
+      "rawId": "static:api:login",
+      "kind": "api_endpoint",
+      "label": "/api/login",
+      "artifactId": "artifact:renderer-bundle",
+      "artifactOffset": "string:/api/login",
+      "attributes": {
+        "method": "POST"
+      },
+      "evidenceIds": [
+        "evidence:static:api:login"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "rawId": "static:edge:api-login",
+      "fromRawId": "static:artifact:renderer-bundle",
+      "toRawId": "static:api:login",
+      "relationship": "declares",
+      "evidenceIds": [
+        "evidence:static:api:login"
+      ]
+    }
+  ],
+  "evidenceIds": [
+    "evidence:static:artifact:renderer-bundle",
+    "evidence:static:api:login"
+  ]
+}

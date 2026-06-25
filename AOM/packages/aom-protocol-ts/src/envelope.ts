@@ -1,4 +1,5 @@
 import type { AOMCapability, AOMEdge, AOMNode, EvidenceRef } from "./aom.js";
+import type { ArtifactInspection } from "./artifact.js";
 import type { GatewayDecision, GatewayRequest, GatewayResponse } from "./gateway.js";
 import type {
   JsonValue,
@@ -6,6 +7,7 @@ import type {
   RawActionResult,
   RawEvent,
   RawRuntimeSnapshot,
+  RawStaticSnapshot,
 } from "./raw.js";
 import type { TargetDescriptor } from "./target.js";
 
@@ -20,7 +22,9 @@ export type ProtocolMessageKind =
 
 export type ProtocolPayload =
   | { payloadType: "target_descriptor"; payload: TargetDescriptor }
+  | { payloadType: "artifact_inspection"; payload: ArtifactInspection }
   | { payloadType: "raw_event"; payload: RawEvent }
+  | { payloadType: "raw_static_snapshot"; payload: RawStaticSnapshot }
   | { payloadType: "raw_runtime_snapshot"; payload: RawRuntimeSnapshot }
   | { payloadType: "raw_action"; payload: RawAction }
   | { payloadType: "raw_action_result"; payload: RawActionResult }

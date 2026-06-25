@@ -1,6 +1,7 @@
 use crate::{
-    AOMCapability, AOMEdge, AOMNode, EvidenceRef, GatewayDecision, GatewayRequest, GatewayResponse,
-    RawAction, RawActionResult, RawEvent, RawRuntimeSnapshot, TargetDescriptor,
+    AOMCapability, AOMEdge, AOMNode, ArtifactInspection, EvidenceRef, GatewayDecision,
+    GatewayRequest, GatewayResponse, RawAction, RawActionResult, RawEvent, RawRuntimeSnapshot,
+    RawStaticSnapshot, TargetDescriptor,
 };
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
@@ -21,7 +22,9 @@ pub enum ProtocolMessageKind {
 #[serde(rename_all = "snake_case", tag = "payloadType", content = "payload")]
 pub enum ProtocolPayload {
     TargetDescriptor(TargetDescriptor),
+    ArtifactInspection(ArtifactInspection),
     RawEvent(RawEvent),
+    RawStaticSnapshot(RawStaticSnapshot),
     RawRuntimeSnapshot(RawRuntimeSnapshot),
     RawAction(RawAction),
     RawActionResult(RawActionResult),

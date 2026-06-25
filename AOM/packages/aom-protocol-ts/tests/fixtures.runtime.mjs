@@ -17,11 +17,35 @@ function assert(condition, message) {
 
 const rawEvent = fixture("raw-event.json");
 const gatewayRequest = fixture("gateway-request.json");
+const staticSnapshot = fixture("raw-static-snapshot.json");
+const artifactInspection = fixture("artifact-inspection.json");
+const analyzerCommand = fixture("analyzer-command.json");
 
 assert(rawEvent.type === "surface_click", "raw event fixture should preserve surface_click");
 assert(
   gatewayRequest.params.capabilityId === "capability:search_product",
   "gateway request fixture should preserve capabilityId",
+);
+assert(
+  staticSnapshot.adapterId === "adapter:electron-artifact",
+  "static snapshot should preserve its artifact adapter",
+);
+assert(
+  artifactInspection.recommendedAdapter === "adapter:electron-artifact",
+  "artifact inspection should preserve its adapter recommendation",
+);
+assert(
+  analyzerCommand.commandType === "initialize"
+    && analyzerCommand.data.adapterId === "adapter:electron-artifact",
+  "analyzer command should preserve stdio routing configuration",
+);
+const inspectionMessage = createProtocolMessage("message:inspection-001", "response", {
+  payloadType: "artifact_inspection",
+  payload: artifactInspection,
+});
+assert(
+  inspectionMessage.payload.payloadType === "artifact_inspection",
+  "envelope should carry artifact inspection to analyzers",
 );
 
 const message = createProtocolMessage("message:fixture-001", "request", {

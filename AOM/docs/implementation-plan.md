@@ -7,6 +7,7 @@ AOM（Application Object Model）要为非 Web 应用建立 Agent 可查询、�
 核心边界：
 
 - 平台差异留在 Adapter Host。
+- 底层静态/动态分析能力由 Analyzer Adapter 调用成熟工具提供，AOM 不自行重造反编译器、调试器或自动化引擎。
 - 应用理解放在 Analysis Layer。
 - Agent 只面对 AOM Tool Protocol。
 - 所有操作必须经过 Safety Gateway。
@@ -48,6 +49,16 @@ AOM/
   tests/
 ```
 
+向下分析链路：
+
+```text
+Analysis Layer
+  -> Adapter Host
+  -> Analyzer Adapter
+  -> existing analyzer/debug tool
+  -> target artifact/process
+```
+
 ## Phase 0: 架构基线与协议冻结
 
 目标：冻结跨进程协议、安全边界和第一版对象模型。
@@ -62,20 +73,32 @@ AOM/
 - 示例消息可跨 Rust/TS 序列化和反序列化。
 - 文档明确 Agent 请求必须经过 Gateway。
 
-## Phase 1: Electron 单平台采集 MVP
+## Phase 1: Electron 静态/动态双通道采集 MVP
 
-目标：从现有 `targetAPP` 采集结构、事件和基础动作结果。
+状态：已于 2026-06-25 完成 MVP 验收。可靠性增强项（自动重启、超时取消、多 Analyzer 进程池）保留为后续工作，不改变 Phase 1 的 Raw 采集边界。
+
+目标：在不修改 `targetAPP` 的前提下，从可部署制品与运行中进程分别采集结构、事件和基础动作结果。
 
 交付物：
-- `aom-adapter-host`：`TargetManager`、`ProbeManager`、`RawEventBus`、`SnapshotCollector`、`ActionExecutor`。
-- `aom-electron-probe`：DOM 或 accessibility snapshot、click/input 事件、route 事件、mock network metadata、storage metadata。
+- `aom-adapter-host`：`TargetManager`、`StaticAdapterManager`、`RuntimeProbeManager`、`RawEventBus`、`SnapshotCollector`、`ActionExecutor`。
+- 前置 `ArtifactParser`：通过 magic、目录布局和 runtime fingerprint 识别容器、架构与候选 Web Runtime，生成带 evidence/confidence 的 Adapter 路由建议。
+- 开发态命令：`cargo run -p aom-adapter-host --bin aom-inspect-artifact -- <file-or-directory>`。
+- 静态分析 Adapter：面向可部署制品或进程映像，不依赖源码；Electron MVP 识别构建目录、asar、主进程/renderer/backend、bundle、模块依赖、资源和 API endpoint，输出 component network。
+- 静态 Analyzer Adapter 优先包装 ASAR、TypeScript compiler、平台 binary metadata 和可选 native analysis 工具，并统一输出 component network。
+- 动态 Electron Probe 通过成熟 CDP client/Playwright Adapter 输出 DOM/accessibility snapshot、click/input 事件、navigation 事件、network metadata 和可用的 storage metadata。
+- 协议对象：`RawArtifactDescriptor`、`RawStaticNode`、`RawStaticEdge`、`RawStaticSnapshot`、结构化 `RawRuntimeNode`。
 - 底层动作：`click`、`set_text`、`scroll`、`back`、`wait_for`。
 
 验收标准：
 - Adapter Host 能注册并连接 `targetAPP`。
+- 未知输入可先生成 `ArtifactInspection`；无法识别时返回 `unknown`，不阻断后续 generic analyzer。
+- 静态 Adapter 只读取 `targetAPP` 的构建制品，不读取 `src/`，并输出 application、process component、artifact/module、endpoint/resource 节点及关系。
+- Electron Adapter 能以内存虚拟文件方式读取 ASAR index/entry，不需要把归档解包到磁盘。
 - 能输出当前页面 `RawRuntimeSnapshot`。
 - 点击、输入、导航和 mock API 请求能生成带 `targetId`、`sequence`、`timestamp`、`evidenceIds` 的 `RawEvent`。
+- 静态结构与动态事实使用独立 Evidence，留待 Phase 2 Identity Resolver 归并。
 - Adapter Host 不直接暴露 Agent 可调用接口。
+- 每条分析 Evidence 记录 analyzer/tool 名称、版本和来源；替换底层工具不得改变 Raw/AOM 协议。
 
 ## Phase 2: Analysis Core 与对象图 MVP
 
