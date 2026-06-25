@@ -41,3 +41,6 @@ temp/
 *.har
 screenshots/
 recordings/
+
+# Local real-application analysis samples
+harderTestApp/
