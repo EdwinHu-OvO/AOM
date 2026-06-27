@@ -2,6 +2,7 @@ import type { AnalyzerSessionConfig } from "@aom/protocol";
 import { cp, mkdtemp, rm, stat } from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
+import { launchElectronForHandoff } from "../analyzer/handoff.js";
 import { attachElectronAnalyzer, launchElectronAnalyzer } from "../analyzer/playwright.js";
 import type { PlaywrightElectronSession } from "../analyzer/playwright.js";
 
@@ -38,6 +39,13 @@ export async function createRuntimeSession(
   if (connection?.lifecycle === "copy_for_static_analysis") {
     return undefined;
   }
+  if (connection?.lifecycle === "launch_for_handoff") {
+    if (!config.executablePath) throw new Error("launch_for_handoff_requires_executable_path");
+    return launchElectronForHandoff({
+      targetId: config.target.targetId,
+      executablePath: config.executablePath,
+    });
+  }
   if (!config.executablePath) return undefined;
   return launchElectronAnalyzer({
     targetId: config.target.targetId,
@@ -51,7 +59,9 @@ async function copyStaticArtifact(
   const lifecycle = config.target.connection?.lifecycle;
   if (
     !config.artifactLocator
-    || !["attach_existing", "copy_for_static_analysis"].includes(lifecycle ?? "")
+    || !["attach_existing", "copy_for_static_analysis", "launch_for_handoff"].includes(
+      lifecycle ?? "",
+    )
   ) {
     return undefined;
   }

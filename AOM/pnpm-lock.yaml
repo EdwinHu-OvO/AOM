@@ -12,6 +12,35 @@ importers:
         specifier: ^5.7.0
         version: 5.9.3
 
+  packages/aom-agent-mcp:
+    dependencies:
+      '@aom/electron-probe':
+        specifier: workspace:*
+        version: link:../aom-electron-probe
+      '@aom/protocol':
+        specifier: workspace:*
+        version: link:../aom-protocol-ts
+    devDependencies:
+      '@types/node':
+        specifier: ^22.10.0
+        version: 22.20.0
+      typescript:
+        specifier: ^5.7.0
+        version: 5.9.3
+
+  packages/aom-console:
+    dependencies:
+      '@aom/agent-mcp':
+        specifier: workspace:*
+        version: link:../aom-agent-mcp
+    devDependencies:
+      '@types/node':
+        specifier: ^22.10.0
+        version: 22.20.0
+      typescript:
+        specifier: ^5.7.0
+        version: 5.9.3
+
   packages/aom-electron-probe:
     dependencies:
       '@aom/protocol':

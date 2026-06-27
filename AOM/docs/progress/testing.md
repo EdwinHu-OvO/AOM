@@ -8,6 +8,8 @@
   server API surface 和隔离 LLM 可理解性验证。
 - Phase 3 已建立 executable capability mining、slots/action plan/effects/risk 和低置信度
   自动执行门槛验证。
+- Phase 5 已建立 Claude Code MCP smoke test、AnalysisService bridge 回归、Console audit
+  回归和真实 stdio `tools/call` 回归。
 
 ## 已完成
 
@@ -25,6 +27,31 @@
   `executablePath` 启动/重启目标应用。
 - TypeScript：验证 `copy_for_static_analysis` 会先复制 artifact；初始化后删除原始
   artifact，静态分析仍能从副本识别 endpoint。
+- 真实 PlateRun：验证用户预启动且未开启 CDP endpoint 时，`attach_existing` 返回
+  `attach_existing_requires_cdp_url`，不会回退到 `executablePath`；误把业务 API 端口
+  `4545` 当 CDP endpoint 也失败，原进程 PID 保持存活。
+- 真实 PlateRun：验证 `launch_owned` 可由 AOM 拉起 app，采集 22 -> 142 runtime nodes，
+  执行 wait/set_text/scroll/back/click，收集 11 个事件，并在 `session.close()` 后清理
+  AOM 拥有的进程。
+- 新增手动集成脚本 `AOM/tests/integration/launch-for-handoff.mjs`，用于验证
+  `launch_for_handoff`：AOM 拉起带 CDP 的 app、采集 snapshot、detach 后进程保留、
+  再次 attach 采集 snapshot、再次 detach 后进程仍保留。
+- 真实 PlateRun：`launch_for_handoff` 首次运行保留 CDP endpoint
+  `http://127.0.0.1:64604`；AOM detach 后再次 attach 成功采集 142 runtime nodes。
+- TypeScript：`WebSocketCdpClient.close()` 已覆盖 detach 清理，避免 AOM 断开 CDP 后
+  Node 事件循环挂住。
+- TypeScript：`@aom/agent-mcp` smoke test 覆盖 MCP initialize、tools/list 和
+  `aom.session_status`。
+- TypeScript：`@aom/agent-mcp` smoke test 已验证 MCP `tools/call` 会写入 JSONL audit
+  record。
+- TypeScript：`@aom/agent-mcp` smoke test 会通过 `aom-analysis-bridge` 读取真实
+  PlateRun raw bundle，并验证 Rust AnalysisService 输出 product group、cart state、
+  data flows 和 `add_to_cart` capability。
+- TypeScript：`@aom/console` smoke test 使用临时 audit JSONL 验证 `aom-console audit`
+  文本输出和 `--json` 输出。
+- 真实 MCP 协议：stdio server 通过 `tools/call` 调用 `aom.attach_existing` 接入
+  `http://127.0.0.1:64604`，随后 `aom.context_pack` 返回 capabilities，`aom.detach`
+  返回 retained target 信息。
 - Rust：验证 `TargetConnection.lifecycle` 的 `attach_existing` 协议 round-trip。
 - Rust：验证语义 view ID 不受 raw DOM path 变化影响。
 - Rust：验证静态/动态 endpoint 合并、登录 transition、event sequence、session/cart/menu
@@ -106,6 +133,12 @@
   `missing_target`。
 - `add_to_cart` 的能力效果验证目前由合成 before/event/after fixture 覆盖，用来锁定
   Analysis 规则；真实 GUI add-to-cart capture 仍待本机进程授权恢复后补跑。
+- attach-existing/handoff trace 证明当前生命周期边界正确，但也暴露默认动态覆盖不足：
+  未开启 CDP 的已运行 Electron 仍需要后续 OS-level fallback adapter。
+- launch-owned trace 证明当用户明确允许 AOM 拥有目标生命周期时，现有 Electron 动态
+  通道可以完成高保真观察、动作执行、事件采集和状态验证。
+- launch-for-handoff trace 用于验证“由 AOM 拉起调试态 app，但生命周期交还给用户”的
+  曲线 runtime 模式。
 - 三轮 schema 迭代使用全新隔离 LLM，只提供 context pack，评分为 78、74、88/89。
 - 74 分轮次证明 flat visible facts 增加上下文后反而造成 cart/menu/price 歧义。
 - 最终 evaluator 能准确规划 Search、Open cart、Orders 和单次 Add action。

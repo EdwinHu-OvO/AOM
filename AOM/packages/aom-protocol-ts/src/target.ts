@@ -3,6 +3,7 @@ export type TargetPlatform = "electron" | "android" | "flutter" | "web" | "debug
 export type TargetLifecycle =
   | "attach_existing"
   | "launch_owned"
+  | "launch_for_handoff"
   | "copy_for_static_analysis";
 
 export interface TargetConnection {

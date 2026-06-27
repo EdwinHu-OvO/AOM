@@ -51,7 +51,8 @@
 - Rust/TypeScript 协议均已同步 data-flow graph 节点/边枚举，`pnpm test && pnpm build`
   和 `cargo test` 均通过。
 - `TargetConnection` 新增 `lifecycle`：`attach_existing`、`launch_owned`、
-  `copy_for_static_analysis`，用于区分已运行目标、AOM 拥有的启动进程和静态副本分析。
+  `launch_for_handoff`、`copy_for_static_analysis`，用于区分已运行目标、AOM 拥有的启动
+  进程、AOM 启动后可交还用户的调试进程和静态副本分析。
 - Rust/TypeScript 均支持 lifecycle 序列化；Rust fixture 测试验证
   `attach_existing` snake_case round-trip。
 

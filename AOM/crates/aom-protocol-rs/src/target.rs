@@ -15,6 +15,7 @@ pub enum TargetPlatform {
 pub enum TargetLifecycle {
     AttachExisting,
     LaunchOwned,
+    LaunchForHandoff,
     CopyForStaticAnalysis,
 }
 

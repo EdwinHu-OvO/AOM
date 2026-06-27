@@ -18,6 +18,21 @@
 
 ### 2026-06-27
 
+- Phase 5 跳过完整 P4，先交付 Claude Code MCP demo surface：新增
+  `@aom/agent-mcp`，包含 provider-neutral `AgentInteractionService` 和 stdio
+  `AOMMcpServer`。
+- MCP tools 已覆盖 `aom.launch_for_handoff`、`aom.attach_existing`、`aom.snapshot`、
+  `aom.context_pack`、`aom.analysis_graph`、`aom.capabilities`、`aom.invoke_capability`、
+  `aom.invoke_view`、`aom.detach` 和 `aom.session_status`。
+- P5 重构为 AnalysisService-backed Agent surface：MCP 不再使用本地 shortcut context 或
+  P4-lite guard；`context_pack`、`analysis_graph`、`capabilities` 均来自 Rust
+  AnalysisService / Capability Layer，risk metadata 只作为未来 Gateway 的输入。
+- Console audit baseline 已启动：新增 `@aom/console` CLI；`@aom/agent-mcp` 对每个
+  MCP `tools/call` 写 JSONL audit record，Console 可查看调用 timeline、参数摘要、动作结果、
+  event count、graph/capability 摘要和错误信息。
+- 真实 MCP 协议回归已通过：stdio `tools/call` 接入现有 handoff endpoint
+  `http://127.0.0.1:64604`，`aom.context_pack` 返回 capabilities，`aom.detach` 返回
+  retained target 信息。
 - Target lifecycle 已落地到协议和 Electron Analyzer：`attach_existing`、`launch_owned`、
   `copy_for_static_analysis` 明确区分已运行应用、AOM 拥有的启动进程和副本静态分析。
 - 已运行目标不允许被 AOM 静默关闭或重启；`attach_existing` 缺少 `cdpUrl` 时初始化失败，
@@ -26,6 +41,18 @@
   artifact 到临时目录，再让静态 Adapter 分析副本，session close 时清理副本。
 - 项目方向文档补充两个风险边界：当前 capability 规则是 MVP recognizer recipe，不是
   通用应用理解；当前数据流是 evidence-linked MVP data-flow graph，不是完整数据血缘。
+- 对用户预启动的 PlateRun 完成 attach-existing/handoff 实验：该进程未暴露 CDP endpoint，
+  AOM 明确返回 `attach_existing_requires_cdp_url`，不会回退到 `executablePath` 重启应用；
+  尝试把业务 API 端口 `4545` 当 CDP 也失败，原 PlateRun PID 保持存活。
+- 对 `launch_owned` 完成对照实验：AOM 自己拉起 PlateRun 后采集 22 个初始 runtime
+  node，执行 wait/set_text/scroll/back/click，登录后增长到 142 nodes，采集 11 个事件；
+  `session.close()` 后无 PlateRun 进程残留。
+- 新增 `launch_for_handoff` 生命周期：AOM 可 detached 启动带
+  `--remote-debugging-port=<port>` 的 app，通过 CDP 介入；AOM detach 后 app 保留给用户，
+  后续仍可通过同一 CDP endpoint 再次介入。
+- 真实 handoff 实验使用 `http://127.0.0.1:64604` 成功再次介入 PlateRun，重连后采集
+  142 个 runtime nodes；修复 `WebSocketCdpClient.close()`，确保 AOM detach 后本地连接
+  进程能退出。
 
 ### 2026-06-26
 

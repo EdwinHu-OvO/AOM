@@ -1,0 +1,24 @@
+{
+  "name": "@aom/agent-mcp",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "aom-mcp-server": "dist/bin/aom-mcp-server.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "test": "pnpm run typecheck && pnpm run build && node tests/mcp-smoke.mjs",
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@aom/electron-probe": "workspace:*",
+    "@aom/protocol": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "typescript": "^5.7.0"
+  }
+}

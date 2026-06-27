@@ -44,6 +44,9 @@ fn target_lifecycle_round_trips_as_snake_case() {
         target.connection.unwrap().lifecycle.unwrap(),
         TargetLifecycle::AttachExisting
     );
+
+    let encoded = serde_json::to_string(&TargetLifecycle::LaunchForHandoff).unwrap();
+    assert_eq!(encoded, "\"launch_for_handoff\"");
 }
 
 #[test]

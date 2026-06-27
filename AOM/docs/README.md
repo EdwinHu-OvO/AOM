@@ -32,8 +32,12 @@
   action plan、expected effects 和自动执行门槛。
 - `decisions/0008-target-lifecycle.md`：运行中目标应用的 attach、owned launch、
   copy-for-static-analysis 生命周期边界。
+- `decisions/0009-agent-interaction-mcp.md`：Phase 5 Agent Interaction Layer、
+  Claude Code MCP 演示面和 AnalysisService-backed Agent surface。
 
 当前模块设计：
 
 - `design/project-direction.md`：AOM 北极星、架构边界、Phase 2 主线和方向检查标准。
 - `design/electron-analyzer-toolchain.md`：Electron 静态/动态工具适配、局部依赖、fallback 和 Evidence 约定。
+- `design/claude-code-mcp-demo.md`：Claude Code 作为 MCP host 的 Phase 5 演示配置和工具流。
+- `design/console-audit.md`：Console audit baseline 的记录格式、边界和使用方式。

@@ -86,6 +86,25 @@ try {
     "attach_existing should require an explicit CDP endpoint",
   );
 
+  const handoffWithoutExecutable = await request({
+    commandType: "initialize",
+    data: {
+      target: {
+        targetId: "target:handoff",
+        platform: "electron",
+        connection: { lifecycle: "launch_for_handoff" },
+      },
+    },
+  });
+  assert(
+    handoffWithoutExecutable.replyType === "error",
+    "launch_for_handoff should require an executable",
+  );
+  assert(
+    handoffWithoutExecutable.data.message.includes("launch_for_handoff_requires_executable_path"),
+    "launch_for_handoff should report missing executable explicitly",
+  );
+
   const ack = await request({ commandType: "shutdown" });
   assert(ack.replyType === "ack", "stdio analyzer should shut down cleanly");
 } finally {

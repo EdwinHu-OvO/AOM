@@ -42,6 +42,31 @@ export class WebSocketCdpClient implements CdpClient {
     this.listeners.set(method, listeners);
   }
 
+  async close(): Promise<void> {
+    const error = new Error("CDP connection closed");
+    for (const pending of this.pending.values()) pending.reject(error);
+    this.pending.clear();
+    this.listeners.clear();
+    if (
+      this.socket.readyState === WebSocket.CLOSING
+      || this.socket.readyState === WebSocket.CLOSED
+    ) {
+      return;
+    }
+    await new Promise<void>((resolve) => {
+      const timeout = setTimeout(resolve, 1_000);
+      this.socket.addEventListener(
+        "close",
+        () => {
+          clearTimeout(timeout);
+          resolve();
+        },
+        { once: true },
+      );
+      this.socket.close();
+    });
+  }
+
   private handleMessage(text: string): void {
     const message = JSON.parse(text) as {
       id?: number;

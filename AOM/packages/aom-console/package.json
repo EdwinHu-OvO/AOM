@@ -1,0 +1,24 @@
+{
+  "name": "@aom/console",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "aom-console": "dist/bin/aom-console.js"
+  },
+  "scripts": {
+    "audit": "node dist/bin/aom-console.js audit",
+    "build": "tsc -p tsconfig.build.json",
+    "test": "pnpm run typecheck && pnpm run build && node tests/console-smoke.mjs",
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@aom/agent-mcp": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "typescript": "^5.7.0"
+  }
+}

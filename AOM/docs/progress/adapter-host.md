@@ -47,6 +47,14 @@
 - AnalyzerSession 会在 `attach_existing` 或 `copy_for_static_analysis` 且存在
   `artifactLocator` 时复制 artifact 到临时目录，再把静态 Adapter 指向副本；session
   close 时清理副本，避免静态扫描锁定或修改用户正在运行的程序包。
+- 对用户预启动 PlateRun 的真实实验显示：默认打包 Electron 进程通常不会暴露 CDP
+  endpoint。当前 AOM 能正确拒绝无 endpoint 的接管并交还控制权，但还缺少一个不依赖
+  CDP 的默认动态接管层。
+- 新增 `launch_for_handoff` 曲线 runtime：AOM detached spawn 目标 app 并注入
+  `--remote-debugging-port=<port>`，再通过 CDP attach。AOM session close 只断开 CDP，
+  不关闭 app；同一 CDP endpoint 可用于后续再次介入。
+- `WebSocketCdpClient.close()` 已实现真实 socket detach，避免 handoff reattach 后 AOM
+  本地进程因为未关闭 WebSocket 而挂住。
 
 ## 近期目标
 
@@ -56,4 +64,7 @@
 - 增加 target/probe 状态事件和断线重连。
 - 将 attach-existing CDP discovery 接入 Adapter Host registry，并补真实已运行 PlateRun
   attach trace。
+- 设计默认动态 fallback adapter：优先考虑 macOS Accessibility/AX、窗口与进程元数据、
+  可授权的系统级事件监听和有限动作执行，用于覆盖未开启 CDP 的已运行 App；CDP 仍作为
+  高保真 Electron/Web 调试通道。
 - 增加自动重启、超时取消和多 Analyzer 进程池；这些属于后续可靠性增强，不阻塞 Phase 1 MVP。
