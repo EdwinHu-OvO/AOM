@@ -1,6 +1,8 @@
 import { _electron, type CDPSession, type ElectronApplication } from "playwright";
+import { chromeRemoteInterfaceTool, ChromeRemoteInterfaceClient } from "./cdp.js";
 import { ElectronRuntimeProbe } from "../runtime/electron.js";
 import type { CdpClient } from "../types.js";
+import { discoverElectronPage, WebSocketCdpClient } from "../runtime/cdp-client.js";
 import type { AnalyzerToolDescriptor } from "./tool.js";
 
 export const playwrightTool: AnalyzerToolDescriptor = {
@@ -19,9 +21,10 @@ export interface PlaywrightElectronLaunchOptions {
 }
 
 export interface PlaywrightElectronSession {
-  app: ElectronApplication;
   probe: ElectronRuntimeProbe;
   tool: AnalyzerToolDescriptor;
+  lifecycle: "attach_existing" | "launch_owned";
+  closesTarget: boolean;
   close(): Promise<void>;
 }
 
@@ -46,11 +49,48 @@ export async function launchElectronAnalyzer(
     playwrightTool,
   );
   return {
-    app,
     probe,
     tool: playwrightTool,
+    lifecycle: "launch_owned",
+    closesTarget: true,
     close: () => app.close(),
   };
+}
+
+export interface ElectronAttachOptions {
+  targetId: string;
+  cdpUrl: string;
+}
+
+export async function attachElectronAnalyzer(
+  options: ElectronAttachOptions,
+): Promise<PlaywrightElectronSession> {
+  const client = await connectCdp(options.cdpUrl);
+  return {
+    probe: new ElectronRuntimeProbe(options.targetId, client, chromeRemoteInterfaceTool),
+    tool: chromeRemoteInterfaceTool,
+    lifecycle: "attach_existing",
+    closesTarget: false,
+    close: async () => {
+      await client.close?.();
+    },
+  };
+}
+
+async function connectCdp(cdpUrl: string): Promise<CdpClient> {
+  if (cdpUrl.startsWith("ws://") || cdpUrl.startsWith("wss://")) {
+    return WebSocketCdpClient.connect(cdpUrl);
+  }
+  if (cdpUrl.startsWith("http://") || cdpUrl.startsWith("https://")) {
+    const target = await discoverElectronPage(cdpUrl);
+    if (!target.webSocketDebuggerUrl) throw new Error("cdp_target_missing_websocket_url");
+    return WebSocketCdpClient.connect(target.webSocketDebuggerUrl);
+  }
+  const parsed = Number(cdpUrl);
+  if (Number.isInteger(parsed) && parsed > 0) {
+    return ChromeRemoteInterfaceClient.connect({ port: parsed });
+  }
+  throw new Error("unsupported_cdp_url");
 }
 
 class PlaywrightCdpClient implements CdpClient {

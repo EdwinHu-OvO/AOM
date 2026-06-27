@@ -1,0 +1,3353 @@
+{
+  "graphId": "graph:target:platerun-analysis:1782375381528",
+  "targetId": "target:platerun-analysis",
+  "generatedAt": 1782375381528,
+  "currentScreenId": "aom:screen:8490ecde80c3fc52",
+  "previousScreenId": "aom:screen:b6aa130ba13de42c",
+  "nodes": [
+    {
+      "id": "aom:api:0948b5c75aaf3c6f",
+      "type": "api_endpoint",
+      "label": "/api/categories",
+      "features": {},
+      "evidenceIds": [
+        "evidence:analysis:a7d1eea601db276a"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "aom:api:230ef850909a1ecd",
+      "type": "api_endpoint",
+      "label": "/api/addresses",
+      "features": {
+        "fromDiskCache": false,
+        "fromServiceWorker": false,
+        "hasBody": false,
+        "headers": {
+          "Access-Control-Allow-Origin": "*",
+          "Content-Length": "244",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 25 Jun 2026 08:16:20 GMT",
+          "ETag": "W/\"f4-7PaBns5AHRorKwqNWEGG5EkRTdo\"",
+          "X-Powered-By": "Express"
+        },
+        "method": "GET",
+        "mimeType": "application/json",
+        "requestId": "57500.11",
+        "resourceType": "Fetch",
+        "status": 200,
+        "statusText": "OK",
+        "url": "http://127.0.0.1:4545/api/addresses"
+      },
+      "evidenceIds": [
+        "evidence:analysis:1045ba0de36ef68a",
+        "evidence:analysis:7a5e669abd415e1a",
+        "evidence:analysis:f65adcda72199fe6"
+      ],
+      "confidence": 1.0
+    },
+    {
+      "id": "aom:api:3720b977b2105972",
+      "type": "api_endpoint",
+      "label": "/api/orders",
+      "features": {
+        "fromDiskCache": false,
+        "fromServiceWorker": false,
+        "hasBody": false,
+        "headers": {
+          "Access-Control-Allow-Origin": "*",
+          "Content-Length": "2",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 25 Jun 2026 08:16:20 GMT",
+          "ETag": "W/\"2-l9Fw4VUO7kr8CvBlt4zaMCqXZ0w\"",
+          "X-Powered-By": "Express"
+        },
+        "method": "GET",
+        "mimeType": "application/json",
+        "requestId": "57500.12",
+        "resourceType": "Fetch",
+        "status": 200,
+        "statusText": "OK",
+        "url": "http://127.0.0.1:4545/api/orders"
+      },
+      "evidenceIds": [
+        "evidence:analysis:1045ba0de36ef68a",
+        "evidence:analysis:f65adcda72199fe6",
+        "evidence:analysis:fd67c18ecd53890d"
+      ],
+      "confidence": 1.0
+    },
+    {
+      "id": "aom:api:524d0d7e1447769d",
+      "type": "api_endpoint",
+      "label": "/api/stores/:id",
+      "features": {},
+      "evidenceIds": [
+        "evidence:analysis:bbe2d13e4dc4d180"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "aom:api:92249a3e05bb2f80",
+      "type": "api_endpoint",
+      "label": "/api/login",
+      "features": {
+        "bodyBytes": 44,
+        "fromDiskCache": false,
+        "fromServiceWorker": false,
+        "hasBody": true,
+        "headers": {
+          "Access-Control-Allow-Origin": "*",
+          "Connection": "keep-alive",
+          "Content-Length": "95",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 25 Jun 2026 08:16:20 GMT",
+          "ETag": "W/\"5f-dT8w4CcIOLaXVRMkw2KyC3QKmeI\"",
+          "Keep-Alive": "timeout=5",
+          "X-Powered-By": "Express"
+        },
+        "method": "POST",
+        "mimeType": "application/json",
+        "requestId": "57500.10",
+        "resourceType": "Fetch",
+        "status": 200,
+        "statusText": "OK",
+        "url": "http://127.0.0.1:4545/api/login"
+      },
+      "evidenceIds": [
+        "evidence:analysis:1045ba0de36ef68a",
+        "evidence:analysis:6f58924d702e6071",
+        "evidence:analysis:f65adcda72199fe6"
+      ],
+      "confidence": 1.0
+    },
+    {
+      "id": "aom:api:ee0795f1d976c14d",
+      "type": "api_endpoint",
+      "label": "/api/stores",
+      "features": {},
+      "evidenceIds": [
+        "evidence:analysis:2f651ab6f75df4c0"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "aom:api:f33654c32cee036d",
+      "type": "api_endpoint",
+      "label": "/api/me",
+      "features": {},
+      "evidenceIds": [
+        "evidence:analysis:85ad84dd5ddbf810"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "aom:app:699184c37ef598e5",
+      "type": "app",
+      "label": "PlateRun",
+      "features": {
+        "platform": "electron",
+        "staticNodeCount": 103
+      },
+      "evidenceIds": [
+        "evidence:analysis:105163259a798da3"
+      ],
+      "confidence": 1.0
+    },
+    {
+      "id": "aom:data:097594e926634dee",
+      "type": "data_object",
+      "label": "Pan-fried Gyoza",
+      "features": {
+        "kind": "entity",
+        "tagName": "strong"
+      },
+      "evidenceIds": [
+        "evidence:analysis:a1e018a8ea8ced9b"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "aom:data:158157e5bbe58e2d",
+      "type": "data_object",
+      "label": "$6.50",
+      "features": {
+        "kind": "price",
+        "tagName": "b"
+      },
+      "evidenceIds": [
+        "evidence:analysis:7e530ea18f6e541c"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "aom:data:164386d53c93d0be",
+      "type": "data_object",
+      "label": "North Street Bistro",
+      "features": {
+        "kind": "entity",
+        "tagName": "strong"
+      },
+      "evidenceIds": [
+        "evidence:analysis:79010b6eac7d918a"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "aom:data:28bbf33ec2466cdb",
+      "type": "data_object",
+      "label": "Pork broth, chashu, egg",
+      "features": {
+        "kind": "visible_text",
+        "tagName": "p"
+      },
+      "evidenceIds": [
+        "evidence:analysis:96cff73a585e1aba"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "aom:data:36bcfbecf385246d",
+      "type": "data_object",
+      "label": "Password",
+      "features": {
+        "kind": "visible_text",
+        "tagName": "span"
+      },
+      "evidenceIds": [
+        "evidence:analysis:f6c987d80073e599"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "aom:data:4257a6eff18a8ac0",
+      "type": "data_object",
+      "label": "Mina Chen",
+      "features": {
+        "kind": "visible_text",
+        "tagName": "span"
+      },
+      "evidenceIds": [
+        "evidence:analysis:118e65ff06b6e651"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "aom:data:44ecefbd3a9d700e",
+      "type": "data_object",
+      "label": "Spicy Miso Ramen",
+      "features": {
+        "kind": "entity",
+        "tagName": "strong"
+      },
+      "evidenceIds": [
+        "evidence:analysis:a7d30dfbde6216aa"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "aom:data:452f99dfa77bcea0",
+      "type": "data_object",
+      "label": "Salad · Protein bowls · Fresh",
+      "features": {
+        "kind": "visible_text",
+        "tagName": "span"
+      },
+      "evidenceIds": [
+        "evidence:analysis:756a142b63e155fd"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "aom:data:469f1a058474e6c5",
+      "type": "data_object",
+      "label": "3 items",
+      "features": {
+        "kind": "count",
+        "tagName": "strong"
+      },
+      "evidenceIds": [
+        "evidence:analysis:e518a49d6bc979c6"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "aom:data:494f4871e6ad68ae",
+      "type": "data_object",
+      "label": "Ramen · Hot soup · Best seller",
+      "features": {
+        "kind": "visible_text",
+        "tagName": "span"
+      },
+      "evidenceIds": [
+        "evidence:analysis:063e7b841a024930"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "aom:data:5019a3caad411537",
+      "type": "data_object",
+      "label": "Popular",
+      "features": {
+        "kind": "visible_text",
+        "tagName": "span"
+      },
+      "evidenceIds": [
+        "evidence:analysis:7150fce69d661ddd"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "aom:data:52406a7cbc0cb6fd",
+      "type": "data_object",
+      "label": "PlateRun",
+      "features": {
+        "kind": "visible_text",
+        "tagName": "span"
+      },
+      "evidenceIds": [
+        "evidence:analysis:c6315187b464c00d"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "aom:data:52fdf97c02fee71a",
+      "type": "data_object",
+      "label": "Dinner plans, handled before you get hungry.",
+      "features": {
+        "kind": "entity",
+        "tagName": "h1"
+      },
+      "evidenceIds": [
+        "evidence:analysis:ba017dd4f33374f4"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "aom:data:59248775e434acd3",
+      "type": "data_object",
+      "label": "Restaurants",
+      "features": {
+        "kind": "entity",
+        "tagName": "h2"
+      },
+      "evidenceIds": [
+        "evidence:analysis:eb7d099ff627660b"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "aom:data:6244b498d0a6ec14",
+      "type": "data_object",
+      "label": "Browse menu",
+      "features": {
+        "kind": "visible_text",
+        "tagName": "span"
+      },
+      "evidenceIds": [
+        "evidence:analysis:b8c62485f8ad7889"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "aom:data:635cdf212039d730",
+      "type": "data_object",
+      "label": "$12.90",
+      "features": {
+        "kind": "price",
+        "tagName": "b"
+      },
+      "evidenceIds": [
+        "evidence:analysis:ea8412caea0b398b"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "aom:data:7a607a83a0bd402d",
+      "type": "data_object",
+      "label": "Pasta · Burger · Family meals",
+      "features": {
+        "kind": "visible_text",
+        "tagName": "span"
+      },
+      "evidenceIds": [
+        "evidence:analysis:d7c8243ec56cd49c"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "aom:data:8a804279120b0b88",
+      "type": "data_object",
+      "label": "Home: 88 Maple Garden, Building 3, Apt 1202",
+      "features": {
+        "kind": "state",
+        "tagName": "span"
+      },
+      "evidenceIds": [
+        "evidence:analysis:b7cde78d8ffa914b"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "aom:data:8c882504170355c6",
+      "type": "data_object",
+      "label": "Green Bowl Club",
+      "features": {
+        "kind": "entity",
+        "tagName": "strong"
+      },
+      "evidenceIds": [
+        "evidence:analysis:7207132c399feb5e"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "aom:data:9087e790d0e7f80c",
+      "type": "data_object",
+      "label": "Browse nearby favorites, schedule dinner for later, or get lunch moving now.",
+      "features": {
+        "kind": "visible_text",
+        "tagName": "p"
+      },
+      "evidenceIds": [
+        "evidence:analysis:1c0162246c9871db"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "aom:data:93f0c0088ecddd4d",
+      "type": "data_object",
+      "label": "4 open now",
+      "features": {
+        "kind": "count",
+        "tagName": "span"
+      },
+      "evidenceIds": [
+        "evidence:analysis:15ba689de54694a7"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "aom:data:941a246d18ae33eb",
+      "type": "data_object",
+      "label": "Welcome back",
+      "features": {
+        "kind": "entity",
+        "tagName": "h2"
+      },
+      "evidenceIds": [
+        "evidence:analysis:3673bdd73ff6d410"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "aom:data:9bb589b3de8d3c32",
+      "type": "data_object",
+      "label": "$0.00",
+      "features": {
+        "kind": "price",
+        "tagName": "strong"
+      },
+      "evidenceIds": [
+        "evidence:analysis:6044d90cede14499"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "aom:data:a9df2e607cef8157",
+      "type": "data_object",
+      "label": "PlateRun",
+      "features": {
+        "kind": "visible_text",
+        "tagName": "span"
+      },
+      "evidenceIds": [
+        "evidence:analysis:0d32436e73865b4d"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "aom:data:abf2d3c7c7b0f6e6",
+      "type": "data_object",
+      "label": "Tonkotsu Ramen",
+      "features": {
+        "kind": "entity",
+        "tagName": "strong"
+      },
+      "evidenceIds": [
+        "evidence:analysis:c3314b2bb0166af3"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "aom:data:b6e18a1c16c19bb5",
+      "type": "data_object",
+      "label": "Six pork dumplings",
+      "features": {
+        "kind": "visible_text",
+        "tagName": "p"
+      },
+      "evidenceIds": [
+        "evidence:analysis:b783c8511a6628a9"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "aom:data:c1b54329e2345d6c",
+      "type": "data_object",
+      "label": "$13.80",
+      "features": {
+        "kind": "price",
+        "tagName": "b"
+      },
+      "evidenceIds": [
+        "evidence:analysis:f845cb4c29012b9f"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "aom:data:c67711405c05e471",
+      "type": "data_object",
+      "label": "$3 delivery",
+      "features": {
+        "kind": "price",
+        "tagName": "span"
+      },
+      "evidenceIds": [
+        "evidence:analysis:29a529d1f1bb772a"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "aom:data:c73a80c1c0f480ae",
+      "type": "data_object",
+      "label": "Phone number",
+      "features": {
+        "kind": "visible_text",
+        "tagName": "span"
+      },
+      "evidenceIds": [
+        "evidence:analysis:19e09dc988b47d75"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "aom:data:c94905999bb1a604",
+      "type": "data_object",
+      "label": "$2 delivery",
+      "features": {
+        "kind": "price",
+        "tagName": "span"
+      },
+      "evidenceIds": [
+        "evidence:analysis:69dd97decc961ae5"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "aom:data:c9bb0b484f73a225",
+      "type": "data_object",
+      "label": "Cloud Sugar Cafe",
+      "features": {
+        "kind": "entity",
+        "tagName": "strong"
+      },
+      "evidenceIds": [
+        "evidence:analysis:192262fc81d12a25"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "aom:data:e029a80fc0ca09ef",
+      "type": "data_object",
+      "label": "Coffee · Cake · Afternoon tea",
+      "features": {
+        "kind": "visible_text",
+        "tagName": "span"
+      },
+      "evidenceIds": [
+        "evidence:analysis:bd03a6005c5c8cbc"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "aom:data:f0c1ae2ee67814dc",
+      "type": "data_object",
+      "label": "Miso broth with chili oil",
+      "features": {
+        "kind": "visible_text",
+        "tagName": "p"
+      },
+      "evidenceIds": [
+        "evidence:analysis:9e59d9ade57fc0fc"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "aom:data:f0d93144f831514e",
+      "type": "data_object",
+      "label": "$4 delivery",
+      "features": {
+        "kind": "price",
+        "tagName": "span"
+      },
+      "evidenceIds": [
+        "evidence:analysis:bc36be2368922b37"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "aom:data:f4061a7533846f2e",
+      "type": "data_object",
+      "label": "Menu",
+      "features": {
+        "kind": "entity",
+        "tagName": "h2"
+      },
+      "evidenceIds": [
+        "evidence:analysis:ce847ead242d5428"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "aom:data:fb93f16f06b8b579",
+      "type": "data_object",
+      "label": "Tokyo Ramen Lab",
+      "features": {
+        "kind": "entity",
+        "tagName": "strong"
+      },
+      "evidenceIds": [
+        "evidence:analysis:4aeac28de7ce0671"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "aom:data:febd875aa3b671b2",
+      "type": "data_object",
+      "label": "0",
+      "features": {
+        "kind": "visible_text",
+        "tagName": "span"
+      },
+      "evidenceIds": [
+        "evidence:analysis:58520422f9179e8e"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "aom:event:bc9d7d2a4c6ea95c",
+      "type": "event",
+      "label": "User text input",
+      "features": {
+        "eventType": "SurfaceTextInput",
+        "sequence": 8
+      },
+      "evidenceIds": [
+        "evidence:analysis:3939b74fa2294677"
+      ],
+      "confidence": 1.0
+    },
+    {
+      "id": "aom:event:bc9d7e2a4c6eab0f",
+      "type": "event",
+      "label": "User click",
+      "features": {
+        "eventType": "SurfaceClick",
+        "sequence": 9
+      },
+      "evidenceIds": [
+        "evidence:analysis:93728f76f83bd0a0"
+      ],
+      "confidence": 1.0
+    },
+    {
+      "id": "aom:event:bc9d812a4c6eb028",
+      "type": "event",
+      "label": "GET /api/orders",
+      "features": {
+        "eventType": "NetworkRequest",
+        "sequence": 4
+      },
+      "evidenceIds": [
+        "evidence:analysis:f65adcda72199fe6"
+      ],
+      "confidence": 1.0
+    },
+    {
+      "id": "aom:event:bc9d822a4c6eb1db",
+      "type": "event",
+      "label": "200 response from /api/addresses",
+      "features": {
+        "eventType": "NetworkResponse",
+        "sequence": 5
+      },
+      "evidenceIds": [
+        "evidence:analysis:1045ba0de36ef68a"
+      ],
+      "confidence": 1.0
+    },
+    {
+      "id": "aom:event:bc9d832a4c6eb38e",
+      "type": "event",
+      "label": "200 response from /api/orders",
+      "features": {
+        "eventType": "NetworkResponse",
+        "sequence": 6
+      },
+      "evidenceIds": [
+        "evidence:analysis:1045ba0de36ef68a"
+      ],
+      "confidence": 1.0
+    },
+    {
+      "id": "aom:event:bc9d842a4c6eb541",
+      "type": "event",
+      "label": "User text input",
+      "features": {
+        "eventType": "SurfaceTextInput",
+        "sequence": 7
+      },
+      "evidenceIds": [
+        "evidence:analysis:3939b74fa2294677"
+      ],
+      "confidence": 1.0
+    },
+    {
+      "id": "aom:event:bc9d862a4c6eb8a7",
+      "type": "event",
+      "label": "POST /api/login",
+      "features": {
+        "eventType": "NetworkRequest",
+        "sequence": 1
+      },
+      "evidenceIds": [
+        "evidence:analysis:f65adcda72199fe6"
+      ],
+      "confidence": 1.0
+    },
+    {
+      "id": "aom:event:bc9d872a4c6eba5a",
+      "type": "event",
+      "label": "200 response from /api/login",
+      "features": {
+        "eventType": "NetworkResponse",
+        "sequence": 2
+      },
+      "evidenceIds": [
+        "evidence:analysis:1045ba0de36ef68a"
+      ],
+      "confidence": 1.0
+    },
+    {
+      "id": "aom:event:bc9d882a4c6ebc0d",
+      "type": "event",
+      "label": "GET /api/addresses",
+      "features": {
+        "eventType": "NetworkRequest",
+        "sequence": 3
+      },
+      "evidenceIds": [
+        "evidence:analysis:f65adcda72199fe6"
+      ],
+      "confidence": 1.0
+    },
+    {
+      "id": "aom:event:ee638fdfe023a6e2",
+      "type": "event",
+      "label": "Application state change",
+      "features": {
+        "eventType": "StateChange",
+        "sequence": 11
+      },
+      "evidenceIds": [
+        "evidence:analysis:92d9bb061b205556"
+      ],
+      "confidence": 1.0
+    },
+    {
+      "id": "aom:event:ee6390dfe023a895",
+      "type": "event",
+      "label": "Application state change",
+      "features": {
+        "eventType": "StateChange",
+        "sequence": 10
+      },
+      "evidenceIds": [
+        "evidence:analysis:92d9bb061b205556"
+      ],
+      "confidence": 1.0
+    },
+    {
+      "id": "aom:screen:8490ecde80c3fc52",
+      "type": "screen",
+      "label": "Browse restaurants",
+      "features": {
+        "runtimeNodeCount": 142,
+        "semanticKey": "browse"
+      },
+      "evidenceIds": [
+        "evidence:analysis:8214e0ae94077a34"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "id": "aom:screen:b6aa130ba13de42c",
+      "type": "screen",
+      "label": "Sign in",
+      "features": {
+        "runtimeNodeCount": 22,
+        "semanticKey": "authentication"
+      },
+      "evidenceIds": [
+        "evidence:analysis:8058f5c5675fe94e"
+      ],
+      "confidence": 0.98
+    },
+    {
+      "id": "aom:view:09cf21a5e638145f",
+      "type": "view",
+      "label": "Add Spicy Miso Ramen",
+      "features": {
+        "actions": [
+          "click"
+        ],
+        "inputType": "submit",
+        "rawReference": "dom:html > body > div > main > div > section > section > div:nth-of-type(3) > article:nth-of-type(2) > button",
+        "role": "button"
+      },
+      "evidenceIds": [
+        "evidence:analysis:507457fa044601ff"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "aom:view:11995cec16bf601a",
+      "type": "view",
+      "label": "Asian",
+      "features": {
+        "actions": [
+          "click"
+        ],
+        "inputType": "submit",
+        "rawReference": "dom:html > body > div > main > div > aside > section > div:nth-of-type(2) > button:nth-of-type(2)",
+        "role": "button"
+      },
+      "evidenceIds": [
+        "evidence:analysis:e42f925e2ded8801"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "aom:view:1859bea8e0828140",
+      "type": "view",
+      "label": "Dessert",
+      "features": {
+        "actions": [
+          "click"
+        ],
+        "inputType": "submit",
+        "rawReference": "dom:html > body > div > main > div > aside > section > div:nth-of-type(2) > button:nth-of-type(5)",
+        "role": "button"
+      },
+      "evidenceIds": [
+        "evidence:analysis:ca5930b4415b7de7"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "aom:view:1d1f0a6aad605c0b",
+      "type": "view",
+      "label": "Orders",
+      "features": {
+        "actions": [
+          "click"
+        ],
+        "inputType": "submit",
+        "rawReference": "dom:html > body > div > main > header > nav > button:nth-of-type(3)",
+        "role": "button"
+      },
+      "evidenceIds": [
+        "evidence:analysis:911e515818047446"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "aom:view:48df9a9e43d962f1",
+      "type": "view",
+      "label": "Open cart",
+      "features": {
+        "actions": [
+          "click"
+        ],
+        "inputType": "submit",
+        "rawReference": "dom:html > body > div > main > button",
+        "role": "button"
+      },
+      "evidenceIds": [
+        "evidence:analysis:522f179d5670edb7"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "aom:view:5436d77ac2a8a1e2",
+      "type": "view",
+      "label": "Addresses",
+      "features": {
+        "actions": [
+          "click"
+        ],
+        "inputType": "submit",
+        "rawReference": "dom:html > body > div > main > header > nav > button:nth-of-type(2)",
+        "role": "button"
+      },
+      "evidenceIds": [
+        "evidence:analysis:0c2d3fbec0776069"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "aom:view:55b411e9e9382680",
+      "type": "view",
+      "label": "Western",
+      "features": {
+        "actions": [
+          "click"
+        ],
+        "inputType": "submit",
+        "rawReference": "dom:html > body > div > main > div > aside > section > div:nth-of-type(2) > button:nth-of-type(3)",
+        "role": "button"
+      },
+      "evidenceIds": [
+        "evidence:analysis:2bf2a911c295e597"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "aom:view:64661bef928bda8f",
+      "type": "view",
+      "label": "All",
+      "features": {
+        "actions": [
+          "click"
+        ],
+        "inputType": "submit",
+        "rawReference": "dom:html > body > div > main > div > aside > section > div:nth-of-type(2) > button:nth-of-type(1)",
+        "role": "button"
+      },
+      "evidenceIds": [
+        "evidence:analysis:ab4fee8b151daa2a"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "aom:view:8267f5352b5ca3ed",
+      "type": "view",
+      "label": "North Street Bistro",
+      "features": {
+        "actions": [
+          "click"
+        ],
+        "inputType": "submit",
+        "rawReference": "dom:html > body > div > main > div > aside > section > div:nth-of-type(3) > button:nth-of-type(2)",
+        "role": "button"
+      },
+      "evidenceIds": [
+        "evidence:analysis:304bedcd349892da"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "aom:view:837d46624311989f",
+      "type": "view",
+      "label": "text input",
+      "features": {
+        "actions": [
+          "set_text",
+          "wait_for"
+        ],
+        "inputType": "text",
+        "rawReference": "dom:html > body > div > main > form > label:nth-of-type(1) > div > input",
+        "role": "input"
+      },
+      "evidenceIds": [
+        "evidence:analysis:1ecb9c57827bd0ef"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "aom:view:878efc0a305f7ce1",
+      "type": "view",
+      "label": "Healthy",
+      "features": {
+        "actions": [
+          "click"
+        ],
+        "inputType": "submit",
+        "rawReference": "dom:html > body > div > main > div > aside > section > div:nth-of-type(2) > button:nth-of-type(4)",
+        "role": "button"
+      },
+      "evidenceIds": [
+        "evidence:analysis:86a43a15ce507e44"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "aom:view:90fd3f18b4d330bf",
+      "type": "view",
+      "label": "Add Pan-fried Gyoza",
+      "features": {
+        "actions": [
+          "click"
+        ],
+        "inputType": "submit",
+        "rawReference": "dom:html > body > div > main > div > section > section > div:nth-of-type(3) > article:nth-of-type(3) > button",
+        "role": "button"
+      },
+      "evidenceIds": [
+        "evidence:analysis:4d7cabf71236999e"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "aom:view:975fe7e04f21ef76",
+      "type": "view",
+      "label": "Browse",
+      "features": {
+        "actions": [
+          "click"
+        ],
+        "inputType": "submit",
+        "rawReference": "dom:html > body > div > main > header > nav > button:nth-of-type(1)",
+        "role": "button"
+      },
+      "evidenceIds": [
+        "evidence:analysis:b6eb2d5bac6580ed"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "aom:view:bf173a1158baf927",
+      "type": "view",
+      "label": "Add Tonkotsu Ramen",
+      "features": {
+        "actions": [
+          "click"
+        ],
+        "inputType": "submit",
+        "rawReference": "dom:html > body > div > main > div > section > section > div:nth-of-type(3) > article:nth-of-type(1) > button",
+        "role": "button"
+      },
+      "evidenceIds": [
+        "evidence:analysis:f538014842504314"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "aom:view:c1e58cd85baf149c",
+      "type": "view",
+      "label": "Cloud Sugar Cafe",
+      "features": {
+        "actions": [
+          "click"
+        ],
+        "inputType": "submit",
+        "rawReference": "dom:html > body > div > main > div > aside > section > div:nth-of-type(3) > button:nth-of-type(4)",
+        "role": "button"
+      },
+      "evidenceIds": [
+        "evidence:analysis:efe1f1546da4028f"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "aom:view:c8ba56376d1629cb",
+      "type": "view",
+      "label": "password input",
+      "features": {
+        "actions": [
+          "set_text",
+          "wait_for"
+        ],
+        "inputType": "password",
+        "rawReference": "dom:html > body > div > main > form > label:nth-of-type(2) > div > input",
+        "role": "input"
+      },
+      "evidenceIds": [
+        "evidence:analysis:de9dbeb5a88d362b"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "aom:view:d3a729663b48f7dd",
+      "type": "view",
+      "label": "Sign in",
+      "features": {
+        "actions": [
+          "click"
+        ],
+        "inputType": "submit",
+        "rawReference": "dom:html > body > div > main > form > button",
+        "role": "button"
+      },
+      "evidenceIds": [
+        "evidence:analysis:774dc96025774471"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "aom:view:f7ba85894bb0de51",
+      "type": "view",
+      "label": "Green Bowl Club",
+      "features": {
+        "actions": [
+          "click"
+        ],
+        "inputType": "submit",
+        "rawReference": "dom:html > body > div > main > div > aside > section > div:nth-of-type(3) > button:nth-of-type(3)",
+        "role": "button"
+      },
+      "evidenceIds": [
+        "evidence:analysis:1e47eadfddfee376"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "aom:view:f999a88039c56b15",
+      "type": "view",
+      "label": "Search food or restaurants",
+      "features": {
+        "actions": [
+          "set_text",
+          "wait_for"
+        ],
+        "inputType": "text",
+        "rawReference": "dom:html > body > div > main > header > div:nth-of-type(2) > input",
+        "role": "input"
+      },
+      "evidenceIds": [
+        "evidence:analysis:4fceea63839f5321"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "aom:view:fab6fed50982d068",
+      "type": "view",
+      "label": "Tokyo Ramen Lab",
+      "features": {
+        "actions": [
+          "click"
+        ],
+        "inputType": "submit",
+        "rawReference": "dom:html > body > div > main > div > aside > section > div:nth-of-type(3) > button:nth-of-type(1)",
+        "role": "button"
+      },
+      "evidenceIds": [
+        "evidence:analysis:f09cc578238582e3"
+      ],
+      "confidence": 0.9
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge:a7f5a25db8d0bdbf",
+      "from": "aom:app:699184c37ef598e5",
+      "to": "aom:api:230ef850909a1ecd",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:7a5e669abd415e1a"
+      ]
+    },
+    {
+      "id": "edge:505b69369a9968fd",
+      "from": "aom:app:699184c37ef598e5",
+      "to": "aom:api:0948b5c75aaf3c6f",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:a7d1eea601db276a"
+      ]
+    },
+    {
+      "id": "edge:5486cfba4884d15c",
+      "from": "aom:app:699184c37ef598e5",
+      "to": "aom:api:92249a3e05bb2f80",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:6f58924d702e6071"
+      ]
+    },
+    {
+      "id": "edge:c3f06933cce00baf",
+      "from": "aom:app:699184c37ef598e5",
+      "to": "aom:api:3720b977b2105972",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:fd67c18ecd53890d"
+      ]
+    },
+    {
+      "id": "edge:bb400b6365377e95",
+      "from": "aom:app:699184c37ef598e5",
+      "to": "aom:api:f33654c32cee036d",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:85ad84dd5ddbf810"
+      ]
+    },
+    {
+      "id": "edge:91b36eedc5f467c2",
+      "from": "aom:app:699184c37ef598e5",
+      "to": "aom:api:ee0795f1d976c14d",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:2f651ab6f75df4c0"
+      ]
+    },
+    {
+      "id": "edge:df26bf9faa1581e9",
+      "from": "aom:app:699184c37ef598e5",
+      "to": "aom:api:524d0d7e1447769d",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:bbe2d13e4dc4d180"
+      ]
+    },
+    {
+      "id": "edge:e31a85b39913226b",
+      "from": "aom:app:699184c37ef598e5",
+      "to": "aom:screen:b6aa130ba13de42c",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:8058f5c5675fe94e"
+      ]
+    },
+    {
+      "id": "edge:4e2529e418246752",
+      "from": "aom:screen:b6aa130ba13de42c",
+      "to": "aom:view:d3a729663b48f7dd",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:774dc96025774471"
+      ]
+    },
+    {
+      "id": "edge:e4e8a720f41e9302",
+      "from": "aom:screen:b6aa130ba13de42c",
+      "to": "aom:view:c8ba56376d1629cb",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:de9dbeb5a88d362b"
+      ]
+    },
+    {
+      "id": "edge:e2d78b102899d4cb",
+      "from": "aom:screen:b6aa130ba13de42c",
+      "to": "aom:view:837d46624311989f",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:1ecb9c57827bd0ef"
+      ]
+    },
+    {
+      "id": "edge:bf76c9d99b0151bd",
+      "from": "aom:screen:b6aa130ba13de42c",
+      "to": "aom:data:52406a7cbc0cb6fd",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:c6315187b464c00d"
+      ]
+    },
+    {
+      "id": "edge:1b24e3eedda9d824",
+      "from": "aom:screen:b6aa130ba13de42c",
+      "to": "aom:data:52fdf97c02fee71a",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:ba017dd4f33374f4"
+      ]
+    },
+    {
+      "id": "edge:1424af196536b7ab",
+      "from": "aom:screen:b6aa130ba13de42c",
+      "to": "aom:data:9087e790d0e7f80c",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:1c0162246c9871db"
+      ]
+    },
+    {
+      "id": "edge:5dec1a3edf442a2e",
+      "from": "aom:screen:b6aa130ba13de42c",
+      "to": "aom:data:941a246d18ae33eb",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:3673bdd73ff6d410"
+      ]
+    },
+    {
+      "id": "edge:09b2c144ca00e772",
+      "from": "aom:screen:b6aa130ba13de42c",
+      "to": "aom:data:c73a80c1c0f480ae",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:19e09dc988b47d75"
+      ]
+    },
+    {
+      "id": "edge:a2c7c6a59e290963",
+      "from": "aom:screen:b6aa130ba13de42c",
+      "to": "aom:data:36bcfbecf385246d",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:f6c987d80073e599"
+      ]
+    },
+    {
+      "id": "edge:a84de03f416091c6",
+      "from": "aom:app:699184c37ef598e5",
+      "to": "aom:screen:8490ecde80c3fc52",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:8214e0ae94077a34"
+      ]
+    },
+    {
+      "id": "edge:bb928795488b3594",
+      "from": "aom:screen:8490ecde80c3fc52",
+      "to": "aom:view:90fd3f18b4d330bf",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:4d7cabf71236999e"
+      ]
+    },
+    {
+      "id": "edge:0d7689bd0cd5df58",
+      "from": "aom:screen:8490ecde80c3fc52",
+      "to": "aom:view:09cf21a5e638145f",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:507457fa044601ff"
+      ]
+    },
+    {
+      "id": "edge:2bb46a6d4773093d",
+      "from": "aom:screen:8490ecde80c3fc52",
+      "to": "aom:view:bf173a1158baf927",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:f538014842504314"
+      ]
+    },
+    {
+      "id": "edge:3d5e2cc06ab38629",
+      "from": "aom:screen:8490ecde80c3fc52",
+      "to": "aom:view:5436d77ac2a8a1e2",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:0c2d3fbec0776069"
+      ]
+    },
+    {
+      "id": "edge:85cdd2d6d70ab53b",
+      "from": "aom:screen:8490ecde80c3fc52",
+      "to": "aom:view:64661bef928bda8f",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:ab4fee8b151daa2a"
+      ]
+    },
+    {
+      "id": "edge:9a0a249fdecd9bc0",
+      "from": "aom:screen:8490ecde80c3fc52",
+      "to": "aom:view:11995cec16bf601a",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:e42f925e2ded8801"
+      ]
+    },
+    {
+      "id": "edge:8029c4a5e429faf0",
+      "from": "aom:screen:8490ecde80c3fc52",
+      "to": "aom:view:975fe7e04f21ef76",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:b6eb2d5bac6580ed"
+      ]
+    },
+    {
+      "id": "edge:097cf11eb5f0a957",
+      "from": "aom:screen:8490ecde80c3fc52",
+      "to": "aom:view:c1e58cd85baf149c",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:efe1f1546da4028f"
+      ]
+    },
+    {
+      "id": "edge:5ab0e78ff4638860",
+      "from": "aom:screen:8490ecde80c3fc52",
+      "to": "aom:view:1859bea8e0828140",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:ca5930b4415b7de7"
+      ]
+    },
+    {
+      "id": "edge:869e5afbdaca7604",
+      "from": "aom:screen:8490ecde80c3fc52",
+      "to": "aom:view:f7ba85894bb0de51",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:1e47eadfddfee376"
+      ]
+    },
+    {
+      "id": "edge:9a92088abe377553",
+      "from": "aom:screen:8490ecde80c3fc52",
+      "to": "aom:view:878efc0a305f7ce1",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:86a43a15ce507e44"
+      ]
+    },
+    {
+      "id": "edge:4024143598441f3e",
+      "from": "aom:screen:8490ecde80c3fc52",
+      "to": "aom:view:8267f5352b5ca3ed",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:304bedcd349892da"
+      ]
+    },
+    {
+      "id": "edge:4f334cee9685bd1a",
+      "from": "aom:screen:8490ecde80c3fc52",
+      "to": "aom:view:48df9a9e43d962f1",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:522f179d5670edb7"
+      ]
+    },
+    {
+      "id": "edge:60a1e02ce343c0aa",
+      "from": "aom:screen:8490ecde80c3fc52",
+      "to": "aom:view:1d1f0a6aad605c0b",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:911e515818047446"
+      ]
+    },
+    {
+      "id": "edge:d751bd8420d9151d",
+      "from": "aom:screen:8490ecde80c3fc52",
+      "to": "aom:view:fab6fed50982d068",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:f09cc578238582e3"
+      ]
+    },
+    {
+      "id": "edge:f514d03257b27d9a",
+      "from": "aom:screen:8490ecde80c3fc52",
+      "to": "aom:view:55b411e9e9382680",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:2bf2a911c295e597"
+      ]
+    },
+    {
+      "id": "edge:de652b858c619f4d",
+      "from": "aom:screen:8490ecde80c3fc52",
+      "to": "aom:view:f999a88039c56b15",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:4fceea63839f5321"
+      ]
+    },
+    {
+      "id": "edge:fb948e3a2b9ab193",
+      "from": "aom:screen:8490ecde80c3fc52",
+      "to": "aom:data:a9df2e607cef8157",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:0d32436e73865b4d"
+      ]
+    },
+    {
+      "id": "edge:57e7803f6876451a",
+      "from": "aom:screen:8490ecde80c3fc52",
+      "to": "aom:data:8a804279120b0b88",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:b7cde78d8ffa914b"
+      ]
+    },
+    {
+      "id": "edge:dc86500fc767a5e4",
+      "from": "aom:screen:8490ecde80c3fc52",
+      "to": "aom:data:4257a6eff18a8ac0",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:118e65ff06b6e651"
+      ]
+    },
+    {
+      "id": "edge:0f5e45cb8c69c412",
+      "from": "aom:screen:8490ecde80c3fc52",
+      "to": "aom:data:59248775e434acd3",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:eb7d099ff627660b"
+      ]
+    },
+    {
+      "id": "edge:b8d8353791172dd7",
+      "from": "aom:screen:8490ecde80c3fc52",
+      "to": "aom:data:93f0c0088ecddd4d",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:15ba689de54694a7"
+      ]
+    },
+    {
+      "id": "edge:fdb014d4028175f8",
+      "from": "aom:screen:8490ecde80c3fc52",
+      "to": "aom:data:fb93f16f06b8b579",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:4aeac28de7ce0671"
+      ]
+    },
+    {
+      "id": "edge:b8d80ff82d9ba771",
+      "from": "aom:screen:8490ecde80c3fc52",
+      "to": "aom:data:494f4871e6ad68ae",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:063e7b841a024930"
+      ]
+    },
+    {
+      "id": "edge:610a1179096555ed",
+      "from": "aom:screen:8490ecde80c3fc52",
+      "to": "aom:data:c67711405c05e471",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:29a529d1f1bb772a"
+      ]
+    },
+    {
+      "id": "edge:44d851ba30eee82c",
+      "from": "aom:screen:8490ecde80c3fc52",
+      "to": "aom:data:164386d53c93d0be",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:79010b6eac7d918a"
+      ]
+    },
+    {
+      "id": "edge:5a0721eebaede75e",
+      "from": "aom:screen:8490ecde80c3fc52",
+      "to": "aom:data:7a607a83a0bd402d",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:d7c8243ec56cd49c"
+      ]
+    },
+    {
+      "id": "edge:d0f9477bb7efd3f2",
+      "from": "aom:screen:8490ecde80c3fc52",
+      "to": "aom:data:f0d93144f831514e",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:bc36be2368922b37"
+      ]
+    },
+    {
+      "id": "edge:7fc65ea6b834c5ae",
+      "from": "aom:screen:8490ecde80c3fc52",
+      "to": "aom:data:8c882504170355c6",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:7207132c399feb5e"
+      ]
+    },
+    {
+      "id": "edge:077daf83de075de1",
+      "from": "aom:screen:8490ecde80c3fc52",
+      "to": "aom:data:452f99dfa77bcea0",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:756a142b63e155fd"
+      ]
+    },
+    {
+      "id": "edge:6b088483c488311d",
+      "from": "aom:screen:8490ecde80c3fc52",
+      "to": "aom:data:c94905999bb1a604",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:69dd97decc961ae5"
+      ]
+    },
+    {
+      "id": "edge:b3bb7e63c5e765bc",
+      "from": "aom:screen:8490ecde80c3fc52",
+      "to": "aom:data:c9bb0b484f73a225",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:192262fc81d12a25"
+      ]
+    },
+    {
+      "id": "edge:23dcb29ec9103980",
+      "from": "aom:screen:8490ecde80c3fc52",
+      "to": "aom:data:e029a80fc0ca09ef",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:bd03a6005c5c8cbc"
+      ]
+    },
+    {
+      "id": "edge:61d2c5da3d183497",
+      "from": "aom:screen:8490ecde80c3fc52",
+      "to": "aom:data:6244b498d0a6ec14",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:b8c62485f8ad7889"
+      ]
+    },
+    {
+      "id": "edge:90c204c3b5879f48",
+      "from": "aom:screen:8490ecde80c3fc52",
+      "to": "aom:data:469f1a058474e6c5",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:e518a49d6bc979c6"
+      ]
+    },
+    {
+      "id": "edge:6f45744568f38c1f",
+      "from": "aom:screen:8490ecde80c3fc52",
+      "to": "aom:data:f4061a7533846f2e",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:ce847ead242d5428"
+      ]
+    },
+    {
+      "id": "edge:8e7c793e741925b9",
+      "from": "aom:screen:8490ecde80c3fc52",
+      "to": "aom:data:abf2d3c7c7b0f6e6",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:c3314b2bb0166af3"
+      ]
+    },
+    {
+      "id": "edge:561a24d6e2721747",
+      "from": "aom:screen:8490ecde80c3fc52",
+      "to": "aom:data:5019a3caad411537",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:7150fce69d661ddd"
+      ]
+    },
+    {
+      "id": "edge:725f0eeb6068ca89",
+      "from": "aom:screen:8490ecde80c3fc52",
+      "to": "aom:data:28bbf33ec2466cdb",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:96cff73a585e1aba"
+      ]
+    },
+    {
+      "id": "edge:ef06f06887f0ddf1",
+      "from": "aom:screen:8490ecde80c3fc52",
+      "to": "aom:data:c1b54329e2345d6c",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:f845cb4c29012b9f"
+      ]
+    },
+    {
+      "id": "edge:2bd6b77c000376a4",
+      "from": "aom:screen:8490ecde80c3fc52",
+      "to": "aom:data:44ecefbd3a9d700e",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:a7d30dfbde6216aa"
+      ]
+    },
+    {
+      "id": "edge:0f1f1389f400b087",
+      "from": "aom:screen:8490ecde80c3fc52",
+      "to": "aom:data:f0c1ae2ee67814dc",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:9e59d9ade57fc0fc"
+      ]
+    },
+    {
+      "id": "edge:2223a990d8e7ba84",
+      "from": "aom:screen:8490ecde80c3fc52",
+      "to": "aom:data:635cdf212039d730",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:ea8412caea0b398b"
+      ]
+    },
+    {
+      "id": "edge:3a3fdc742c8cfaf7",
+      "from": "aom:screen:8490ecde80c3fc52",
+      "to": "aom:data:097594e926634dee",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:a1e018a8ea8ced9b"
+      ]
+    },
+    {
+      "id": "edge:b5e13b653485b138",
+      "from": "aom:screen:8490ecde80c3fc52",
+      "to": "aom:data:b6e18a1c16c19bb5",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:b783c8511a6628a9"
+      ]
+    },
+    {
+      "id": "edge:0ce041b2cf3d0a40",
+      "from": "aom:screen:8490ecde80c3fc52",
+      "to": "aom:data:158157e5bbe58e2d",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:7e530ea18f6e541c"
+      ]
+    },
+    {
+      "id": "edge:b07e12977b142468",
+      "from": "aom:screen:8490ecde80c3fc52",
+      "to": "aom:data:febd875aa3b671b2",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:58520422f9179e8e"
+      ]
+    },
+    {
+      "id": "edge:ffc66d7453f43792",
+      "from": "aom:screen:8490ecde80c3fc52",
+      "to": "aom:data:9bb589b3de8d3c32",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:6044d90cede14499"
+      ]
+    },
+    {
+      "id": "edge:cc8b2538e58b1689",
+      "from": "aom:app:699184c37ef598e5",
+      "to": "aom:event:bc9d862a4c6eb8a7",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:f65adcda72199fe6"
+      ]
+    },
+    {
+      "id": "edge:7db593d9b3cf5646",
+      "from": "aom:event:bc9d862a4c6eb8a7",
+      "to": "aom:api:92249a3e05bb2f80",
+      "type": "requests",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:f65adcda72199fe6"
+      ]
+    },
+    {
+      "id": "edge:0b4cbf08bb4282f3",
+      "from": "aom:app:699184c37ef598e5",
+      "to": "aom:event:bc9d872a4c6eba5a",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:1045ba0de36ef68a"
+      ]
+    },
+    {
+      "id": "edge:db56a66d4b51947c",
+      "from": "aom:event:bc9d872a4c6eba5a",
+      "to": "aom:api:92249a3e05bb2f80",
+      "type": "requests",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:1045ba0de36ef68a"
+      ]
+    },
+    {
+      "id": "edge:76be9cfbe4229dfc",
+      "from": "aom:event:bc9d862a4c6eb8a7",
+      "to": "aom:event:bc9d872a4c6eba5a",
+      "type": "observed_before",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:1045ba0de36ef68a"
+      ]
+    },
+    {
+      "id": "edge:f6136fa628b53100",
+      "from": "aom:app:699184c37ef598e5",
+      "to": "aom:event:bc9d882a4c6ebc0d",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:f65adcda72199fe6"
+      ]
+    },
+    {
+      "id": "edge:dbd9fd5f0fff76f6",
+      "from": "aom:event:bc9d882a4c6ebc0d",
+      "to": "aom:api:230ef850909a1ecd",
+      "type": "requests",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:f65adcda72199fe6"
+      ]
+    },
+    {
+      "id": "edge:c07e55d4aa33e445",
+      "from": "aom:event:bc9d872a4c6eba5a",
+      "to": "aom:event:bc9d882a4c6ebc0d",
+      "type": "observed_before",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:f65adcda72199fe6"
+      ]
+    },
+    {
+      "id": "edge:7b5ebab6712218e0",
+      "from": "aom:app:699184c37ef598e5",
+      "to": "aom:event:bc9d812a4c6eb028",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:f65adcda72199fe6"
+      ]
+    },
+    {
+      "id": "edge:09a154f67ab33612",
+      "from": "aom:event:bc9d812a4c6eb028",
+      "to": "aom:api:3720b977b2105972",
+      "type": "requests",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:f65adcda72199fe6"
+      ]
+    },
+    {
+      "id": "edge:192ca513a0b46258",
+      "from": "aom:event:bc9d882a4c6ebc0d",
+      "to": "aom:event:bc9d812a4c6eb028",
+      "type": "observed_before",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:f65adcda72199fe6"
+      ]
+    },
+    {
+      "id": "edge:ff8cb8aeb81372a6",
+      "from": "aom:app:699184c37ef598e5",
+      "to": "aom:event:bc9d822a4c6eb1db",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:1045ba0de36ef68a"
+      ]
+    },
+    {
+      "id": "edge:027100e82b8d0ccc",
+      "from": "aom:event:bc9d822a4c6eb1db",
+      "to": "aom:api:230ef850909a1ecd",
+      "type": "requests",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:1045ba0de36ef68a"
+      ]
+    },
+    {
+      "id": "edge:6f9fbb76231a1b3e",
+      "from": "aom:event:bc9d812a4c6eb028",
+      "to": "aom:event:bc9d822a4c6eb1db",
+      "type": "observed_before",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:1045ba0de36ef68a"
+      ]
+    },
+    {
+      "id": "edge:aaedc319e28e110a",
+      "from": "aom:app:699184c37ef598e5",
+      "to": "aom:event:bc9d832a4c6eb38e",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:1045ba0de36ef68a"
+      ]
+    },
+    {
+      "id": "edge:c05a683df986d750",
+      "from": "aom:event:bc9d832a4c6eb38e",
+      "to": "aom:api:3720b977b2105972",
+      "type": "requests",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:1045ba0de36ef68a"
+      ]
+    },
+    {
+      "id": "edge:22daab3f89083db4",
+      "from": "aom:event:bc9d822a4c6eb1db",
+      "to": "aom:event:bc9d832a4c6eb38e",
+      "type": "observed_before",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:1045ba0de36ef68a"
+      ]
+    },
+    {
+      "id": "edge:15b10ed9d459a143",
+      "from": "aom:app:699184c37ef598e5",
+      "to": "aom:event:bc9d842a4c6eb541",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:3939b74fa2294677"
+      ]
+    },
+    {
+      "id": "edge:7283eb01c177bafb",
+      "from": "aom:view:837d46624311989f",
+      "to": "aom:event:bc9d842a4c6eb541",
+      "type": "triggers",
+      "confidence": 0.95,
+      "evidenceIds": [
+        "evidence:analysis:3939b74fa2294677"
+      ]
+    },
+    {
+      "id": "edge:c90ee8f4c08b7511",
+      "from": "aom:event:bc9d832a4c6eb38e",
+      "to": "aom:event:bc9d842a4c6eb541",
+      "type": "observed_before",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:3939b74fa2294677"
+      ]
+    },
+    {
+      "id": "edge:57361cc331e4477a",
+      "from": "aom:app:699184c37ef598e5",
+      "to": "aom:event:bc9d7d2a4c6ea95c",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:3939b74fa2294677"
+      ]
+    },
+    {
+      "id": "edge:66e9fd1a430e9a79",
+      "from": "aom:view:c8ba56376d1629cb",
+      "to": "aom:event:bc9d7d2a4c6ea95c",
+      "type": "triggers",
+      "confidence": 0.95,
+      "evidenceIds": [
+        "evidence:analysis:3939b74fa2294677"
+      ]
+    },
+    {
+      "id": "edge:e4e90037183571b7",
+      "from": "aom:event:bc9d842a4c6eb541",
+      "to": "aom:event:bc9d7d2a4c6ea95c",
+      "type": "observed_before",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:3939b74fa2294677"
+      ]
+    },
+    {
+      "id": "edge:ba26b3a2052694be",
+      "from": "aom:app:699184c37ef598e5",
+      "to": "aom:event:bc9d7e2a4c6eab0f",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:93728f76f83bd0a0"
+      ]
+    },
+    {
+      "id": "edge:f82ce44a7e4a720d",
+      "from": "aom:view:d3a729663b48f7dd",
+      "to": "aom:event:bc9d7e2a4c6eab0f",
+      "type": "triggers",
+      "confidence": 0.95,
+      "evidenceIds": [
+        "evidence:analysis:93728f76f83bd0a0"
+      ]
+    },
+    {
+      "id": "edge:77d903f3a0948b60",
+      "from": "aom:event:bc9d7d2a4c6ea95c",
+      "to": "aom:event:bc9d7e2a4c6eab0f",
+      "type": "observed_before",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:93728f76f83bd0a0"
+      ]
+    },
+    {
+      "id": "edge:50c5ae4b4997a8ed",
+      "from": "aom:app:699184c37ef598e5",
+      "to": "aom:event:ee6390dfe023a895",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:92d9bb061b205556"
+      ]
+    },
+    {
+      "id": "edge:270bbd407f8120cd",
+      "from": "aom:event:ee6390dfe023a895",
+      "to": "aom:screen:8490ecde80c3fc52",
+      "type": "has_effect",
+      "confidence": 0.75,
+      "evidenceIds": [
+        "evidence:analysis:92d9bb061b205556"
+      ]
+    },
+    {
+      "id": "edge:d215171bfefec4ff",
+      "from": "aom:event:bc9d7e2a4c6eab0f",
+      "to": "aom:event:ee6390dfe023a895",
+      "type": "observed_before",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:92d9bb061b205556"
+      ]
+    },
+    {
+      "id": "edge:8632b2e5ca9ac80d",
+      "from": "aom:app:699184c37ef598e5",
+      "to": "aom:event:ee638fdfe023a6e2",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:92d9bb061b205556"
+      ]
+    },
+    {
+      "id": "edge:f53e85f0ce8c3909",
+      "from": "aom:event:ee638fdfe023a6e2",
+      "to": "aom:screen:8490ecde80c3fc52",
+      "type": "has_effect",
+      "confidence": 0.75,
+      "evidenceIds": [
+        "evidence:analysis:92d9bb061b205556"
+      ]
+    },
+    {
+      "id": "edge:f44b43ef8855127e",
+      "from": "aom:event:ee6390dfe023a895",
+      "to": "aom:event:ee638fdfe023a6e2",
+      "type": "observed_before",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:92d9bb061b205556"
+      ]
+    },
+    {
+      "id": "edge:1d3ca3473b344dc1",
+      "from": "aom:screen:b6aa130ba13de42c",
+      "to": "aom:screen:8490ecde80c3fc52",
+      "type": "navigates_to",
+      "confidence": 0.85,
+      "evidenceIds": [
+        "evidence:analysis:12f7d938d93fc1ae"
+      ]
+    }
+  ],
+  "evidence": [
+    {
+      "evidenceId": "evidence:analysis:063e7b841a024930",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Visible state fact observed: visible_text=Ramen · Hot soup · Best seller",
+      "timestamp": 1782375381528,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782375381528",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:0c2d3fbec0776069",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Interactive view observed: button|Addresses|submit",
+      "timestamp": 1782375381528,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782375381528",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:0d32436e73865b4d",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Visible state fact observed: visible_text=PlateRun",
+      "timestamp": 1782375381528,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782375381528",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:1045ba0de36ef68a",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Runtime event observed: NetworkResponse",
+      "timestamp": 1782375381516,
+      "sourceIds": [
+        "evidence:event:target:platerun-analysis:6",
+        "evidence:analyzer:target%3Aplaterun-analysis:drain_events:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:105163259a798da3",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Application artifact and component graph observed",
+      "timestamp": 1782375380690,
+      "sourceIds": [
+        "evidence:static:artifact:electron:root:target%3Aplaterun-analysis",
+        "evidence:static:artifact:electron:d717d915e31e7c27",
+        "evidence:static:artifact:electron:asar:782a163aa69d6771",
+        "evidence:static:artifact:electron:asar-entry:850fbc3eb150a1c9",
+        "evidence:static:artifact:electron:asar-entry:09b3df6c2ce6a20d",
+        "evidence:static:artifact:electron:asar-entry:517aea7541d89f6e",
+        "evidence:static:artifact:electron:asar-entry:0bbd45002cd92c82",
+        "evidence:static:artifact:electron:asar-entry:08791eefe7caec5f",
+        "evidence:static:artifact:electron:asar-entry:331849827e7986f5",
+        "evidence:static:artifact:electron:asar-entry:d02dec2ed80953ab",
+        "evidence:static:artifact:electron:asar-entry:73d33c5ba641db65",
+        "evidence:static:artifact:electron:asar-entry:0ffca59b5f70bf18",
+        "evidence:static:artifact:electron:asar-entry:210eb5f86205ee13",
+        "evidence:static:process:main",
+        "evidence:static:process:renderer",
+        "evidence:static:process:backend",
+        "evidence:static:module:accepts",
+        "evidence:static:module:body-parser",
+        "evidence:static:module:bytes",
+        "evidence:static:module:call-bind-apply-helpers",
+        "evidence:static:module:call-bound",
+        "evidence:static:module:content-disposition",
+        "evidence:static:module:content-type",
+        "evidence:static:module:cookie",
+        "evidence:static:module:cookie-signature",
+        "evidence:static:module:cors",
+        "evidence:static:module:debug",
+        "evidence:static:module:depd",
+        "evidence:static:module:dunder-proto",
+        "evidence:static:module:ee-first",
+        "evidence:static:module:encodeurl",
+        "evidence:static:module:es-define-property",
+        "evidence:static:module:es-errors",
+        "evidence:static:module:es-object-atoms",
+        "evidence:static:module:escape-html",
+        "evidence:static:module:etag",
+        "evidence:static:module:express",
+        "evidence:static:module:finalhandler",
+        "evidence:static:module:forwarded",
+        "evidence:static:module:fresh",
+        "evidence:static:module:function-bind",
+        "evidence:static:module:get-intrinsic",
+        "evidence:static:module:get-proto",
+        "evidence:static:module:gopd",
+        "evidence:static:module:has-symbols",
+        "evidence:static:module:hasown",
+        "evidence:static:module:http-errors",
+        "evidence:static:module:iconv-lite",
+        "evidence:static:module:inherits",
+        "evidence:static:module:ipaddr.js",
+        "evidence:static:module:is-promise",
+        "evidence:static:module:lucide-react",
+        "evidence:static:module:math-intrinsics",
+        "evidence:static:module:media-typer",
+        "evidence:static:module:merge-descriptors",
+        "evidence:static:module:mime-db",
+        "evidence:static:module:mime-types",
+        "evidence:static:module:ms",
+        "evidence:static:module:negotiator",
+        "evidence:static:module:object-assign",
+        "evidence:static:module:object-inspect",
+        "evidence:static:module:on-finished",
+        "evidence:static:module:once",
+        "evidence:static:module:parseurl",
+        "evidence:static:module:path-to-regexp",
+        "evidence:static:module:proxy-addr",
+        "evidence:static:module:qs",
+        "evidence:static:module:range-parser",
+        "evidence:static:module:raw-body",
+        "evidence:static:module:react",
+        "evidence:static:module:react-dom",
+        "evidence:static:module:router",
+        "evidence:static:module:safer-buffer",
+        "evidence:static:module:scheduler",
+        "evidence:static:module:send",
+        "evidence:static:module:serve-static",
+        "evidence:static:module:setprototypeof",
+        "evidence:static:module:side-channel",
+        "evidence:static:module:side-channel-list",
+        "evidence:static:module:side-channel-map",
+        "evidence:static:module:side-channel-weakmap",
+        "evidence:static:module:statuses",
+        "evidence:static:module:toidentifier",
+        "evidence:static:module:type-is",
+        "evidence:static:module:unpipe",
+        "evidence:static:module:vary",
+        "evidence:static:module:wrappy",
+        "evidence:static:module:..%2Fserver%2Fserver.js",
+        "evidence:static:module:electron",
+        "evidence:static:module:node%3Apath",
+        "evidence:static:module:node%3Aurl",
+        "evidence:static:endpoint:%2Fapi%2Faddresses",
+        "evidence:static:endpoint:%2Fapi%2Fcategories",
+        "evidence:static:endpoint:%2Fapi%2Flogin",
+        "evidence:static:endpoint:%2Fapi%2Forders",
+        "evidence:static:module:.%2Fserver.js",
+        "evidence:static:module:.%2Fdata.js",
+        "evidence:static:module:node%3Ahttp",
+        "evidence:static:endpoint:%2Fapi%2Fme",
+        "evidence:static:endpoint:%2Fapi%2Fstores",
+        "evidence:static:endpoint:%2Fapi%2Fstores%2F%3Aid",
+        "evidence:tool:electron-asar:782a163aa69d6771",
+        "evidence:tool:electron-fuses:..%2FtargetAPP%2Frelease%2Fmac-arm64%2FPlateRun.app",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_static:tool%3Aelectron-asar",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_static:tool%3Aelectron-fuses"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:118e65ff06b6e651",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Visible state fact observed: visible_text=Mina Chen",
+      "timestamp": 1782375381528,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782375381528",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:12f7d938d93fc1ae",
+      "targetId": "target:platerun-analysis",
+      "kind": "inferred",
+      "summary": "Screen transition inferred from ordered snapshots: Sign in -> Browse restaurants",
+      "timestamp": 1782375381528,
+      "sourceIds": [],
+      "derivedFrom": [
+        "evidence:event:target:platerun-analysis:1",
+        "evidence:analyzer:target%3Aplaterun-analysis:drain_events:tool%3Aplaywright-electron",
+        "evidence:event:target:platerun-analysis:2",
+        "evidence:analyzer:target%3Aplaterun-analysis:drain_events:tool%3Aplaywright-electron",
+        "evidence:event:target:platerun-analysis:3",
+        "evidence:analyzer:target%3Aplaterun-analysis:drain_events:tool%3Aplaywright-electron",
+        "evidence:event:target:platerun-analysis:4",
+        "evidence:analyzer:target%3Aplaterun-analysis:drain_events:tool%3Aplaywright-electron",
+        "evidence:event:target:platerun-analysis:5",
+        "evidence:analyzer:target%3Aplaterun-analysis:drain_events:tool%3Aplaywright-electron",
+        "evidence:event:target:platerun-analysis:6",
+        "evidence:analyzer:target%3Aplaterun-analysis:drain_events:tool%3Aplaywright-electron",
+        "evidence:event:target:platerun-analysis:7",
+        "evidence:analyzer:target%3Aplaterun-analysis:drain_events:tool%3Aplaywright-electron",
+        "evidence:event:target:platerun-analysis:8",
+        "evidence:analyzer:target%3Aplaterun-analysis:drain_events:tool%3Aplaywright-electron",
+        "evidence:event:target:platerun-analysis:9",
+        "evidence:analyzer:target%3Aplaterun-analysis:drain_events:tool%3Aplaywright-electron",
+        "evidence:event:target:platerun-analysis:10",
+        "evidence:analyzer:target%3Aplaterun-analysis:drain_events:tool%3Aplaywright-electron",
+        "evidence:event:target:platerun-analysis:11",
+        "evidence:analyzer:target%3Aplaterun-analysis:drain_events:tool%3Aplaywright-electron"
+      ],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:15ba689de54694a7",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Visible state fact observed: count=4 open now",
+      "timestamp": 1782375381528,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782375381528",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:192262fc81d12a25",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Visible state fact observed: entity=Cloud Sugar Cafe",
+      "timestamp": 1782375381528,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782375381528",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:19e09dc988b47d75",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Visible state fact observed: visible_text=Phone number",
+      "timestamp": 1782375380707,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782375380707",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:1c0162246c9871db",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Visible state fact observed: visible_text=Browse nearby favorites, schedule dinner for later, or get lunch moving now.",
+      "timestamp": 1782375380707,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782375380707",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:1e47eadfddfee376",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Interactive view observed: button|Green Bowl Club|submit",
+      "timestamp": 1782375381528,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782375381528",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:1ecb9c57827bd0ef",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Interactive view observed: input|text input|text",
+      "timestamp": 1782375380707,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782375380707",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:29a529d1f1bb772a",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Visible state fact observed: price=$3 delivery",
+      "timestamp": 1782375381528,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782375381528",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:2bf2a911c295e597",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Interactive view observed: button|Western|submit",
+      "timestamp": 1782375381528,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782375381528",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:2f651ab6f75df4c0",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Static API endpoint observed: /api/stores",
+      "timestamp": 1782375380690,
+      "sourceIds": [
+        "evidence:static:endpoint:%2Fapi%2Fstores"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:304bedcd349892da",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Interactive view observed: button|North Street Bistro|submit",
+      "timestamp": 1782375381528,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782375381528",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:3673bdd73ff6d410",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Visible state fact observed: entity=Welcome back",
+      "timestamp": 1782375380707,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782375380707",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:3939b74fa2294677",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Runtime event observed: SurfaceTextInput",
+      "timestamp": 1782375381516,
+      "sourceIds": [
+        "evidence:event:target:platerun-analysis:8",
+        "evidence:analyzer:target%3Aplaterun-analysis:drain_events:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:4aeac28de7ce0671",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Visible state fact observed: entity=Tokyo Ramen Lab",
+      "timestamp": 1782375381528,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782375381528",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:4d7cabf71236999e",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Interactive view observed: button|Add Pan-fried Gyoza|submit",
+      "timestamp": 1782375381528,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782375381528",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:4fceea63839f5321",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Interactive view observed: input|Search food or restaurants|text",
+      "timestamp": 1782375381528,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782375381528",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:507457fa044601ff",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Interactive view observed: button|Add Spicy Miso Ramen|submit",
+      "timestamp": 1782375381528,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782375381528",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:522f179d5670edb7",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Interactive view observed: button|Open cart|submit",
+      "timestamp": 1782375381528,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782375381528",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:58520422f9179e8e",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Visible state fact observed: visible_text=0",
+      "timestamp": 1782375381528,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782375381528",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:6044d90cede14499",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Visible state fact observed: price=$0.00",
+      "timestamp": 1782375381528,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782375381528",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:69dd97decc961ae5",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Visible state fact observed: price=$2 delivery",
+      "timestamp": 1782375381528,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782375381528",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:6f58924d702e6071",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Static API endpoint observed: /api/login",
+      "timestamp": 1782375380690,
+      "sourceIds": [
+        "evidence:static:endpoint:%2Fapi%2Flogin"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:7150fce69d661ddd",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Visible state fact observed: visible_text=Popular",
+      "timestamp": 1782375381528,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782375381528",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:7207132c399feb5e",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Visible state fact observed: entity=Green Bowl Club",
+      "timestamp": 1782375381528,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782375381528",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:756a142b63e155fd",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Visible state fact observed: visible_text=Salad · Protein bowls · Fresh",
+      "timestamp": 1782375381528,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782375381528",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:774dc96025774471",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Interactive view observed: button|Sign in|submit",
+      "timestamp": 1782375380707,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782375380707",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:79010b6eac7d918a",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Visible state fact observed: entity=North Street Bistro",
+      "timestamp": 1782375381528,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782375381528",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:7a5e669abd415e1a",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Static API endpoint observed: /api/addresses",
+      "timestamp": 1782375380690,
+      "sourceIds": [
+        "evidence:static:endpoint:%2Fapi%2Faddresses"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:7e530ea18f6e541c",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Visible state fact observed: price=$6.50",
+      "timestamp": 1782375381528,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782375381528",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:8058f5c5675fe94e",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Runtime surface classified as Sign in",
+      "timestamp": 1782375380707,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782375380707",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:8214e0ae94077a34",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Runtime surface classified as Browse restaurants",
+      "timestamp": 1782375381528,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782375381528",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:85ad84dd5ddbf810",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Static API endpoint observed: /api/me",
+      "timestamp": 1782375380690,
+      "sourceIds": [
+        "evidence:static:endpoint:%2Fapi%2Fme"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:86a43a15ce507e44",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Interactive view observed: button|Healthy|submit",
+      "timestamp": 1782375381528,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782375381528",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:911e515818047446",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Interactive view observed: button|Orders|submit",
+      "timestamp": 1782375381528,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782375381528",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:92d9bb061b205556",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Runtime event observed: StateChange",
+      "timestamp": 1782375381516,
+      "sourceIds": [
+        "evidence:event:target:platerun-analysis:11",
+        "evidence:analyzer:target%3Aplaterun-analysis:drain_events:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:93728f76f83bd0a0",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Runtime event observed: SurfaceClick",
+      "timestamp": 1782375381516,
+      "sourceIds": [
+        "evidence:event:target:platerun-analysis:9",
+        "evidence:analyzer:target%3Aplaterun-analysis:drain_events:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:96cff73a585e1aba",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Visible state fact observed: visible_text=Pork broth, chashu, egg",
+      "timestamp": 1782375381528,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782375381528",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:9e59d9ade57fc0fc",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Visible state fact observed: visible_text=Miso broth with chili oil",
+      "timestamp": 1782375381528,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782375381528",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:a1e018a8ea8ced9b",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Visible state fact observed: entity=Pan-fried Gyoza",
+      "timestamp": 1782375381528,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782375381528",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:a7d1eea601db276a",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Static API endpoint observed: /api/categories",
+      "timestamp": 1782375380690,
+      "sourceIds": [
+        "evidence:static:endpoint:%2Fapi%2Fcategories"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:a7d30dfbde6216aa",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Visible state fact observed: entity=Spicy Miso Ramen",
+      "timestamp": 1782375381528,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782375381528",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:ab4fee8b151daa2a",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Interactive view observed: button|All|submit",
+      "timestamp": 1782375381528,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782375381528",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:b6eb2d5bac6580ed",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Interactive view observed: button|Browse|submit",
+      "timestamp": 1782375381528,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782375381528",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:b783c8511a6628a9",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Visible state fact observed: visible_text=Six pork dumplings",
+      "timestamp": 1782375381528,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782375381528",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:b7cde78d8ffa914b",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Visible state fact observed: state=Home: 88 Maple Garden, Building 3, Apt 1202",
+      "timestamp": 1782375381528,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782375381528",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:b8c62485f8ad7889",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Visible state fact observed: visible_text=Browse menu",
+      "timestamp": 1782375381528,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782375381528",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:ba017dd4f33374f4",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Visible state fact observed: entity=Dinner plans, handled before you get hungry.",
+      "timestamp": 1782375380707,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782375380707",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:bbe2d13e4dc4d180",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Static API endpoint observed: /api/stores/:id",
+      "timestamp": 1782375380690,
+      "sourceIds": [
+        "evidence:static:endpoint:%2Fapi%2Fstores%2F%3Aid"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:bc36be2368922b37",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Visible state fact observed: price=$4 delivery",
+      "timestamp": 1782375381528,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782375381528",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:bd03a6005c5c8cbc",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Visible state fact observed: visible_text=Coffee · Cake · Afternoon tea",
+      "timestamp": 1782375381528,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782375381528",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:c3314b2bb0166af3",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Visible state fact observed: entity=Tonkotsu Ramen",
+      "timestamp": 1782375381528,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782375381528",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:c6315187b464c00d",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Visible state fact observed: visible_text=PlateRun",
+      "timestamp": 1782375380707,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782375380707",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:ca5930b4415b7de7",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Interactive view observed: button|Dessert|submit",
+      "timestamp": 1782375381528,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782375381528",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:ce847ead242d5428",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Visible state fact observed: entity=Menu",
+      "timestamp": 1782375381528,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782375381528",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:d7c8243ec56cd49c",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Visible state fact observed: visible_text=Pasta · Burger · Family meals",
+      "timestamp": 1782375381528,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782375381528",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:de9dbeb5a88d362b",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Interactive view observed: input|password input|password",
+      "timestamp": 1782375380707,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782375380707",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:e42f925e2ded8801",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Interactive view observed: button|Asian|submit",
+      "timestamp": 1782375381528,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782375381528",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:e518a49d6bc979c6",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Visible state fact observed: count=3 items",
+      "timestamp": 1782375381528,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782375381528",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:ea8412caea0b398b",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Visible state fact observed: price=$12.90",
+      "timestamp": 1782375381528,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782375381528",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:eb7d099ff627660b",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Visible state fact observed: entity=Restaurants",
+      "timestamp": 1782375381528,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782375381528",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:efe1f1546da4028f",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Interactive view observed: button|Cloud Sugar Cafe|submit",
+      "timestamp": 1782375381528,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782375381528",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:f09cc578238582e3",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Interactive view observed: button|Tokyo Ramen Lab|submit",
+      "timestamp": 1782375381528,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782375381528",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:f538014842504314",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Interactive view observed: button|Add Tonkotsu Ramen|submit",
+      "timestamp": 1782375381528,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782375381528",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:f65adcda72199fe6",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Runtime event observed: NetworkRequest",
+      "timestamp": 1782375381516,
+      "sourceIds": [
+        "evidence:event:target:platerun-analysis:4",
+        "evidence:analyzer:target%3Aplaterun-analysis:drain_events:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:f6c987d80073e599",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Visible state fact observed: visible_text=Password",
+      "timestamp": 1782375380707,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782375380707",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:f845cb4c29012b9f",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Visible state fact observed: price=$13.80",
+      "timestamp": 1782375381528,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782375381528",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:fd67c18ecd53890d",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Static API endpoint observed: /api/orders",
+      "timestamp": 1782375380690,
+      "sourceIds": [
+        "evidence:static:endpoint:%2Fapi%2Forders"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "playwright collect_runtime",
+      "timestamp": 1782375381528,
+      "sourceIds": [
+        "analyzer:collect_runtime:target:platerun-analysis"
+      ],
+      "derivedFrom": [],
+      "metadata": {
+        "capabilities": [
+          "electron_launch",
+          "dom_actions",
+          "cdp_session"
+        ],
+        "mode": "library",
+        "operation": "collect_runtime",
+        "toolId": "tool:playwright-electron"
+      }
+    },
+    {
+      "evidenceId": "evidence:analyzer:target%3Aplaterun-analysis:collect_static:tool%3Aelectron-asar",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "@electron/asar collect_static",
+      "timestamp": 1782375381528,
+      "sourceIds": [
+        "analyzer:collect_static:target:platerun-analysis"
+      ],
+      "derivedFrom": [],
+      "metadata": {
+        "capabilities": [
+          "asar_list",
+          "asar_stat",
+          "asar_extract"
+        ],
+        "mode": "library",
+        "operation": "collect_static",
+        "toolId": "tool:electron-asar"
+      }
+    },
+    {
+      "evidenceId": "evidence:analyzer:target%3Aplaterun-analysis:collect_static:tool%3Aelectron-fuses",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "@electron/fuses collect_static",
+      "timestamp": 1782375381528,
+      "sourceIds": [
+        "analyzer:collect_static:target:platerun-analysis"
+      ],
+      "derivedFrom": [],
+      "metadata": {
+        "capabilities": [
+          "electron_fuse_read"
+        ],
+        "mode": "library",
+        "operation": "collect_static",
+        "toolId": "tool:electron-fuses"
+      }
+    },
+    {
+      "evidenceId": "evidence:analyzer:target%3Aplaterun-analysis:drain_events:tool%3Aplaywright-electron",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "playwright drain_events",
+      "timestamp": 1782375381528,
+      "sourceIds": [
+        "analyzer:drain_events:target:platerun-analysis"
+      ],
+      "derivedFrom": [],
+      "metadata": {
+        "capabilities": [
+          "electron_launch",
+          "dom_actions",
+          "cdp_session"
+        ],
+        "mode": "library",
+        "operation": "drain_events",
+        "toolId": "tool:playwright-electron"
+      }
+    },
+    {
+      "evidenceId": "evidence:analyzer:target%3Aplaterun-analysis:initialize:tool%3Aelectron-asar",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "@electron/asar initialize",
+      "timestamp": 1782375381528,
+      "sourceIds": [
+        "analyzer:initialize:target:platerun-analysis"
+      ],
+      "derivedFrom": [],
+      "metadata": {
+        "capabilities": [
+          "asar_list",
+          "asar_stat",
+          "asar_extract"
+        ],
+        "mode": "library",
+        "operation": "initialize",
+        "toolId": "tool:electron-asar"
+      }
+    },
+    {
+      "evidenceId": "evidence:analyzer:target%3Aplaterun-analysis:initialize:tool%3Aelectron-fuses",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "@electron/fuses initialize",
+      "timestamp": 1782375381528,
+      "sourceIds": [
+        "analyzer:initialize:target:platerun-analysis"
+      ],
+      "derivedFrom": [],
+      "metadata": {
+        "capabilities": [
+          "electron_fuse_read"
+        ],
+        "mode": "library",
+        "operation": "initialize",
+        "toolId": "tool:electron-fuses"
+      }
+    },
+    {
+      "evidenceId": "evidence:analyzer:target%3Aplaterun-analysis:initialize:tool%3Aplaywright-electron",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "playwright initialize",
+      "timestamp": 1782375381528,
+      "sourceIds": [
+        "analyzer:initialize:target:platerun-analysis"
+      ],
+      "derivedFrom": [],
+      "metadata": {
+        "capabilities": [
+          "electron_launch",
+          "dom_actions",
+          "cdp_session"
+        ],
+        "mode": "library",
+        "operation": "initialize",
+        "toolId": "tool:playwright-electron"
+      }
+    }
+  ]
+}

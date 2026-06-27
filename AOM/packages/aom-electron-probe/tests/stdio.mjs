@@ -6,6 +6,7 @@ import { createInterface } from "node:readline";
 import { assert } from "./helpers.mjs";
 
 const fixture = mkdtempSync(path.join(os.tmpdir(), "aom-stdio-web-"));
+const copyFixture = mkdtempSync(path.join(os.tmpdir(), "aom-stdio-copy-"));
 const child = spawn(
   process.execPath,
   ["dist/bin/aom-electron-analyzer.js"],
@@ -41,12 +42,57 @@ try {
     "should transport analyzer tool provenance",
   );
 
+  mkdirSync(path.join(copyFixture, "dist"), { recursive: true });
+  writeFileSync(path.join(copyFixture, "index.html"), '<script src="./dist/app.js"></script>');
+  writeFileSync(path.join(copyFixture, "dist/app.js"), 'fetch("/api/copied");');
+  const copiedReady = await request({
+    commandType: "initialize",
+    data: {
+      target: {
+        targetId: "target:static-copy",
+        platform: "web",
+        connection: { lifecycle: "copy_for_static_analysis" },
+      },
+      artifactLocator: copyFixture,
+      adapterId: "adapter:web-artifact",
+    },
+  });
+  assert(copiedReady.replyType === "ready", "copy lifecycle should initialize");
+  rmSync(copyFixture, { recursive: true, force: true });
+  const copiedSnapshot = await request({ commandType: "collect_static" });
+  assert(copiedSnapshot.replyType === "static_snapshot", "should analyze copied artifact");
+  assert(
+    copiedSnapshot.data.value.nodes.some((node) => node.label === "/api/copied"),
+    "static analysis should use copied artifact after original is removed",
+  );
+
+  const attachWithoutEndpoint = await request({
+    commandType: "initialize",
+    data: {
+      target: {
+        targetId: "target:attached",
+        platform: "electron",
+        connection: { lifecycle: "attach_existing" },
+      },
+      executablePath: "/tmp/should-not-launch",
+    },
+  });
+  assert(
+    attachWithoutEndpoint.replyType === "error",
+    "attach_existing must not fall back to launching the executable",
+  );
+  assert(
+    attachWithoutEndpoint.data.message.includes("attach_existing_requires_cdp_url"),
+    "attach_existing should require an explicit CDP endpoint",
+  );
+
   const ack = await request({ commandType: "shutdown" });
   assert(ack.replyType === "ack", "stdio analyzer should shut down cleanly");
 } finally {
   child.stdin.end();
   child.kill();
   rmSync(fixture, { recursive: true, force: true });
+  rmSync(copyFixture, { recursive: true, force: true });
 }
 
 async function request(command) {

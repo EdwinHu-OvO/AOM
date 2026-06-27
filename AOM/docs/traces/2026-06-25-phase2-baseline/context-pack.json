@@ -1,0 +1,243 @@
+{
+  "targetId": "target:platerun-analysis",
+  "application": {
+    "id": "aom:app:699184c37ef598e5",
+    "label": "target:platerun-analysis",
+    "platform": "electron",
+    "staticComponentCount": 7
+  },
+  "currentScreen": {
+    "id": "aom:screen:8490ecde80c3fc52",
+    "label": "Browse restaurants",
+    "confidence": 0.92,
+    "views": [
+      {
+        "id": "aom:view:90fd3f18b4d330bf",
+        "role": "button",
+        "label": "Add Pan-fried Gyoza",
+        "actions": [
+          "click"
+        ]
+      },
+      {
+        "id": "aom:view:09cf21a5e638145f",
+        "role": "button",
+        "label": "Add Spicy Miso Ramen",
+        "actions": [
+          "click"
+        ]
+      },
+      {
+        "id": "aom:view:bf173a1158baf927",
+        "role": "button",
+        "label": "Add Tonkotsu Ramen",
+        "actions": [
+          "click"
+        ]
+      },
+      {
+        "id": "aom:view:5436d77ac2a8a1e2",
+        "role": "button",
+        "label": "Addresses",
+        "actions": [
+          "click"
+        ]
+      },
+      {
+        "id": "aom:view:64661bef928bda8f",
+        "role": "button",
+        "label": "All",
+        "actions": [
+          "click"
+        ]
+      },
+      {
+        "id": "aom:view:11995cec16bf601a",
+        "role": "button",
+        "label": "Asian",
+        "actions": [
+          "click"
+        ]
+      },
+      {
+        "id": "aom:view:975fe7e04f21ef76",
+        "role": "button",
+        "label": "Browse",
+        "actions": [
+          "click"
+        ]
+      },
+      {
+        "id": "aom:view:1859bea8e0828140",
+        "role": "button",
+        "label": "Dessert",
+        "actions": [
+          "click"
+        ]
+      },
+      {
+        "id": "aom:view:878efc0a305f7ce1",
+        "role": "button",
+        "label": "Healthy",
+        "actions": [
+          "click"
+        ]
+      },
+      {
+        "id": "aom:view:48df9a9e43d962f1",
+        "role": "button",
+        "label": "Open cart",
+        "actions": [
+          "click"
+        ]
+      },
+      {
+        "id": "aom:view:1d1f0a6aad605c0b",
+        "role": "button",
+        "label": "Orders",
+        "actions": [
+          "click"
+        ]
+      },
+      {
+        "id": "aom:view:55b411e9e9382680",
+        "role": "button",
+        "label": "Western",
+        "actions": [
+          "click"
+        ]
+      },
+      {
+        "id": "aom:view:4e5ca1248900bbd7",
+        "role": "button",
+        "label": "submit input",
+        "actions": [
+          "click"
+        ]
+      },
+      {
+        "id": "aom:view:4e5ca2248900bd8a",
+        "role": "button",
+        "label": "submit input",
+        "actions": [
+          "click"
+        ]
+      },
+      {
+        "id": "aom:view:4e5ca3248900bf3d",
+        "role": "button",
+        "label": "submit input",
+        "actions": [
+          "click"
+        ]
+      },
+      {
+        "id": "aom:view:4e5c9c248900b358",
+        "role": "button",
+        "label": "submit input",
+        "actions": [
+          "click"
+        ]
+      },
+      {
+        "id": "aom:view:f999a88039c56b15",
+        "role": "input",
+        "label": "Search food or restaurants",
+        "actions": [
+          "set_text",
+          "wait_for"
+        ]
+      }
+    ]
+  },
+  "transition": {
+    "fromScreen": "Sign in",
+    "toScreen": "Browse restaurants",
+    "observedEvents": [
+      "Network request",
+      "Network response",
+      "Network request",
+      "Network request",
+      "Network response",
+      "Network response",
+      "User text input",
+      "User text input",
+      "User click",
+      "Application state change",
+      "Application state change"
+    ],
+    "addedObjects": 17,
+    "removedObjects": 3
+  },
+  "endpoints": [
+    {
+      "id": "aom:api:230ef850909a1ecd",
+      "path": "/api/addresses",
+      "methods": [],
+      "observedStatuses": []
+    },
+    {
+      "id": "aom:api:0948b5c75aaf3c6f",
+      "path": "/api/categories",
+      "methods": [],
+      "observedStatuses": []
+    },
+    {
+      "id": "aom:api:92249a3e05bb2f80",
+      "path": "/api/login",
+      "methods": [],
+      "observedStatuses": []
+    },
+    {
+      "id": "aom:api:f33654c32cee036d",
+      "path": "/api/me",
+      "methods": [],
+      "observedStatuses": []
+    },
+    {
+      "id": "aom:api:3720b977b2105972",
+      "path": "/api/orders",
+      "methods": [],
+      "observedStatuses": []
+    },
+    {
+      "id": "aom:api:ee0795f1d976c14d",
+      "path": "/api/stores",
+      "methods": [],
+      "observedStatuses": []
+    },
+    {
+      "id": "aom:api:524d0d7e1447769d",
+      "path": "/api/stores/:id",
+      "methods": [],
+      "observedStatuses": []
+    }
+  ],
+  "evidenceSummary": [
+    "Interactive view observed: button|Orders|submit",
+    "Runtime surface classified as Sign in",
+    "Runtime event observed: StateChange",
+    "Interactive view observed: button|Browse|submit",
+    "Interactive view observed: button|Sign in|submit",
+    "Runtime surface classified as Browse restaurants",
+    "Interactive view observed: button|Add Pan-fried Gyoza|submit",
+    "Interactive view observed: button|Asian|submit",
+    "Interactive view observed: input|text input|text",
+    "Runtime event observed: SurfaceTextInput",
+    "Static API endpoint observed: /api/stores/:id",
+    "Interactive view observed: button|Healthy|submit",
+    "Interactive view observed: button|Add Tonkotsu Ramen|submit",
+    "Static API endpoint observed: /api/login",
+    "Interactive view observed: input|Search food or restaurants|text",
+    "Screen transition inferred from ordered snapshots: Sign in -> Browse restaurants",
+    "Runtime event observed: SurfaceClick",
+    "Interactive view observed: button|Dessert|submit",
+    "Static API endpoint observed: /api/me",
+    "Interactive view observed: input|password input|password"
+  ],
+  "limitations": [
+    "Relations marked below 1.0 confidence are deterministic inferences from observations, not direct application declarations.",
+    "Stable IDs are scoped to this target and semantic screen/view keys; major UI relabeling may create new identities.",
+    "This context describes observed structure and effects, not business capabilities or permission decisions."
+  ]
+}

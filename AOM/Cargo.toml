@@ -1,5 +1,11 @@
 [workspace]
-members = ["crates/aom-adapter-host", "crates/aom-protocol-rs"]
+members = [
+  "crates/aom-adapter-host",
+  "crates/aom-analysis-core",
+  "crates/aom-analysis-server",
+  "crates/aom-capability",
+  "crates/aom-protocol-rs",
+]
 resolver = "2"
 
 [workspace.package]

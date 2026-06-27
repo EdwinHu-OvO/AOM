@@ -1,6 +1,12 @@
 export type TargetPlatform = "electron" | "android" | "flutter" | "web" | "debug_mock";
 
+export type TargetLifecycle =
+  | "attach_existing"
+  | "launch_owned"
+  | "copy_for_static_analysis";
+
 export interface TargetConnection {
+  lifecycle?: TargetLifecycle;
   cdpUrl?: string;
   adbSerial?: string;
   websocketUrl?: string;
@@ -16,4 +22,3 @@ export interface TargetDescriptor {
   connection?: TargetConnection;
   securityProfile?: string;
 }
-

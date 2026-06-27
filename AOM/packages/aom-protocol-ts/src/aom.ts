@@ -16,6 +16,8 @@ export type AOMNodeType =
   | "view"
   | "api_endpoint"
   | "storage_key"
+  | "data_field"
+  | "message"
   | "data_object"
   | "capability"
   | "event";
@@ -36,6 +38,10 @@ export type AOMEdgeType =
   | "requests"
   | "reads"
   | "writes"
+  | "flows_to"
+  | "derives_from"
+  | "renders_as"
+  | "updates"
   | "has_effect"
   | "observed_before";
 

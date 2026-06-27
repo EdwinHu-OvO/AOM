@@ -5,14 +5,20 @@ import type {
   EvidenceRef,
 } from "@aom/protocol";
 import { analyzerEvidence } from "../analyzer/evidence.js";
-import { launchElectronAnalyzer, type PlaywrightElectronSession } from "../analyzer/playwright.js";
 import { ElectronArtifactAdapter } from "../artifact/electron.js";
 import { GenericArtifactAdapter } from "../artifact/generic.js";
 import { GenericWebArtifactAdapter } from "../artifact/web.js";
 import type { RuntimeProbe, StaticAnalysisAdapter } from "../types.js";
+import {
+  createRuntimeSession,
+  prepareAnalyzerConfig,
+  type PreparedAnalyzerConfig,
+} from "./lifecycle.js";
+import type { PlaywrightElectronSession } from "../analyzer/playwright.js";
 
 export class AnalyzerSession {
   private config: AnalyzerSessionConfig | undefined;
+  private prepared: PreparedAnalyzerConfig | undefined;
   private staticAdapter: StaticAnalysisAdapter | undefined;
   private runtimeSession: PlaywrightElectronSession | undefined;
 
@@ -49,18 +55,16 @@ export class AnalyzerSession {
   async close(): Promise<void> {
     await this.runtimeSession?.close();
     this.runtimeSession = undefined;
+    await this.prepared?.cleanup();
+    this.prepared = undefined;
   }
 
   private async initialize(config: AnalyzerSessionConfig): Promise<AnalyzerReply> {
     await this.close();
-    this.config = config;
-    this.staticAdapter = createStaticAdapter(config);
-    this.runtimeSession = config.executablePath
-      ? await launchElectronAnalyzer({
-          targetId: config.target.targetId,
-          executablePath: config.executablePath,
-        })
-      : undefined;
+    this.prepared = await prepareAnalyzerConfig(config);
+    this.config = this.prepared.config;
+    this.staticAdapter = createStaticAdapter(this.config);
+    this.runtimeSession = await createRuntimeSession(this.config);
     return {
       replyType: "ready",
       data: {
@@ -121,7 +125,10 @@ export class AnalyzerSession {
             ...(this.staticAdapter?.tools ?? []),
             ...(this.runtimeSession ? [this.runtimeSession.tool] : []),
           ];
-    const locator = config.executablePath ?? config.artifactLocator ?? config.target.targetId;
+    const locator = config.target.connection?.cdpUrl
+      ?? config.executablePath
+      ?? config.artifactLocator
+      ?? config.target.targetId;
     return analyzerEvidence(config.target.targetId, operation, locator, tools);
   }
 }

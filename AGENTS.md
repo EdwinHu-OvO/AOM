@@ -13,7 +13,7 @@ Keep shared documentation in the repository root. Place source, tests, fixtures,
 
 Use layered guidance documents. The root `AGENTS.md` describes repository-wide boundaries. Module-specific instructions belong in that module, such as `targetAPP/AGENTS.md`, and override root guidance only for files under that subtree.
 
-Keep AOM design and progress documentation under `AOM/docs/`. Organize those documents by layer and module, matching the AOM architecture: protocol, Adapter Host, Analysis Layer, Safety Gateway, Agent Interaction Layer, Console, target app coordination, and testing. Use `AOM/docs/progress.md` only as a lightweight index; detailed progress belongs in module-specific files under `AOM/docs/progress/`.
+Keep AOM design and progress documentation under `AOM/docs/`. Organize those documents by layer and module, matching the AOM architecture: protocol, Adapter Host, Analysis Layer, Capability Layer, Safety Gateway, Agent Interaction Layer, Console, target app coordination, and testing. Use `AOM/docs/progress.md` only as a lightweight index; detailed progress belongs in module-specific files under `AOM/docs/progress/`.
 
 `targetAPP/` must remain a generic consumer application. Do not add AOM-only affordances, special selectors, hidden test controls, or instrumentation conveniences to the demo app unless a future task explicitly changes that product requirement.
 

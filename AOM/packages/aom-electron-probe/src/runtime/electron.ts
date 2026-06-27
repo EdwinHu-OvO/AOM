@@ -29,6 +29,7 @@ interface EvaluationResult<T> {
 
 interface ProbeEvent {
   type: RawEventType;
+  observedAt?: number;
   rawId?: string;
   label?: string;
   [key: string]: JsonValue | undefined;
@@ -66,7 +67,12 @@ export class ElectronRuntimeProbe implements RuntimeProbe {
   async drainEvents(): Promise<RawEvent[]> {
     await this.initialize();
     const domEvents = await this.evaluate<ProbeEvent[]>(drainDomEventsExpression);
-    return [...this.queuedEvents.splice(0), ...domEvents].map((event) => this.toRawEvent(event));
+    return [...this.queuedEvents.splice(0), ...domEvents]
+      .sort((left, right) => {
+        const timeOrder = (left.observedAt ?? 0) - (right.observedAt ?? 0);
+        return timeOrder || eventPriority(left.type) - eventPriority(right.type);
+      })
+      .map((event) => this.toRawEvent(event));
   }
 
   async executeAction(action: RawAction): Promise<RawActionResult> {
@@ -94,17 +100,23 @@ export class ElectronRuntimeProbe implements RuntimeProbe {
     });
     await this.evaluate(installObserverExpression);
     this.client.on("Page.frameNavigated", (params) => {
-      this.queuedEvents.push({ type: "navigation", url: JSON.stringify(params) });
+      this.queuedEvents.push({
+        type: "navigation",
+        observedAt: Date.now(),
+        url: JSON.stringify(params),
+      });
     });
     this.client.on("Network.requestWillBeSent", (params) => {
       this.queuedEvents.push({
         type: "network_request",
+        observedAt: Date.now(),
         metadata: summarizeNetworkRequest(params),
       });
     });
     this.client.on("Network.responseReceived", (params) => {
       this.queuedEvents.push({
         type: "network_response",
+        observedAt: Date.now(),
         metadata: summarizeNetworkResponse(params),
       });
     });
@@ -131,7 +143,7 @@ export class ElectronRuntimeProbe implements RuntimeProbe {
     const evidenceId = `evidence:event:${this.targetId}:${sequence}`;
     const payload: Record<string, JsonValue> = {};
     for (const [key, value] of Object.entries(event)) {
-      if (!["type", "rawId", "label"].includes(key) && value !== undefined) {
+      if (!["type", "observedAt", "rawId", "label"].includes(key) && value !== undefined) {
         payload[key] = value;
       }
     }
@@ -139,7 +151,7 @@ export class ElectronRuntimeProbe implements RuntimeProbe {
       eventId: `event:${this.targetId}:${sequence}`,
       targetId: this.targetId,
       platform: "electron",
-      timestamp: Date.now(),
+      timestamp: event.observedAt ?? Date.now(),
       sequence,
       type: event.type,
       source: { adapterId: "adapter:electron", probeId: this.probeId, sourceType: "dynamic" },
@@ -193,4 +205,11 @@ export class ElectronRuntimeProbe implements RuntimeProbe {
       evidenceIds: [`evidence:action:${action.actionId}`],
     };
   }
+}
+
+function eventPriority(type: RawEventType): number {
+  if (type === "surface_text_input" || type === "surface_click") return 0;
+  if (type === "network_request") return 1;
+  if (type === "network_response") return 2;
+  return 3;
 }

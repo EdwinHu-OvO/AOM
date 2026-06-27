@@ -21,6 +21,15 @@ AOM 不是新的 UI 自动化框架、截图识别工具、反编译器或调试
 - Raw Action 必须引用已观察对象；视觉坐标只能作为未来受限 fallback，不能成为主身份。
 - Evidence、数据分类和脱敏是数据模型的一部分，不是最终展示层的补丁。
 - 平台扩展通过 Probe/Analyzer Adapter 完成，不能把 Electron 特性泄漏到 AOM 核心模型。
+- 已经由用户启动的目标应用不能为了 AOM 分析而被关闭再重启。运行时分析必须优先
+  attach 到现有进程；无法避免的离线/破坏性静态分析应使用程序副本。只有明确由 AOM
+  以 `launch_owned` 生命周期启动的目标，AOM 才能在 session 结束时关闭它。
+- 即便由 AOM 启动目标应用，也必须允许用户继续操作；Agent 需要等待用户关键步骤时，
+  控制权应能交还给用户，而不是独占应用。
+- 当前 capability 规则允许存在 MVP recipe，但必须显式标记为 MVP recognizer，不得把
+  PlateRun 友好的 endpoint、storage key 或 UI 文案锚点伪装成通用应用理解。
+- 当前数据流只能称为 evidence-linked MVP data-flow graph。未覆盖 IPC、preload bridge、
+  本地存储、store/reducer、缓存、虚拟列表和脱敏 payload 前，不得宣称完整数据血缘。
 
 ## 当前阶段判断
 

@@ -2,7 +2,8 @@ use aom_protocol_rs::{
     AOMCapability, AOMEdge, AOMEdgeType, AOMNode, AOMNodeType, AnalyzerCommand, ArtifactInspection,
     CapabilityRiskLevel, GatewayDecision, GatewayDecisionKind, GatewayRequest, PermissionLevel,
     ProtocolMessage, ProtocolMessageKind, ProtocolPayload, RawAction, RawActionResult,
-    RawActionType, RawEvent, RawEventType, RawRuntimeSnapshot, RawStaticSnapshot, WebRuntimeFamily,
+    RawActionType, RawEvent, RawEventType, RawRuntimeSnapshot, RawStaticSnapshot, TargetDescriptor,
+    TargetLifecycle, WebRuntimeFamily,
 };
 use std::collections::BTreeMap;
 
@@ -26,6 +27,23 @@ fn analyzer_command_fixture_deserializes() {
         }
         _ => panic!("expected initialize command"),
     }
+}
+
+#[test]
+fn target_lifecycle_round_trips_as_snake_case() {
+    let value = serde_json::json!({
+        "targetId": "target:attached",
+        "platform": "electron",
+        "connection": {
+            "lifecycle": "attach_existing",
+            "cdpUrl": "http://127.0.0.1:9222"
+        }
+    });
+    let target: TargetDescriptor = serde_json::from_value(value).unwrap();
+    assert_eq!(
+        target.connection.unwrap().lifecycle.unwrap(),
+        TargetLifecycle::AttachExisting
+    );
 }
 
 #[test]

@@ -6,6 +6,7 @@
 
 - Adapter Host：`AOM/docs/progress/adapter-host.md`
 - Analysis Layer：`AOM/docs/progress/analysis.md`
+- Capability Layer：`AOM/docs/progress/capability.md`
 - Safety Gateway：`AOM/docs/progress/gateway.md`
 - Agent Interaction Layer：`AOM/docs/progress/agent-server.md`
 - Protocol：`AOM/docs/progress/protocol.md`
@@ -15,8 +16,64 @@
 
 ## 最新摘要
 
+### 2026-06-27
+
+- Target lifecycle 已落地到协议和 Electron Analyzer：`attach_existing`、`launch_owned`、
+  `copy_for_static_analysis` 明确区分已运行应用、AOM 拥有的启动进程和副本静态分析。
+- 已运行目标不允许被 AOM 静默关闭或重启；`attach_existing` 缺少 `cdpUrl` 时初始化失败，
+  不会回退到 `executablePath`。
+- 静态分析需要读取 artifact 时，`attach_existing` 和 `copy_for_static_analysis` 会先复制
+  artifact 到临时目录，再让静态 Adapter 分析副本，session close 时清理副本。
+- 项目方向文档补充两个风险边界：当前 capability 规则是 MVP recognizer recipe，不是
+  通用应用理解；当前数据流是 evidence-linked MVP data-flow graph，不是完整数据血缘。
+
+### 2026-06-26
+
+- Phase 3 Capability MVP 已落地：新增 Rust crate `aom-capability`，从 AOM graph
+  输出 `ExecutableCapability`，包含 protocol-compatible `AOMCapability`、input slots、
+  action plan、expected effects、availability、riskLevel 和 automation policy。
+- `aom-analysis-server.capabilities()` 现在返回 P3 可执行能力对象；bundle CLI 新增
+  `capabilities.json` 输出，供 Agent/审计读取。
+- 第一版挖掘规则覆盖 `login`、`search_product`、`view_product_detail`、
+  `add_to_cart`、`checkout_prepare`；当前 trace 只返回有 graph 证据的能力，不虚构
+  当前 screen 不具备的下单入口。
+- 真实 PlateRun trace 重新生成：124 nodes、196 edges、114 Evidence records，包含
+  4 个 capability。`capabilities.json` 中 `login` 为 medium risk、不可自动执行，且因
+  当前 Browse screen 没有登录按钮而是 `missing_target`；`search_product`、
+  `view_product_detail`、`add_to_cart` 为 low risk 且具备当前目标。
+- `search_product` 声明 `keyword` slot、set_text/observe/verify 三步计划和
+  `search.query` + `/api/stores` expected effects；`add_to_cart` 声明 product slot、
+  click/observe/verify 三步计划和 `cart.items` expected effect。
+- 低置信度 capability 不会默认自动执行；medium/high risk 能力等待 Phase 4 Gateway
+  做 allow/deny/confirmation。
+- P3 审计收尾：动作 target 选择已限制为当前 screen 的 interactive view；新增
+  historical login 与 checkout high-risk fixture，覆盖当前可用性和不可自动执行语义。
+
 ### 2026-06-25
 
+- Phase 2 行为因果闭环打磨：新增 `add_to_cart` effect verifier，Add click + cart
+  count increase + state mutation 会生成 verified Evidence、`updates` edge 和 context
+  `capabilityVerifications`。
+- Phase 2 数据流图补全：协议和 Analysis graph 新增 `data_field`、`message`、
+  `flows_to`、`renders_as`、`derives_from`、`updates`；context pack 新增 data flow
+  摘要。
+- 真实 PlateRun graph 重新生成后为 123 nodes、194 edges、113 Evidence records；
+  flow/evidence closure 为 0 missing、0 empty edge。
+- Phase 2 审计收尾完成：`aom-analysis-server` 补齐
+  `snapshot/query/capabilities/observe/verify` 进程内 API；Analysis graph 补齐
+  `capability`、`storage_key`、`reads`、`writes` 和 verified Evidence。
+- 真实 PlateRun graph 已重新生成：85 nodes、123 edges、93 Evidence records；
+  包含 `login`、`search_product`、`add_to_cart` capability 和
+  `session.authenticated`、`search.query`、`cart.items` storage key。
+- 搜索验收新增 before/event/after fixture，验证 Search view 到 `/api/stores`
+  request/response、DOM mutation/result diff 和 `search_product` capability 的因果链。
+- Phase 2 deterministic Analysis Core 已落地：稳定 Identity、Evidence、图构建、diff、
+  query、transition verification 和 LLM context pack。
+- 真实 PlateRun 登录输入生成 79 AOM nodes、113 edges、86 Evidence records。
+- 通过多轮无上下文 LLM 盲测驱动 schema 修改，理解与安全规划评分从 78/74 提升到
+  88/89；商品价格、菜单/购物车数量、事件顺序和 endpoint 来源已明确。
+- 新增真实 add-to-cart capture 脚本；本轮因本机进程授权额度未能完成 live run，未标记
+  为已验证。
 - Phase 1 已完成收尾：Rust Adapter Host 可通过 typed stdio JSONL 自动启动并连接 TypeScript Electron Analyzer。
 - Parser -> registry -> Adapter 路由已闭合，支持 Electron、generic Web 和 unknown generic artifact fallback。
 - 修复 `Runtime.evaluate` 异常误报成功和 Event Bus 跨 target/部分提交风险。

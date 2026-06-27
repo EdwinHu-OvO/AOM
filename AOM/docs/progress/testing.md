@@ -4,6 +4,10 @@
 
 - Phase 0 已建立第一批协议验证测试。
 - Phase 1 已建立 Adapter Host 单元测试与 Electron Adapter/Probe 集成级测试。
+- Phase 2 已建立 deterministic graph、data-flow graph、context pack、搜索因果链、
+  server API surface 和隔离 LLM 可理解性验证。
+- Phase 3 已建立 executable capability mining、slots/action plan/effects/risk 和低置信度
+  自动执行门槛验证。
 
 ## 已完成
 
@@ -17,6 +21,33 @@
 - TypeScript：验证恶意 ASAR `..` 路径会被拒绝。
 - 动态侧除 fake CDP 单测外，已对打包 PlateRun 完成真实 Playwright Electron/CDP 集成验证。
 - Rust 与 TypeScript 均验证 Analyzer JSONL 协议；Rust registry 测试会真实启动受控 Node 子进程。
+- TypeScript：验证 `attach_existing` 没有显式 CDP endpoint 时不会回退到
+  `executablePath` 启动/重启目标应用。
+- TypeScript：验证 `copy_for_static_analysis` 会先复制 artifact；初始化后删除原始
+  artifact，静态分析仍能从副本识别 endpoint。
+- Rust：验证 `TargetConnection.lifecycle` 的 `attach_existing` 协议 round-trip。
+- Rust：验证语义 view ID 不受 raw DOM path 变化影响。
+- Rust：验证静态/动态 endpoint 合并、登录 transition、event sequence、session/cart/menu
+  分离和 product/action 关系。
+- Rust：验证 Phase 2 MVP node/edge 覆盖，包含 `capability`、`storage_key`、
+  `reads`、`writes` 和 `EvidenceKind::Verified`。
+- Rust：验证搜索输入链路，Search view -> text input event -> `/api/stores`
+  request/response -> DOM mutation/result diff -> `search_product` capability。
+- Rust：验证字段级数据流，Search input value -> request query field -> request
+  message -> response message -> rendered UI fact，并验证 context pack 输出 data flows。
+- Rust：验证 `add_to_cart` 纵向能力闭环，Add click + cart count increase + state
+  mutation 会生成 verified Evidence、`updates` edge 和 context `capabilityVerifications`。
+- Rust：验证 `aom-analysis-server` 暴露 `snapshot`、`query`、`capabilities`、
+  `observe`、`verify` 进程内 API。
+- Rust：验证 `search_product` 输出 `keyword` slot、action plan 和 expected effects。
+- Rust：验证 `add_to_cart` executable capability 可携带 verified cart update Evidence。
+- Rust：验证 historical `login` 不会因为旧 screen/view 存在而在当前 Browse screen
+  标记为 available，也不会把 `login.submit` 指向非当前 target。
+- Rust：验证 `checkout_prepare` fixture 在 `Place order` view 存在时 available，但
+  high risk 且不可自动执行。
+- Rust：验证低置信度 capability 不会默认自动执行。
+- Rust：验证 `AnalysisService::capabilities()` 返回 P3 executable capability 对象。
+- TypeScript：验证 DOM/CDP 两条事件通道按 observation timestamp 合并后再分配 sequence。
 
 ## Phase 1 验证记录
 
@@ -58,6 +89,29 @@
 - 详细收尾记录：`AOM/docs/traces/2026-06-25-phase-1-closure.md`。
 
 ## 真实应用实验
+
+### 2026-06-25 Phase 2 PlateRun Analysis
+
+- 对真实打包 PlateRun 登录流程产出 103 static nodes、22 -> 142 runtime nodes 和 11 events。
+- Analysis Core 初版产出 79 AOM nodes、113 edges 和 86 Evidence records。
+- P2 审计收尾后重新生成 85 AOM nodes、123 edges 和 93 Evidence records；新增
+  3 个 capability、3 个 storage key、`reads` / `writes` 边和 1 个 verified
+  Evidence。
+- 数据流补全后重新生成 123 AOM nodes、194 edges 和 113 Evidence records；新增
+  32 个 data field、6 个 message、`flows_to` / `renders_as` 边，并通过 0 missing /
+  0 empty Evidence closure 检查。
+- Phase 3 capability 输出后重新生成 124 AOM nodes、196 edges 和 114 Evidence records；
+  `capabilities.json` 包含 `login`、`search_product`、`view_product_detail`、
+  `add_to_cart` 四个可查询能力；其中 `login` 因当前 Browse screen 没有登录按钮而为
+  `missing_target`。
+- `add_to_cart` 的能力效果验证目前由合成 before/event/after fixture 覆盖，用来锁定
+  Analysis 规则；真实 GUI add-to-cart capture 仍待本机进程授权恢复后补跑。
+- 三轮 schema 迭代使用全新隔离 LLM，只提供 context pack，评分为 78、74、88/89。
+- 74 分轮次证明 flat visible facts 增加上下文后反而造成 cart/menu/price 歧义。
+- 最终 evaluator 能准确规划 Search、Open cart、Orders 和单次 Add action。
+- 最终 evaluator 未再混淆商品价格、菜单/购物车数量、静态/动态 endpoint 或历史 view。
+- Live add-to-cart capture 脚本已添加，但本机进程授权额度阻止了本轮启动，不记为通过。
+- 详细记录：`AOM/docs/traces/2026-06-25-phase2-llm-context-evaluation.md`。
 
 ### 2026-06-24 harderTestApp
 

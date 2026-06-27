@@ -39,6 +39,14 @@
 - `Runtime.evaluate.exceptionDetails` 现会返回失败动作，不再误报 `ok: true`。
 - `RawEventBus` 已按 target 分区，整批 sequence 校验后原子提交，只 drain 当前 target。
 - 动态 snapshot/event/action reply 均携带 Playwright 名称、版本、来源和 metadata，Host 保存完整 Evidence。
+- Target lifecycle 已进入协议与 Electron Analyzer：`attach_existing` 通过 CDP endpoint
+  连接已运行应用，session close 只断开调试连接；`launch_owned` 才允许 AOM 关闭自己启动
+  的进程；`copy_for_static_analysis` 表示只做副本/离线静态分析，不创建 runtime session。
+- AnalyzerSession 初始化时如果声明 `attach_existing` 但没有 `cdpUrl` 会直接失败，不会回退
+  到 `executablePath` 重新启动用户应用。
+- AnalyzerSession 会在 `attach_existing` 或 `copy_for_static_analysis` 且存在
+  `artifactLocator` 时复制 artifact 到临时目录，再把静态 Adapter 指向副本；session
+  close 时清理副本，避免静态扫描锁定或修改用户正在运行的程序包。
 
 ## 近期目标
 
@@ -46,4 +54,6 @@
 - 将 analyzer manifest 扩展为输入类型、输出类型、权限需求和可用性探测。
 - 增加 Electron archive integrity verification，将校验结果写入一等 Evidence。
 - 增加 target/probe 状态事件和断线重连。
+- 将 attach-existing CDP discovery 接入 Adapter Host registry，并补真实已运行 PlateRun
+  attach trace。
 - 增加自动重启、超时取消和多 Analyzer 进程池；这些属于后续可靠性增强，不阻塞 Phase 1 MVP。

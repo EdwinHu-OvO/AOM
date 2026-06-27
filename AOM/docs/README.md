@@ -8,6 +8,7 @@
 - `progress.md`：进度索引，只记录模块文件位置和最新摘要。
 - `progress/adapter-host.md`：Adapter Host 进度。
 - `progress/analysis.md`：Analysis Layer 进度。
+- `progress/capability.md`：Capability Layer 进度。
 - `progress/gateway.md`：Safety Gateway 进度。
 - `progress/agent-server.md`：Agent Interaction Layer 进度。
 - `progress/target-app.md`：demo 目标应用相关进度。
@@ -23,6 +24,14 @@
 - `decisions/0002-static-and-dynamic-analysis.md`：静态制品分析与动态运行时分析的双通道边界。
 - `decisions/0003-artifact-parser-routing.md`：未知制品的前置识别、置信度证据和 Adapter 路由。
 - `decisions/0004-external-analyzer-adapters.md`：Analyzer 作为向下工具适配层，AOM 不重复实现调试和反编译引擎。
+- `decisions/0005-analysis-identity-evidence-context.md`：Analysis 稳定身份、一等 Evidence
+  和 LLM context pack 契约。
+- `decisions/0006-data-flow-graph.md`：Analysis 数据流图、字段/message 节点和
+  flow Evidence 边界。
+- `decisions/0007-capability-mvp.md`：Phase 3 executable capability schema、
+  action plan、expected effects 和自动执行门槛。
+- `decisions/0008-target-lifecycle.md`：运行中目标应用的 attach、owned launch、
+  copy-for-static-analysis 生命周期边界。
 
 当前模块设计：
 

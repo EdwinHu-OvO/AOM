@@ -1,0 +1,421 @@
+{
+  "targetId": "target:platerun-analysis",
+  "application": {
+    "id": "aom:app:699184c37ef598e5",
+    "label": "PlateRun",
+    "platform": "electron",
+    "staticComponentCount": 103,
+    "observedPurpose": "Browse restaurants and menus, manage delivery details, build a cart, and review or place food orders."
+  },
+  "currentScreen": {
+    "id": "aom:screen:8490ecde80c3fc52",
+    "label": "Browse restaurants",
+    "confidence": 0.92,
+    "views": [
+      {
+        "id": "aom:view:09cf21a5e638145f",
+        "role": "button",
+        "label": "Add Spicy Miso Ramen",
+        "actions": [
+          "click"
+        ]
+      },
+      {
+        "id": "aom:view:11995cec16bf601a",
+        "role": "button",
+        "label": "Asian",
+        "actions": [
+          "click"
+        ]
+      },
+      {
+        "id": "aom:view:1859bea8e0828140",
+        "role": "button",
+        "label": "Dessert",
+        "actions": [
+          "click"
+        ]
+      },
+      {
+        "id": "aom:view:1d1f0a6aad605c0b",
+        "role": "button",
+        "label": "Orders",
+        "actions": [
+          "click"
+        ]
+      },
+      {
+        "id": "aom:view:48df9a9e43d962f1",
+        "role": "button",
+        "label": "Open cart",
+        "actions": [
+          "click"
+        ]
+      },
+      {
+        "id": "aom:view:5436d77ac2a8a1e2",
+        "role": "button",
+        "label": "Addresses",
+        "actions": [
+          "click"
+        ]
+      },
+      {
+        "id": "aom:view:55b411e9e9382680",
+        "role": "button",
+        "label": "Western",
+        "actions": [
+          "click"
+        ]
+      },
+      {
+        "id": "aom:view:64661bef928bda8f",
+        "role": "button",
+        "label": "All",
+        "actions": [
+          "click"
+        ]
+      },
+      {
+        "id": "aom:view:8267f5352b5ca3ed",
+        "role": "button",
+        "label": "North Street Bistro",
+        "actions": [
+          "click"
+        ]
+      },
+      {
+        "id": "aom:view:878efc0a305f7ce1",
+        "role": "button",
+        "label": "Healthy",
+        "actions": [
+          "click"
+        ]
+      },
+      {
+        "id": "aom:view:90fd3f18b4d330bf",
+        "role": "button",
+        "label": "Add Pan-fried Gyoza",
+        "actions": [
+          "click"
+        ]
+      },
+      {
+        "id": "aom:view:975fe7e04f21ef76",
+        "role": "button",
+        "label": "Browse",
+        "actions": [
+          "click"
+        ]
+      },
+      {
+        "id": "aom:view:bf173a1158baf927",
+        "role": "button",
+        "label": "Add Tonkotsu Ramen",
+        "actions": [
+          "click"
+        ]
+      },
+      {
+        "id": "aom:view:c1e58cd85baf149c",
+        "role": "button",
+        "label": "Cloud Sugar Cafe",
+        "actions": [
+          "click"
+        ]
+      },
+      {
+        "id": "aom:view:f7ba85894bb0de51",
+        "role": "button",
+        "label": "Green Bowl Club",
+        "actions": [
+          "click"
+        ]
+      },
+      {
+        "id": "aom:view:f999a88039c56b15",
+        "role": "input",
+        "label": "Search food or restaurants",
+        "actions": [
+          "set_text",
+          "wait_for"
+        ]
+      },
+      {
+        "id": "aom:view:fab6fed50982d068",
+        "role": "button",
+        "label": "Tokyo Ramen Lab",
+        "actions": [
+          "click"
+        ]
+      }
+    ],
+    "stateFacts": [
+      {
+        "id": "aom:data:097594e926634dee",
+        "kind": "entity",
+        "label": "Pan-fried Gyoza"
+      },
+      {
+        "id": "aom:data:158157e5bbe58e2d",
+        "kind": "price",
+        "label": "$6.50"
+      },
+      {
+        "id": "aom:data:164386d53c93d0be",
+        "kind": "entity",
+        "label": "North Street Bistro"
+      },
+      {
+        "id": "aom:data:28bbf33ec2466cdb",
+        "kind": "visible_text",
+        "label": "Pork broth, chashu, egg"
+      },
+      {
+        "id": "aom:data:4257a6eff18a8ac0",
+        "kind": "visible_text",
+        "label": "Mina Chen"
+      },
+      {
+        "id": "aom:data:44ecefbd3a9d700e",
+        "kind": "entity",
+        "label": "Spicy Miso Ramen"
+      },
+      {
+        "id": "aom:data:452f99dfa77bcea0",
+        "kind": "visible_text",
+        "label": "Salad · Protein bowls · Fresh"
+      },
+      {
+        "id": "aom:data:469f1a058474e6c5",
+        "kind": "count",
+        "label": "3 items"
+      },
+      {
+        "id": "aom:data:494f4871e6ad68ae",
+        "kind": "visible_text",
+        "label": "Ramen · Hot soup · Best seller"
+      },
+      {
+        "id": "aom:data:5019a3caad411537",
+        "kind": "visible_text",
+        "label": "Popular"
+      },
+      {
+        "id": "aom:data:59248775e434acd3",
+        "kind": "entity",
+        "label": "Restaurants"
+      },
+      {
+        "id": "aom:data:6244b498d0a6ec14",
+        "kind": "visible_text",
+        "label": "Browse menu"
+      },
+      {
+        "id": "aom:data:635cdf212039d730",
+        "kind": "price",
+        "label": "$12.90"
+      },
+      {
+        "id": "aom:data:7a607a83a0bd402d",
+        "kind": "visible_text",
+        "label": "Pasta · Burger · Family meals"
+      },
+      {
+        "id": "aom:data:8a804279120b0b88",
+        "kind": "state",
+        "label": "Home: 88 Maple Garden, Building 3, Apt 1202"
+      },
+      {
+        "id": "aom:data:8c882504170355c6",
+        "kind": "entity",
+        "label": "Green Bowl Club"
+      },
+      {
+        "id": "aom:data:93f0c0088ecddd4d",
+        "kind": "count",
+        "label": "4 open now"
+      },
+      {
+        "id": "aom:data:9bb589b3de8d3c32",
+        "kind": "price",
+        "label": "$0.00"
+      },
+      {
+        "id": "aom:data:a9df2e607cef8157",
+        "kind": "visible_text",
+        "label": "PlateRun"
+      },
+      {
+        "id": "aom:data:abf2d3c7c7b0f6e6",
+        "kind": "entity",
+        "label": "Tonkotsu Ramen"
+      },
+      {
+        "id": "aom:data:b6e18a1c16c19bb5",
+        "kind": "visible_text",
+        "label": "Six pork dumplings"
+      },
+      {
+        "id": "aom:data:c1b54329e2345d6c",
+        "kind": "price",
+        "label": "$13.80"
+      },
+      {
+        "id": "aom:data:c67711405c05e471",
+        "kind": "price",
+        "label": "$3 delivery"
+      },
+      {
+        "id": "aom:data:c94905999bb1a604",
+        "kind": "price",
+        "label": "$2 delivery"
+      },
+      {
+        "id": "aom:data:c9bb0b484f73a225",
+        "kind": "entity",
+        "label": "Cloud Sugar Cafe"
+      },
+      {
+        "id": "aom:data:e029a80fc0ca09ef",
+        "kind": "visible_text",
+        "label": "Coffee · Cake · Afternoon tea"
+      },
+      {
+        "id": "aom:data:f0c1ae2ee67814dc",
+        "kind": "visible_text",
+        "label": "Miso broth with chili oil"
+      },
+      {
+        "id": "aom:data:f0d93144f831514e",
+        "kind": "price",
+        "label": "$4 delivery"
+      },
+      {
+        "id": "aom:data:f4061a7533846f2e",
+        "kind": "entity",
+        "label": "Menu"
+      },
+      {
+        "id": "aom:data:fb93f16f06b8b579",
+        "kind": "entity",
+        "label": "Tokyo Ramen Lab"
+      },
+      {
+        "id": "aom:data:febd875aa3b671b2",
+        "kind": "visible_text",
+        "label": "0"
+      }
+    ]
+  },
+  "transition": {
+    "fromScreen": "Sign in",
+    "toScreen": "Browse restaurants",
+    "observedEvents": [
+      "User text input",
+      "User click",
+      "GET /api/orders",
+      "200 response from /api/addresses",
+      "200 response from /api/orders",
+      "User text input",
+      "POST /api/login",
+      "200 response from /api/login",
+      "GET /api/addresses",
+      "Application state change",
+      "Application state change"
+    ],
+    "addedObjects": 48,
+    "removedObjects": 9,
+    "verified": true,
+    "verificationConfidence": 1.0,
+    "verificationReasons": [
+      "Observed POST /api/login",
+      "Observed successful 2xx response from /api/login",
+      "Observed screen change: Sign in -> Browse restaurants",
+      "Observed successful post-login address or order retrieval"
+    ]
+  },
+  "endpoints": [
+    {
+      "id": "aom:api:230ef850909a1ecd",
+      "path": "/api/addresses",
+      "methods": [
+        "GET"
+      ],
+      "observedStatuses": [
+        200
+      ]
+    },
+    {
+      "id": "aom:api:0948b5c75aaf3c6f",
+      "path": "/api/categories",
+      "methods": [],
+      "observedStatuses": []
+    },
+    {
+      "id": "aom:api:92249a3e05bb2f80",
+      "path": "/api/login",
+      "methods": [
+        "POST"
+      ],
+      "observedStatuses": [
+        200
+      ]
+    },
+    {
+      "id": "aom:api:f33654c32cee036d",
+      "path": "/api/me",
+      "methods": [],
+      "observedStatuses": []
+    },
+    {
+      "id": "aom:api:3720b977b2105972",
+      "path": "/api/orders",
+      "methods": [
+        "GET"
+      ],
+      "observedStatuses": [
+        200
+      ]
+    },
+    {
+      "id": "aom:api:ee0795f1d976c14d",
+      "path": "/api/stores",
+      "methods": [],
+      "observedStatuses": []
+    },
+    {
+      "id": "aom:api:524d0d7e1447769d",
+      "path": "/api/stores/:id",
+      "methods": [],
+      "observedStatuses": []
+    }
+  ],
+  "evidenceSummary": [
+    "Visible state fact observed: visible_text=Ramen · Hot soup · Best seller",
+    "Interactive view observed: button|Addresses|submit",
+    "Visible state fact observed: visible_text=PlateRun",
+    "Runtime event observed: NetworkResponse",
+    "Application artifact and component graph observed",
+    "Visible state fact observed: visible_text=Mina Chen",
+    "Screen transition inferred from ordered snapshots: Sign in -> Browse restaurants",
+    "Visible state fact observed: count=4 open now",
+    "Visible state fact observed: entity=Cloud Sugar Cafe",
+    "Visible state fact observed: visible_text=Phone number",
+    "Visible state fact observed: visible_text=Browse nearby favorites, schedule dinner for later, or get lunch moving now.",
+    "Interactive view observed: button|Green Bowl Club|submit",
+    "Interactive view observed: input|text input|text",
+    "Visible state fact observed: price=$3 delivery",
+    "Interactive view observed: button|Western|submit",
+    "Static API endpoint observed: /api/stores",
+    "Interactive view observed: button|North Street Bistro|submit",
+    "Visible state fact observed: entity=Welcome back",
+    "Runtime event observed: SurfaceTextInput",
+    "Visible state fact observed: entity=Tokyo Ramen Lab"
+  ],
+  "limitations": [
+    "Relations marked below 1.0 confidence are deterministic inferences from observations, not direct application declarations.",
+    "Stable IDs are scoped to this target and semantic screen/view keys; major UI relabeling may create new identities.",
+    "This context describes observed structure and effects, not business capabilities or permission decisions."
+  ]
+}

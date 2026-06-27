@@ -21,6 +21,7 @@ export const installObserverExpression = `(() => {
     const target = event.target instanceof Element ? event.target : undefined;
     state.events.push({
       type: "surface_click",
+      observedAt: Date.now(),
       rawId: target ? "dom:" + pathFor(target) : undefined,
       label: target?.getAttribute("aria-label") || target?.textContent?.trim().slice(0, 120)
     });
@@ -31,6 +32,7 @@ export const installObserverExpression = `(() => {
       : undefined;
     state.events.push({
       type: "surface_text_input",
+      observedAt: Date.now(),
       rawId: target ? "dom:" + pathFor(target) : undefined,
       inputType: target?.type || target?.tagName.toLowerCase()
     });
@@ -38,6 +40,7 @@ export const installObserverExpression = `(() => {
   new MutationObserver((records) => {
     state.events.push({
       type: "state_change",
+      observedAt: Date.now(),
       mutationCount: records.length,
       url: location.href
     });
@@ -47,8 +50,12 @@ export const installObserverExpression = `(() => {
     attributes: true,
     attributeFilter: ["aria-expanded", "aria-selected", "disabled", "hidden"]
   });
-  addEventListener("popstate", () => state.events.push({ type: "navigation", url: location.href }));
-  addEventListener("hashchange", () => state.events.push({ type: "navigation", url: location.href }));
+  addEventListener("popstate", () => state.events.push({
+    type: "navigation", observedAt: Date.now(), url: location.href
+  }));
+  addEventListener("hashchange", () => state.events.push({
+    type: "navigation", observedAt: Date.now(), url: location.href
+  }));
   return true;
 })()`;
 
@@ -65,9 +72,12 @@ export const runtimeSnapshotExpression = `(() => {
     const role = element.getAttribute("role") || ({
       A: "link", BUTTON: "button", INPUT: "input", SELECT: "select", TEXTAREA: "textbox"
     })[element.tagName];
+    const visibleText = element.textContent?.replace(/\\s+/g, " ").trim().slice(0, 160);
+    const primaryText = element.querySelector("strong,h1,h2")?.textContent
+      ?.replace(/\\s+/g, " ").trim().slice(0, 160);
     const label = element.getAttribute("aria-label")
       || element.getAttribute("title")
-      || (element.children.length === 0 ? element.textContent?.trim().slice(0, 160) : undefined);
+      || (role ? primaryText || visibleText : element.children.length === 0 ? visibleText : undefined);
     return {
       rawId,
       kind: "dom_element",

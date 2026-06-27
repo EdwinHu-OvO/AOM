@@ -1,0 +1,946 @@
+{
+  "targetId": "target:platerun-analysis",
+  "application": {
+    "id": "aom:app:699184c37ef598e5",
+    "label": "PlateRun",
+    "platform": "electron",
+    "staticComponentCount": 103,
+    "observedPurpose": "Browse restaurants and menus, manage delivery details, build a cart, and review or place food orders."
+  },
+  "currentScreen": {
+    "id": "aom:screen:8490ecde80c3fc52",
+    "label": "Browse restaurants",
+    "confidence": 0.92,
+    "views": [
+      {
+        "id": "aom:view:09cf21a5e638145f",
+        "role": "button",
+        "label": "Add Spicy Miso Ramen",
+        "actions": [
+          "click"
+        ],
+        "operationKind": "state_change",
+        "mutatesState": true,
+        "expectedEffect": "Cart item count should increase after adding Spicy Miso Ramen"
+      },
+      {
+        "id": "aom:view:11995cec16bf601a",
+        "role": "button",
+        "label": "Asian",
+        "actions": [
+          "click"
+        ],
+        "operationKind": "selection",
+        "mutatesState": false,
+        "expectedEffect": "Visible selection or menu content should update"
+      },
+      {
+        "id": "aom:view:1859bea8e0828140",
+        "role": "button",
+        "label": "Dessert",
+        "actions": [
+          "click"
+        ],
+        "operationKind": "selection",
+        "mutatesState": false,
+        "expectedEffect": "Visible selection or menu content should update"
+      },
+      {
+        "id": "aom:view:1d1f0a6aad605c0b",
+        "role": "button",
+        "label": "Orders",
+        "actions": [
+          "click"
+        ],
+        "operationKind": "navigation",
+        "mutatesState": false,
+        "expectedEffect": "Current screen should navigate from Orders"
+      },
+      {
+        "id": "aom:view:48df9a9e43d962f1",
+        "role": "button",
+        "label": "Open cart",
+        "actions": [
+          "click"
+        ],
+        "operationKind": "navigation",
+        "mutatesState": false,
+        "expectedEffect": "Current screen should navigate from Open cart"
+      },
+      {
+        "id": "aom:view:5436d77ac2a8a1e2",
+        "role": "button",
+        "label": "Addresses",
+        "actions": [
+          "click"
+        ],
+        "operationKind": "navigation",
+        "mutatesState": false,
+        "expectedEffect": "Current screen should navigate from Addresses"
+      },
+      {
+        "id": "aom:view:55b411e9e9382680",
+        "role": "button",
+        "label": "Western",
+        "actions": [
+          "click"
+        ],
+        "operationKind": "selection",
+        "mutatesState": false,
+        "expectedEffect": "Visible selection or menu content should update"
+      },
+      {
+        "id": "aom:view:64661bef928bda8f",
+        "role": "button",
+        "label": "All",
+        "actions": [
+          "click"
+        ],
+        "operationKind": "selection",
+        "mutatesState": false,
+        "expectedEffect": "Visible selection or menu content should update"
+      },
+      {
+        "id": "aom:view:8267f5352b5ca3ed",
+        "role": "button",
+        "label": "North Street Bistro",
+        "actions": [
+          "click"
+        ],
+        "operationKind": "selection",
+        "mutatesState": false,
+        "expectedEffect": "Visible selection or menu content should update"
+      },
+      {
+        "id": "aom:view:878efc0a305f7ce1",
+        "role": "button",
+        "label": "Healthy",
+        "actions": [
+          "click"
+        ],
+        "operationKind": "selection",
+        "mutatesState": false,
+        "expectedEffect": "Visible selection or menu content should update"
+      },
+      {
+        "id": "aom:view:90fd3f18b4d330bf",
+        "role": "button",
+        "label": "Add Pan-fried Gyoza",
+        "actions": [
+          "click"
+        ],
+        "operationKind": "state_change",
+        "mutatesState": true,
+        "expectedEffect": "Cart item count should increase after adding Pan-fried Gyoza"
+      },
+      {
+        "id": "aom:view:975fe7e04f21ef76",
+        "role": "button",
+        "label": "Browse",
+        "actions": [
+          "click"
+        ],
+        "operationKind": "navigation",
+        "mutatesState": false,
+        "expectedEffect": "Current screen should navigate from Browse"
+      },
+      {
+        "id": "aom:view:bf173a1158baf927",
+        "role": "button",
+        "label": "Add Tonkotsu Ramen",
+        "actions": [
+          "click"
+        ],
+        "operationKind": "state_change",
+        "mutatesState": true,
+        "expectedEffect": "Cart item count should increase after adding Tonkotsu Ramen"
+      },
+      {
+        "id": "aom:view:c1e58cd85baf149c",
+        "role": "button",
+        "label": "Cloud Sugar Cafe",
+        "actions": [
+          "click"
+        ],
+        "operationKind": "selection",
+        "mutatesState": false,
+        "expectedEffect": "Visible selection or menu content should update"
+      },
+      {
+        "id": "aom:view:f7ba85894bb0de51",
+        "role": "button",
+        "label": "Green Bowl Club",
+        "actions": [
+          "click"
+        ],
+        "operationKind": "selection",
+        "mutatesState": false,
+        "expectedEffect": "Visible selection or menu content should update"
+      },
+      {
+        "id": "aom:view:f999a88039c56b15",
+        "role": "input",
+        "label": "Search food or restaurants",
+        "actions": [
+          "set_text",
+          "wait_for"
+        ],
+        "operationKind": "query",
+        "mutatesState": false,
+        "expectedEffect": "Visible restaurant or product results should update"
+      },
+      {
+        "id": "aom:view:fab6fed50982d068",
+        "role": "button",
+        "label": "Tokyo Ramen Lab",
+        "actions": [
+          "click"
+        ],
+        "operationKind": "selection",
+        "mutatesState": false,
+        "expectedEffect": "Visible selection or menu content should update"
+      }
+    ],
+    "stateFacts": [
+      {
+        "id": "aom:data:0a0aaef3bc9a6004",
+        "kind": "open_store_count",
+        "label": "4 open now",
+        "confidence": 0.85,
+        "currentlyVisible": true
+      },
+      {
+        "id": "aom:data:1094a0b870d36dfe",
+        "kind": "cart_item_count",
+        "label": "0",
+        "confidence": 0.85,
+        "currentlyVisible": true
+      },
+      {
+        "id": "aom:data:4a42c48f1db5b385",
+        "kind": "user_name",
+        "label": "Mina Chen",
+        "confidence": 0.85,
+        "currentlyVisible": true
+      },
+      {
+        "id": "aom:data:67e63b05b1f0d32e",
+        "kind": "delivery_address",
+        "label": "Home: 88 Maple Garden, Building 3, Apt 1202",
+        "confidence": 0.85,
+        "currentlyVisible": true
+      },
+      {
+        "id": "aom:data:6ddeb6e01fb3f4f6",
+        "kind": "cart_subtotal",
+        "label": "$0.00",
+        "confidence": 0.85,
+        "currentlyVisible": true
+      },
+      {
+        "id": "aom:data:8356a3b483b2ee2b",
+        "kind": "selected_store",
+        "label": "Tokyo Ramen Lab",
+        "confidence": 0.85,
+        "currentlyVisible": true
+      },
+      {
+        "id": "aom:data:bdf21178313b8f99",
+        "kind": "menu_item_count",
+        "label": "3 items",
+        "confidence": 0.85,
+        "currentlyVisible": true
+      }
+    ],
+    "productGroups": [
+      {
+        "name": "Tonkotsu Ramen",
+        "description": "Pork broth, chashu, egg",
+        "price": "$13.80",
+        "actionViewId": "aom:view:bf173a1158baf927"
+      },
+      {
+        "name": "Spicy Miso Ramen",
+        "description": "Miso broth with chili oil",
+        "price": "$12.90",
+        "actionViewId": "aom:view:09cf21a5e638145f"
+      },
+      {
+        "name": "Pan-fried Gyoza",
+        "description": "Six pork dumplings",
+        "price": "$6.50",
+        "actionViewId": "aom:view:90fd3f18b4d330bf"
+      }
+    ]
+  },
+  "session": {
+    "authenticated": true,
+    "userName": "Mina Chen",
+    "confidence": 0.95
+  },
+  "browse": {
+    "selectedStore": "Tokyo Ramen Lab",
+    "menuItemCount": 3,
+    "confidence": 0.9
+  },
+  "cart": {
+    "itemCount": 0,
+    "subtotal": "$0.00",
+    "confidence": 0.95
+  },
+  "transition": {
+    "fromScreen": "Sign in",
+    "toScreen": "Browse restaurants",
+    "observedEvents": [
+      {
+        "sequence": 1,
+        "timestamp": 1782375890584,
+        "eventType": "SurfaceTextInput",
+        "label": "User text input",
+        "targetViewId": "aom:view:837d46624311989f",
+        "targetViewLabel": "text input",
+        "requestId": null,
+        "method": null,
+        "path": null,
+        "status": null,
+        "mutationCount": null
+      },
+      {
+        "sequence": 2,
+        "timestamp": 1782375890585,
+        "eventType": "SurfaceTextInput",
+        "label": "User text input",
+        "targetViewId": "aom:view:c8ba56376d1629cb",
+        "targetViewLabel": "password input",
+        "requestId": null,
+        "method": null,
+        "path": null,
+        "status": null,
+        "mutationCount": null
+      },
+      {
+        "sequence": 3,
+        "timestamp": 1782375890585,
+        "eventType": "SurfaceClick",
+        "label": "User click",
+        "targetViewId": "aom:view:d3a729663b48f7dd",
+        "targetViewLabel": "Sign in",
+        "requestId": null,
+        "method": null,
+        "path": null,
+        "status": null,
+        "mutationCount": null
+      },
+      {
+        "sequence": 4,
+        "timestamp": 1782375890586,
+        "eventType": "StateChange",
+        "label": "DOM mutation observed (1 records)",
+        "targetViewId": null,
+        "targetViewLabel": null,
+        "requestId": null,
+        "method": null,
+        "path": null,
+        "status": null,
+        "mutationCount": 1
+      },
+      {
+        "sequence": 5,
+        "timestamp": 1782375890590,
+        "eventType": "NetworkRequest",
+        "label": "POST /api/login",
+        "targetViewId": null,
+        "targetViewLabel": null,
+        "requestId": "66676.10",
+        "method": "POST",
+        "path": "/api/login",
+        "status": null,
+        "mutationCount": null
+      },
+      {
+        "sequence": 6,
+        "timestamp": 1782375890591,
+        "eventType": "NetworkResponse",
+        "label": "200 response from /api/login",
+        "targetViewId": null,
+        "targetViewLabel": null,
+        "requestId": "66676.10",
+        "method": null,
+        "path": "/api/login",
+        "status": 200,
+        "mutationCount": null
+      },
+      {
+        "sequence": 7,
+        "timestamp": 1782375890592,
+        "eventType": "NetworkRequest",
+        "label": "GET /api/addresses",
+        "targetViewId": null,
+        "targetViewLabel": null,
+        "requestId": "66676.11",
+        "method": "GET",
+        "path": "/api/addresses",
+        "status": null,
+        "mutationCount": null
+      },
+      {
+        "sequence": 8,
+        "timestamp": 1782375890592,
+        "eventType": "NetworkRequest",
+        "label": "GET /api/orders",
+        "targetViewId": null,
+        "targetViewLabel": null,
+        "requestId": "66676.12",
+        "method": "GET",
+        "path": "/api/orders",
+        "status": null,
+        "mutationCount": null
+      },
+      {
+        "sequence": 9,
+        "timestamp": 1782375890592,
+        "eventType": "NetworkResponse",
+        "label": "200 response from /api/addresses",
+        "targetViewId": null,
+        "targetViewLabel": null,
+        "requestId": "66676.11",
+        "method": null,
+        "path": "/api/addresses",
+        "status": 200,
+        "mutationCount": null
+      },
+      {
+        "sequence": 10,
+        "timestamp": 1782375890592,
+        "eventType": "StateChange",
+        "label": "DOM mutation observed (2 records)",
+        "targetViewId": null,
+        "targetViewLabel": null,
+        "requestId": null,
+        "method": null,
+        "path": null,
+        "status": null,
+        "mutationCount": 2
+      },
+      {
+        "sequence": 11,
+        "timestamp": 1782375890593,
+        "eventType": "NetworkResponse",
+        "label": "200 response from /api/orders",
+        "targetViewId": null,
+        "targetViewLabel": null,
+        "requestId": "66676.12",
+        "method": null,
+        "path": "/api/orders",
+        "status": 200,
+        "mutationCount": null
+      }
+    ],
+    "addedObjects": 49,
+    "removedObjects": 9,
+    "verified": true,
+    "verificationConfidence": 1.0,
+    "verificationReasons": [
+      "Observed POST /api/login",
+      "Observed successful 2xx response from /api/login",
+      "Observed screen change: Sign in -> Browse restaurants",
+      "Observed successful post-login address or order retrieval"
+    ]
+  },
+  "endpoints": [
+    {
+      "id": "aom:api:230ef850909a1ecd",
+      "path": "/api/addresses",
+      "staticallyDiscovered": true,
+      "runtimeObserved": true,
+      "observedMethods": [
+        "GET"
+      ],
+      "observedStatuses": [
+        200
+      ]
+    },
+    {
+      "id": "aom:api:0948b5c75aaf3c6f",
+      "path": "/api/categories",
+      "staticallyDiscovered": true,
+      "runtimeObserved": false,
+      "observedMethods": [],
+      "observedStatuses": []
+    },
+    {
+      "id": "aom:api:92249a3e05bb2f80",
+      "path": "/api/login",
+      "staticallyDiscovered": true,
+      "runtimeObserved": true,
+      "observedMethods": [
+        "POST"
+      ],
+      "observedStatuses": [
+        200
+      ]
+    },
+    {
+      "id": "aom:api:f33654c32cee036d",
+      "path": "/api/me",
+      "staticallyDiscovered": true,
+      "runtimeObserved": false,
+      "observedMethods": [],
+      "observedStatuses": []
+    },
+    {
+      "id": "aom:api:3720b977b2105972",
+      "path": "/api/orders",
+      "staticallyDiscovered": true,
+      "runtimeObserved": true,
+      "observedMethods": [
+        "GET"
+      ],
+      "observedStatuses": [
+        200
+      ]
+    },
+    {
+      "id": "aom:api:ee0795f1d976c14d",
+      "path": "/api/stores",
+      "staticallyDiscovered": true,
+      "runtimeObserved": false,
+      "observedMethods": [],
+      "observedStatuses": []
+    },
+    {
+      "id": "aom:api:524d0d7e1447769d",
+      "path": "/api/stores/:id",
+      "staticallyDiscovered": true,
+      "runtimeObserved": false,
+      "observedMethods": [],
+      "observedStatuses": []
+    }
+  ],
+  "dataFlows": [
+    {
+      "fromId": "aom:message:381644d254037bee",
+      "fromLabel": "response /api/orders",
+      "toId": "aom:field:bc27092757a01f5a",
+      "toLabel": "visible entity",
+      "relation": "renders_as",
+      "confidence": 0.65
+    },
+    {
+      "fromId": "aom:message:72b5a1e0ddab6c8f",
+      "fromLabel": "request /api/login",
+      "toId": "aom:message:f0f1ebd606c260c2",
+      "toLabel": "response /api/login",
+      "relation": "flows_to",
+      "confidence": 0.95
+    },
+    {
+      "fromId": "aom:field:32461ae84ff0869b",
+      "fromLabel": "visible visible_text",
+      "toId": "aom:data:a9df2e607cef8157",
+      "toLabel": "PlateRun",
+      "relation": "renders_as",
+      "confidence": 0.95
+    },
+    {
+      "fromId": "aom:message:381644d254037bee",
+      "fromLabel": "response /api/orders",
+      "toId": "aom:field:38218d8676ed4382",
+      "toLabel": "visible cart_subtotal",
+      "relation": "renders_as",
+      "confidence": 0.65
+    },
+    {
+      "fromId": "aom:message:381644d254037bee",
+      "fromLabel": "response /api/orders",
+      "toId": "aom:field:cad92ce95d69f582",
+      "toLabel": "visible entity",
+      "relation": "renders_as",
+      "confidence": 0.65
+    },
+    {
+      "fromId": "aom:field:bc27092757a01f5a",
+      "fromLabel": "visible entity",
+      "toId": "aom:data:8c882504170355c6",
+      "toLabel": "Green Bowl Club",
+      "relation": "renders_as",
+      "confidence": 0.95
+    },
+    {
+      "fromId": "aom:message:381644d254037bee",
+      "fromLabel": "response /api/orders",
+      "toId": "aom:field:9313853e5cb434bc",
+      "toLabel": "visible product",
+      "relation": "renders_as",
+      "confidence": 0.65
+    },
+    {
+      "fromId": "aom:field:bb3108feb6acca68",
+      "fromLabel": "visible visible_text",
+      "toId": "aom:data:6244b498d0a6ec14",
+      "toLabel": "Browse menu",
+      "relation": "renders_as",
+      "confidence": 0.95
+    },
+    {
+      "fromId": "aom:field:e9a5c6bbd6d2a264",
+      "fromLabel": "visible product",
+      "toId": "aom:data:1cf1b270655b3270",
+      "toLabel": "Pan-fried Gyoza",
+      "relation": "renders_as",
+      "confidence": 0.95
+    },
+    {
+      "fromId": "aom:message:c0ff1a58eb44e4b6",
+      "fromLabel": "request /api/orders",
+      "toId": "aom:message:381644d254037bee",
+      "toLabel": "response /api/orders",
+      "relation": "flows_to",
+      "confidence": 0.95
+    },
+    {
+      "fromId": "aom:storage:7330579279e74267",
+      "fromLabel": "Authenticated session",
+      "toId": "aom:field:c42d8bf6b36c8961",
+      "toLabel": "visible user_name",
+      "relation": "renders_as",
+      "confidence": 0.7
+    },
+    {
+      "fromId": "aom:field:38218d8676ed4382",
+      "fromLabel": "visible cart_subtotal",
+      "toId": "aom:data:6ddeb6e01fb3f4f6",
+      "toLabel": "$0.00",
+      "relation": "renders_as",
+      "confidence": 0.95
+    },
+    {
+      "fromId": "aom:field:40a103e849bd5b82",
+      "fromLabel": "visible cart_item_count",
+      "toId": "aom:data:1094a0b870d36dfe",
+      "toLabel": "0",
+      "relation": "renders_as",
+      "confidence": 0.95
+    },
+    {
+      "fromId": "aom:message:381644d254037bee",
+      "fromLabel": "response /api/orders",
+      "toId": "aom:field:64e6d10e075bf832",
+      "toLabel": "visible visible_text",
+      "relation": "renders_as",
+      "confidence": 0.65
+    },
+    {
+      "fromId": "aom:message:381644d254037bee",
+      "fromLabel": "response /api/orders",
+      "toId": "aom:field:a1601de48848c9cf",
+      "toLabel": "visible selected_store",
+      "relation": "renders_as",
+      "confidence": 0.65
+    },
+    {
+      "fromId": "aom:storage:5be2113032968a18",
+      "fromLabel": "Cart items",
+      "toId": "aom:field:38218d8676ed4382",
+      "toLabel": "visible cart_subtotal",
+      "relation": "renders_as",
+      "confidence": 0.7
+    },
+    {
+      "fromId": "aom:field:8d78bcd08e0a6487",
+      "fromLabel": "visible entity",
+      "toId": "aom:data:59248775e434acd3",
+      "toLabel": "Restaurants",
+      "relation": "renders_as",
+      "confidence": 0.95
+    },
+    {
+      "fromId": "aom:message:381644d254037bee",
+      "fromLabel": "response /api/orders",
+      "toId": "aom:field:a038d9c8bd9bc4ae",
+      "toLabel": "visible product_badge",
+      "relation": "renders_as",
+      "confidence": 0.65
+    },
+    {
+      "fromId": "aom:message:381644d254037bee",
+      "fromLabel": "response /api/orders",
+      "toId": "aom:field:40a103e849bd5b82",
+      "toLabel": "visible cart_item_count",
+      "relation": "renders_as",
+      "confidence": 0.65
+    },
+    {
+      "fromId": "aom:field:7d2857b069b299c9",
+      "fromLabel": "visible price",
+      "toId": "aom:data:158157e5bbe58e2d",
+      "toLabel": "$6.50",
+      "relation": "renders_as",
+      "confidence": 0.95
+    },
+    {
+      "fromId": "aom:field:64e6d10e075bf832",
+      "fromLabel": "visible visible_text",
+      "toId": "aom:data:494f4871e6ad68ae",
+      "toLabel": "Ramen · Hot soup · Best seller",
+      "relation": "renders_as",
+      "confidence": 0.95
+    },
+    {
+      "fromId": "aom:message:381644d254037bee",
+      "fromLabel": "response /api/orders",
+      "toId": "aom:field:c42d8bf6b36c8961",
+      "toLabel": "visible user_name",
+      "relation": "renders_as",
+      "confidence": 0.65
+    },
+    {
+      "fromId": "aom:message:381644d254037bee",
+      "fromLabel": "response /api/orders",
+      "toId": "aom:field:19ac69fdea06d66b",
+      "toLabel": "visible delivery",
+      "relation": "renders_as",
+      "confidence": 0.65
+    },
+    {
+      "fromId": "aom:field:cad92ce95d69f582",
+      "fromLabel": "visible entity",
+      "toId": "aom:data:f4061a7533846f2e",
+      "toLabel": "Menu",
+      "relation": "renders_as",
+      "confidence": 0.95
+    },
+    {
+      "fromId": "aom:field:19ac69fdea06d66b",
+      "fromLabel": "visible delivery",
+      "toId": "aom:data:97e77bf66433efe7",
+      "toLabel": "$4 delivery",
+      "relation": "renders_as",
+      "confidence": 0.95
+    },
+    {
+      "fromId": "aom:field:9313853e5cb434bc",
+      "fromLabel": "visible product",
+      "toId": "aom:data:11427d6217dedcb0",
+      "toLabel": "Tonkotsu Ramen",
+      "relation": "renders_as",
+      "confidence": 0.95
+    },
+    {
+      "fromId": "aom:field:189b5668e3ace332",
+      "fromLabel": "visible delivery_address",
+      "toId": "aom:data:67e63b05b1f0d32e",
+      "toLabel": "Home: 88 Maple Garden, Building 3, Apt 1202",
+      "relation": "renders_as",
+      "confidence": 0.95
+    },
+    {
+      "fromId": "aom:message:381644d254037bee",
+      "fromLabel": "response /api/orders",
+      "toId": "aom:field:34b7d8dcce535c30",
+      "toLabel": "visible product",
+      "relation": "renders_as",
+      "confidence": 0.65
+    },
+    {
+      "fromId": "aom:field:6dcb7d90f24d4b03",
+      "fromLabel": "visible visible_text",
+      "toId": "aom:data:e029a80fc0ca09ef",
+      "toLabel": "Coffee · Cake · Afternoon tea",
+      "relation": "renders_as",
+      "confidence": 0.95
+    },
+    {
+      "fromId": "aom:message:381644d254037bee",
+      "fromLabel": "response /api/orders",
+      "toId": "aom:field:8418283f68f23dbc",
+      "toLabel": "visible delivery",
+      "relation": "renders_as",
+      "confidence": 0.65
+    },
+    {
+      "fromId": "aom:field:8418283f68f23dbc",
+      "fromLabel": "visible delivery",
+      "toId": "aom:data:00ac30dd752bbd70",
+      "toLabel": "$3 delivery",
+      "relation": "renders_as",
+      "confidence": 0.95
+    },
+    {
+      "fromId": "aom:message:381644d254037bee",
+      "fromLabel": "response /api/orders",
+      "toId": "aom:field:32461ae84ff0869b",
+      "toLabel": "visible visible_text",
+      "relation": "renders_as",
+      "confidence": 0.65
+    },
+    {
+      "fromId": "aom:message:381644d254037bee",
+      "fromLabel": "response /api/orders",
+      "toId": "aom:field:e9a5c6bbd6d2a264",
+      "toLabel": "visible product",
+      "relation": "renders_as",
+      "confidence": 0.65
+    },
+    {
+      "fromId": "aom:message:381644d254037bee",
+      "fromLabel": "response /api/orders",
+      "toId": "aom:field:76bb63ecb69e7742",
+      "toLabel": "visible entity",
+      "relation": "renders_as",
+      "confidence": 0.65
+    },
+    {
+      "fromId": "aom:message:381644d254037bee",
+      "fromLabel": "response /api/orders",
+      "toId": "aom:field:f51f9c34749908c4",
+      "toLabel": "visible price",
+      "relation": "renders_as",
+      "confidence": 0.65
+    },
+    {
+      "fromId": "aom:message:381644d254037bee",
+      "fromLabel": "response /api/orders",
+      "toId": "aom:field:bb3108feb6acca68",
+      "toLabel": "visible visible_text",
+      "relation": "renders_as",
+      "confidence": 0.65
+    },
+    {
+      "fromId": "aom:field:120299598111fd49",
+      "fromLabel": "visible entity",
+      "toId": "aom:data:c9bb0b484f73a225",
+      "toLabel": "Cloud Sugar Cafe",
+      "relation": "renders_as",
+      "confidence": 0.95
+    },
+    {
+      "fromId": "aom:field:c42d8bf6b36c8961",
+      "fromLabel": "visible user_name",
+      "toId": "aom:data:4a42c48f1db5b385",
+      "toLabel": "Mina Chen",
+      "relation": "renders_as",
+      "confidence": 0.95
+    },
+    {
+      "fromId": "aom:field:5b11cd86d428c264",
+      "fromLabel": "visible visible_text",
+      "toId": "aom:data:452f99dfa77bcea0",
+      "toLabel": "Salad · Protein bowls · Fresh",
+      "relation": "renders_as",
+      "confidence": 0.95
+    },
+    {
+      "fromId": "aom:message:381644d254037bee",
+      "fromLabel": "response /api/orders",
+      "toId": "aom:field:6dcb7d90f24d4b03",
+      "toLabel": "visible visible_text",
+      "relation": "renders_as",
+      "confidence": 0.65
+    }
+  ],
+  "capabilityVerifications": [],
+  "evidenceSummary": [
+    {
+      "summary": "Application artifact and component graph observed",
+      "kind": "observed",
+      "timestamp": 1782375890579,
+      "objectIds": [
+        "aom:app:699184c37ef598e5"
+      ]
+    },
+    {
+      "summary": "Visible state fact observed: product_description=Six pork dumplings",
+      "kind": "observed",
+      "timestamp": 1782375891408,
+      "objectIds": [
+        "aom:data:afaee7abdb5200e1"
+      ]
+    },
+    {
+      "summary": "Visible state fact observed: product_description=Pork broth, chashu, egg",
+      "kind": "observed",
+      "timestamp": 1782375891408,
+      "objectIds": [
+        "aom:data:ebf407e656060ee7"
+      ]
+    },
+    {
+      "summary": "Visible state fact observed: delivery=$4 delivery",
+      "kind": "observed",
+      "timestamp": 1782375891408,
+      "objectIds": [
+        "aom:data:97e77bf66433efe7"
+      ]
+    },
+    {
+      "summary": "Interactive view observed: button|Asian|submit",
+      "kind": "observed",
+      "timestamp": 1782375891408,
+      "objectIds": [
+        "aom:view:11995cec16bf601a"
+      ]
+    },
+    {
+      "summary": "Visible state fact observed: cart_subtotal=$0.00",
+      "kind": "observed",
+      "timestamp": 1782375891408,
+      "objectIds": [
+        "aom:data:6ddeb6e01fb3f4f6"
+      ]
+    },
+    {
+      "summary": "Interactive view observed: button|Add Pan-fried Gyoza|submit",
+      "kind": "observed",
+      "timestamp": 1782375891408,
+      "objectIds": [
+        "aom:view:90fd3f18b4d330bf"
+      ]
+    },
+    {
+      "summary": "Interactive view observed: input|Search food or restaurants|text",
+      "kind": "observed",
+      "timestamp": 1782375891408,
+      "objectIds": [
+        "aom:view:f999a88039c56b15"
+      ]
+    },
+    {
+      "summary": "Visible state fact observed: delivery=$2 delivery",
+      "kind": "observed",
+      "timestamp": 1782375891408,
+      "objectIds": [
+        "aom:data:42f73eabf4cf74ad"
+      ]
+    },
+    {
+      "summary": "Interactive view observed: button|Healthy|submit",
+      "kind": "observed",
+      "timestamp": 1782375891408,
+      "objectIds": [
+        "aom:view:878efc0a305f7ce1"
+      ]
+    },
+    {
+      "summary": "Visible state fact observed: entity=Cloud Sugar Cafe",
+      "kind": "observed",
+      "timestamp": 1782375891408,
+      "objectIds": [
+        "aom:data:c9bb0b484f73a225"
+      ]
+    },
+    {
+      "summary": "Visible state fact observed: product=Tonkotsu Ramen",
+      "kind": "observed",
+      "timestamp": 1782375891408,
+      "objectIds": [
+        "aom:data:11427d6217dedcb0"
+      ]
+    }
+  ],
+  "limitations": [
+    "Relations marked below 1.0 confidence are deterministic inferences from observations, not direct application declarations.",
+    "Stable IDs are scoped to this target and semantic screen/view keys; major UI relabeling may create new identities.",
+    "This context describes observed structure and effects, not business capabilities or permission decisions."
+  ]
+}

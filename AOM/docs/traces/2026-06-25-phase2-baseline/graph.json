@@ -1,0 +1,1929 @@
+{
+  "graphId": "graph:target:platerun-analysis:1782374854731",
+  "targetId": "target:platerun-analysis",
+  "generatedAt": 1782374854731,
+  "currentScreenId": "aom:screen:8490ecde80c3fc52",
+  "previousScreenId": "aom:screen:b6aa130ba13de42c",
+  "nodes": [
+    {
+      "id": "aom:app:699184c37ef598e5",
+      "type": "app",
+      "label": "target:platerun-analysis",
+      "features": {
+        "platform": "electron",
+        "staticNodeCount": 103
+      },
+      "evidenceIds": [
+        "evidence:analysis:cddaadd32aaf5ac2"
+      ],
+      "confidence": 1.0
+    },
+    {
+      "id": "aom:api:230ef850909a1ecd",
+      "type": "api_endpoint",
+      "label": "/api/addresses",
+      "features": {},
+      "evidenceIds": [
+        "evidence:analysis:eb201118158a3e09"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "aom:api:0948b5c75aaf3c6f",
+      "type": "api_endpoint",
+      "label": "/api/categories",
+      "features": {},
+      "evidenceIds": [
+        "evidence:analysis:b59bd2b088c40a33"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "aom:api:92249a3e05bb2f80",
+      "type": "api_endpoint",
+      "label": "/api/login",
+      "features": {},
+      "evidenceIds": [
+        "evidence:analysis:80d2627fb207f436"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "aom:api:3720b977b2105972",
+      "type": "api_endpoint",
+      "label": "/api/orders",
+      "features": {},
+      "evidenceIds": [
+        "evidence:analysis:fcc3b96b6a6827b8"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "aom:api:f33654c32cee036d",
+      "type": "api_endpoint",
+      "label": "/api/me",
+      "features": {},
+      "evidenceIds": [
+        "evidence:analysis:993821cc05974c35"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "aom:api:ee0795f1d976c14d",
+      "type": "api_endpoint",
+      "label": "/api/stores",
+      "features": {},
+      "evidenceIds": [
+        "evidence:analysis:b30b65770434a4f5"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "aom:api:524d0d7e1447769d",
+      "type": "api_endpoint",
+      "label": "/api/stores/:id",
+      "features": {},
+      "evidenceIds": [
+        "evidence:analysis:5e00b02ab9af97b1"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "aom:screen:b6aa130ba13de42c",
+      "type": "screen",
+      "label": "Sign in",
+      "features": {
+        "runtimeNodeCount": 22,
+        "semanticKey": "authentication"
+      },
+      "evidenceIds": [
+        "evidence:analysis:11d9aea9070b7ad3"
+      ],
+      "confidence": 0.98
+    },
+    {
+      "id": "aom:view:d3a729663b48f7dd",
+      "type": "view",
+      "label": "Sign in",
+      "features": {
+        "actions": [
+          "click"
+        ],
+        "inputType": "submit",
+        "rawReference": "dom:html > body > div > main > form > button",
+        "role": "button"
+      },
+      "evidenceIds": [
+        "evidence:analysis:244dc5a8af29012e"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "aom:view:c8ba56376d1629cb",
+      "type": "view",
+      "label": "password input",
+      "features": {
+        "actions": [
+          "set_text",
+          "wait_for"
+        ],
+        "inputType": "password",
+        "rawReference": "dom:html > body > div > main > form > label:nth-of-type(2) > div > input",
+        "role": "input"
+      },
+      "evidenceIds": [
+        "evidence:analysis:9b01d908c460e0ac"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "aom:view:837d46624311989f",
+      "type": "view",
+      "label": "text input",
+      "features": {
+        "actions": [
+          "set_text",
+          "wait_for"
+        ],
+        "inputType": "text",
+        "rawReference": "dom:html > body > div > main > form > label:nth-of-type(1) > div > input",
+        "role": "input"
+      },
+      "evidenceIds": [
+        "evidence:analysis:58462df3dc66a674"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "aom:screen:8490ecde80c3fc52",
+      "type": "screen",
+      "label": "Browse restaurants",
+      "features": {
+        "runtimeNodeCount": 142,
+        "semanticKey": "browse"
+      },
+      "evidenceIds": [
+        "evidence:analysis:2946df16b3908472"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "id": "aom:view:90fd3f18b4d330bf",
+      "type": "view",
+      "label": "Add Pan-fried Gyoza",
+      "features": {
+        "actions": [
+          "click"
+        ],
+        "inputType": "submit",
+        "rawReference": "dom:html > body > div > main > div > section > section > div:nth-of-type(3) > article:nth-of-type(3) > button",
+        "role": "button"
+      },
+      "evidenceIds": [
+        "evidence:analysis:2cdfad259141c4dc"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "aom:view:09cf21a5e638145f",
+      "type": "view",
+      "label": "Add Spicy Miso Ramen",
+      "features": {
+        "actions": [
+          "click"
+        ],
+        "inputType": "submit",
+        "rawReference": "dom:html > body > div > main > div > section > section > div:nth-of-type(3) > article:nth-of-type(2) > button",
+        "role": "button"
+      },
+      "evidenceIds": [
+        "evidence:analysis:ee854d62b7d6ee31"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "aom:view:bf173a1158baf927",
+      "type": "view",
+      "label": "Add Tonkotsu Ramen",
+      "features": {
+        "actions": [
+          "click"
+        ],
+        "inputType": "submit",
+        "rawReference": "dom:html > body > div > main > div > section > section > div:nth-of-type(3) > article:nth-of-type(1) > button",
+        "role": "button"
+      },
+      "evidenceIds": [
+        "evidence:analysis:7c878c5b50c871a2"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "aom:view:5436d77ac2a8a1e2",
+      "type": "view",
+      "label": "Addresses",
+      "features": {
+        "actions": [
+          "click"
+        ],
+        "inputType": "submit",
+        "rawReference": "dom:html > body > div > main > header > nav > button:nth-of-type(2)",
+        "role": "button"
+      },
+      "evidenceIds": [
+        "evidence:analysis:f7d5d8541733c71f"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "aom:view:64661bef928bda8f",
+      "type": "view",
+      "label": "All",
+      "features": {
+        "actions": [
+          "click"
+        ],
+        "inputType": "submit",
+        "rawReference": "dom:html > body > div > main > div > aside > section > div:nth-of-type(2) > button:nth-of-type(1)",
+        "role": "button"
+      },
+      "evidenceIds": [
+        "evidence:analysis:f60258ace2f03dd0"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "aom:view:11995cec16bf601a",
+      "type": "view",
+      "label": "Asian",
+      "features": {
+        "actions": [
+          "click"
+        ],
+        "inputType": "submit",
+        "rawReference": "dom:html > body > div > main > div > aside > section > div:nth-of-type(2) > button:nth-of-type(2)",
+        "role": "button"
+      },
+      "evidenceIds": [
+        "evidence:analysis:566c21a082a0283f"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "aom:view:975fe7e04f21ef76",
+      "type": "view",
+      "label": "Browse",
+      "features": {
+        "actions": [
+          "click"
+        ],
+        "inputType": "submit",
+        "rawReference": "dom:html > body > div > main > header > nav > button:nth-of-type(1)",
+        "role": "button"
+      },
+      "evidenceIds": [
+        "evidence:analysis:1e1387d6373a94d3"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "aom:view:1859bea8e0828140",
+      "type": "view",
+      "label": "Dessert",
+      "features": {
+        "actions": [
+          "click"
+        ],
+        "inputType": "submit",
+        "rawReference": "dom:html > body > div > main > div > aside > section > div:nth-of-type(2) > button:nth-of-type(5)",
+        "role": "button"
+      },
+      "evidenceIds": [
+        "evidence:analysis:9453978b2d6f27a1"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "aom:view:878efc0a305f7ce1",
+      "type": "view",
+      "label": "Healthy",
+      "features": {
+        "actions": [
+          "click"
+        ],
+        "inputType": "submit",
+        "rawReference": "dom:html > body > div > main > div > aside > section > div:nth-of-type(2) > button:nth-of-type(4)",
+        "role": "button"
+      },
+      "evidenceIds": [
+        "evidence:analysis:6686d32b3c95e6ca"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "aom:view:48df9a9e43d962f1",
+      "type": "view",
+      "label": "Open cart",
+      "features": {
+        "actions": [
+          "click"
+        ],
+        "inputType": "submit",
+        "rawReference": "dom:html > body > div > main > button",
+        "role": "button"
+      },
+      "evidenceIds": [
+        "evidence:analysis:afeaa585ae2e7cd5"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "aom:view:1d1f0a6aad605c0b",
+      "type": "view",
+      "label": "Orders",
+      "features": {
+        "actions": [
+          "click"
+        ],
+        "inputType": "submit",
+        "rawReference": "dom:html > body > div > main > header > nav > button:nth-of-type(3)",
+        "role": "button"
+      },
+      "evidenceIds": [
+        "evidence:analysis:05e470f86d752ee8"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "aom:view:55b411e9e9382680",
+      "type": "view",
+      "label": "Western",
+      "features": {
+        "actions": [
+          "click"
+        ],
+        "inputType": "submit",
+        "rawReference": "dom:html > body > div > main > div > aside > section > div:nth-of-type(2) > button:nth-of-type(3)",
+        "role": "button"
+      },
+      "evidenceIds": [
+        "evidence:analysis:b570894bf4e05165"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "aom:view:4e5ca1248900bbd7",
+      "type": "view",
+      "label": "submit input",
+      "features": {
+        "actions": [
+          "click"
+        ],
+        "inputType": "submit",
+        "rawReference": "dom:html > body > div > main > div > aside > section > div:nth-of-type(3) > button:nth-of-type(1)",
+        "role": "button"
+      },
+      "evidenceIds": [
+        "evidence:analysis:a22daf4941976e5d"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "aom:view:4e5ca2248900bd8a",
+      "type": "view",
+      "label": "submit input",
+      "features": {
+        "actions": [
+          "click"
+        ],
+        "inputType": "submit",
+        "rawReference": "dom:html > body > div > main > div > aside > section > div:nth-of-type(3) > button:nth-of-type(2)",
+        "role": "button"
+      },
+      "evidenceIds": [
+        "evidence:analysis:a22daf4941976e5d"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "aom:view:4e5ca3248900bf3d",
+      "type": "view",
+      "label": "submit input",
+      "features": {
+        "actions": [
+          "click"
+        ],
+        "inputType": "submit",
+        "rawReference": "dom:html > body > div > main > div > aside > section > div:nth-of-type(3) > button:nth-of-type(3)",
+        "role": "button"
+      },
+      "evidenceIds": [
+        "evidence:analysis:a22daf4941976e5d"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "aom:view:4e5c9c248900b358",
+      "type": "view",
+      "label": "submit input",
+      "features": {
+        "actions": [
+          "click"
+        ],
+        "inputType": "submit",
+        "rawReference": "dom:html > body > div > main > div > aside > section > div:nth-of-type(3) > button:nth-of-type(4)",
+        "role": "button"
+      },
+      "evidenceIds": [
+        "evidence:analysis:a22daf4941976e5d"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "aom:view:f999a88039c56b15",
+      "type": "view",
+      "label": "Search food or restaurants",
+      "features": {
+        "actions": [
+          "set_text",
+          "wait_for"
+        ],
+        "inputType": "text",
+        "rawReference": "dom:html > body > div > main > header > div:nth-of-type(2) > input",
+        "role": "input"
+      },
+      "evidenceIds": [
+        "evidence:analysis:82d6b769e4d99d0b"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "aom:event:bc9d862a4c6eb8a7",
+      "type": "event",
+      "label": "Network request",
+      "features": {
+        "eventType": "NetworkRequest",
+        "sequence": 1
+      },
+      "evidenceIds": [
+        "evidence:analysis:a59618ec3baeca05"
+      ],
+      "confidence": 1.0
+    },
+    {
+      "id": "aom:event:bc9d872a4c6eba5a",
+      "type": "event",
+      "label": "Network response",
+      "features": {
+        "eventType": "NetworkResponse",
+        "sequence": 2
+      },
+      "evidenceIds": [
+        "evidence:analysis:f2a379b423accd93"
+      ],
+      "confidence": 1.0
+    },
+    {
+      "id": "aom:event:bc9d882a4c6ebc0d",
+      "type": "event",
+      "label": "Network request",
+      "features": {
+        "eventType": "NetworkRequest",
+        "sequence": 3
+      },
+      "evidenceIds": [
+        "evidence:analysis:a59618ec3baeca05"
+      ],
+      "confidence": 1.0
+    },
+    {
+      "id": "aom:event:bc9d812a4c6eb028",
+      "type": "event",
+      "label": "Network request",
+      "features": {
+        "eventType": "NetworkRequest",
+        "sequence": 4
+      },
+      "evidenceIds": [
+        "evidence:analysis:a59618ec3baeca05"
+      ],
+      "confidence": 1.0
+    },
+    {
+      "id": "aom:event:bc9d822a4c6eb1db",
+      "type": "event",
+      "label": "Network response",
+      "features": {
+        "eventType": "NetworkResponse",
+        "sequence": 5
+      },
+      "evidenceIds": [
+        "evidence:analysis:f2a379b423accd93"
+      ],
+      "confidence": 1.0
+    },
+    {
+      "id": "aom:event:bc9d832a4c6eb38e",
+      "type": "event",
+      "label": "Network response",
+      "features": {
+        "eventType": "NetworkResponse",
+        "sequence": 6
+      },
+      "evidenceIds": [
+        "evidence:analysis:f2a379b423accd93"
+      ],
+      "confidence": 1.0
+    },
+    {
+      "id": "aom:event:bc9d842a4c6eb541",
+      "type": "event",
+      "label": "User text input",
+      "features": {
+        "eventType": "SurfaceTextInput",
+        "sequence": 7
+      },
+      "evidenceIds": [
+        "evidence:analysis:b567318be6f5f308"
+      ],
+      "confidence": 1.0
+    },
+    {
+      "id": "aom:event:bc9d7d2a4c6ea95c",
+      "type": "event",
+      "label": "User text input",
+      "features": {
+        "eventType": "SurfaceTextInput",
+        "sequence": 8
+      },
+      "evidenceIds": [
+        "evidence:analysis:5c5e835f48f266cb"
+      ],
+      "confidence": 1.0
+    },
+    {
+      "id": "aom:event:bc9d7e2a4c6eab0f",
+      "type": "event",
+      "label": "User click",
+      "features": {
+        "eventType": "SurfaceClick",
+        "sequence": 9
+      },
+      "evidenceIds": [
+        "evidence:analysis:8b8d172ade9d5c8c"
+      ],
+      "confidence": 1.0
+    },
+    {
+      "id": "aom:event:ee6390dfe023a895",
+      "type": "event",
+      "label": "Application state change",
+      "features": {
+        "eventType": "StateChange",
+        "sequence": 10
+      },
+      "evidenceIds": [
+        "evidence:analysis:19736950d7a7af2a"
+      ],
+      "confidence": 1.0
+    },
+    {
+      "id": "aom:event:ee638fdfe023a6e2",
+      "type": "event",
+      "label": "Application state change",
+      "features": {
+        "eventType": "StateChange",
+        "sequence": 11
+      },
+      "evidenceIds": [
+        "evidence:analysis:19736950d7a7af2a"
+      ],
+      "confidence": 1.0
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge:a7f5a25db8d0bdbf",
+      "from": "aom:app:699184c37ef598e5",
+      "to": "aom:api:230ef850909a1ecd",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:eb201118158a3e09"
+      ]
+    },
+    {
+      "id": "edge:505b69369a9968fd",
+      "from": "aom:app:699184c37ef598e5",
+      "to": "aom:api:0948b5c75aaf3c6f",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:b59bd2b088c40a33"
+      ]
+    },
+    {
+      "id": "edge:5486cfba4884d15c",
+      "from": "aom:app:699184c37ef598e5",
+      "to": "aom:api:92249a3e05bb2f80",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:80d2627fb207f436"
+      ]
+    },
+    {
+      "id": "edge:c3f06933cce00baf",
+      "from": "aom:app:699184c37ef598e5",
+      "to": "aom:api:3720b977b2105972",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:fcc3b96b6a6827b8"
+      ]
+    },
+    {
+      "id": "edge:bb400b6365377e95",
+      "from": "aom:app:699184c37ef598e5",
+      "to": "aom:api:f33654c32cee036d",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:993821cc05974c35"
+      ]
+    },
+    {
+      "id": "edge:91b36eedc5f467c2",
+      "from": "aom:app:699184c37ef598e5",
+      "to": "aom:api:ee0795f1d976c14d",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:b30b65770434a4f5"
+      ]
+    },
+    {
+      "id": "edge:df26bf9faa1581e9",
+      "from": "aom:app:699184c37ef598e5",
+      "to": "aom:api:524d0d7e1447769d",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:5e00b02ab9af97b1"
+      ]
+    },
+    {
+      "id": "edge:e31a85b39913226b",
+      "from": "aom:app:699184c37ef598e5",
+      "to": "aom:screen:b6aa130ba13de42c",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:11d9aea9070b7ad3"
+      ]
+    },
+    {
+      "id": "edge:4e2529e418246752",
+      "from": "aom:screen:b6aa130ba13de42c",
+      "to": "aom:view:d3a729663b48f7dd",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:244dc5a8af29012e"
+      ]
+    },
+    {
+      "id": "edge:e4e8a720f41e9302",
+      "from": "aom:screen:b6aa130ba13de42c",
+      "to": "aom:view:c8ba56376d1629cb",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:9b01d908c460e0ac"
+      ]
+    },
+    {
+      "id": "edge:e2d78b102899d4cb",
+      "from": "aom:screen:b6aa130ba13de42c",
+      "to": "aom:view:837d46624311989f",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:58462df3dc66a674"
+      ]
+    },
+    {
+      "id": "edge:a84de03f416091c6",
+      "from": "aom:app:699184c37ef598e5",
+      "to": "aom:screen:8490ecde80c3fc52",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:2946df16b3908472"
+      ]
+    },
+    {
+      "id": "edge:bb928795488b3594",
+      "from": "aom:screen:8490ecde80c3fc52",
+      "to": "aom:view:90fd3f18b4d330bf",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:2cdfad259141c4dc"
+      ]
+    },
+    {
+      "id": "edge:0d7689bd0cd5df58",
+      "from": "aom:screen:8490ecde80c3fc52",
+      "to": "aom:view:09cf21a5e638145f",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:ee854d62b7d6ee31"
+      ]
+    },
+    {
+      "id": "edge:2bb46a6d4773093d",
+      "from": "aom:screen:8490ecde80c3fc52",
+      "to": "aom:view:bf173a1158baf927",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:7c878c5b50c871a2"
+      ]
+    },
+    {
+      "id": "edge:3d5e2cc06ab38629",
+      "from": "aom:screen:8490ecde80c3fc52",
+      "to": "aom:view:5436d77ac2a8a1e2",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:f7d5d8541733c71f"
+      ]
+    },
+    {
+      "id": "edge:85cdd2d6d70ab53b",
+      "from": "aom:screen:8490ecde80c3fc52",
+      "to": "aom:view:64661bef928bda8f",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:f60258ace2f03dd0"
+      ]
+    },
+    {
+      "id": "edge:9a0a249fdecd9bc0",
+      "from": "aom:screen:8490ecde80c3fc52",
+      "to": "aom:view:11995cec16bf601a",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:566c21a082a0283f"
+      ]
+    },
+    {
+      "id": "edge:8029c4a5e429faf0",
+      "from": "aom:screen:8490ecde80c3fc52",
+      "to": "aom:view:975fe7e04f21ef76",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:1e1387d6373a94d3"
+      ]
+    },
+    {
+      "id": "edge:5ab0e78ff4638860",
+      "from": "aom:screen:8490ecde80c3fc52",
+      "to": "aom:view:1859bea8e0828140",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:9453978b2d6f27a1"
+      ]
+    },
+    {
+      "id": "edge:9a92088abe377553",
+      "from": "aom:screen:8490ecde80c3fc52",
+      "to": "aom:view:878efc0a305f7ce1",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:6686d32b3c95e6ca"
+      ]
+    },
+    {
+      "id": "edge:4f334cee9685bd1a",
+      "from": "aom:screen:8490ecde80c3fc52",
+      "to": "aom:view:48df9a9e43d962f1",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:afeaa585ae2e7cd5"
+      ]
+    },
+    {
+      "id": "edge:60a1e02ce343c0aa",
+      "from": "aom:screen:8490ecde80c3fc52",
+      "to": "aom:view:1d1f0a6aad605c0b",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:05e470f86d752ee8"
+      ]
+    },
+    {
+      "id": "edge:f514d03257b27d9a",
+      "from": "aom:screen:8490ecde80c3fc52",
+      "to": "aom:view:55b411e9e9382680",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:b570894bf4e05165"
+      ]
+    },
+    {
+      "id": "edge:41579bd2621ac28a",
+      "from": "aom:screen:8490ecde80c3fc52",
+      "to": "aom:view:4e5ca1248900bbd7",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:a22daf4941976e5d"
+      ]
+    },
+    {
+      "id": "edge:0b711b79f440a805",
+      "from": "aom:screen:8490ecde80c3fc52",
+      "to": "aom:view:4e5ca2248900bd8a",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:a22daf4941976e5d"
+      ]
+    },
+    {
+      "id": "edge:5a7ea66e495c1866",
+      "from": "aom:screen:8490ecde80c3fc52",
+      "to": "aom:view:4e5ca3248900bf3d",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:a22daf4941976e5d"
+      ]
+    },
+    {
+      "id": "edge:c8c83df6221dd3a5",
+      "from": "aom:screen:8490ecde80c3fc52",
+      "to": "aom:view:4e5c9c248900b358",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:a22daf4941976e5d"
+      ]
+    },
+    {
+      "id": "edge:de652b858c619f4d",
+      "from": "aom:screen:8490ecde80c3fc52",
+      "to": "aom:view:f999a88039c56b15",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:82d6b769e4d99d0b"
+      ]
+    },
+    {
+      "id": "edge:cc8b2538e58b1689",
+      "from": "aom:app:699184c37ef598e5",
+      "to": "aom:event:bc9d862a4c6eb8a7",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:a59618ec3baeca05"
+      ]
+    },
+    {
+      "id": "edge:7db593d9b3cf5646",
+      "from": "aom:event:bc9d862a4c6eb8a7",
+      "to": "aom:api:92249a3e05bb2f80",
+      "type": "requests",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:a59618ec3baeca05"
+      ]
+    },
+    {
+      "id": "edge:0b4cbf08bb4282f3",
+      "from": "aom:app:699184c37ef598e5",
+      "to": "aom:event:bc9d872a4c6eba5a",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:f2a379b423accd93"
+      ]
+    },
+    {
+      "id": "edge:db56a66d4b51947c",
+      "from": "aom:event:bc9d872a4c6eba5a",
+      "to": "aom:api:92249a3e05bb2f80",
+      "type": "requests",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:f2a379b423accd93"
+      ]
+    },
+    {
+      "id": "edge:76be9cfbe4229dfc",
+      "from": "aom:event:bc9d862a4c6eb8a7",
+      "to": "aom:event:bc9d872a4c6eba5a",
+      "type": "observed_before",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:f2a379b423accd93"
+      ]
+    },
+    {
+      "id": "edge:f6136fa628b53100",
+      "from": "aom:app:699184c37ef598e5",
+      "to": "aom:event:bc9d882a4c6ebc0d",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:a59618ec3baeca05"
+      ]
+    },
+    {
+      "id": "edge:dbd9fd5f0fff76f6",
+      "from": "aom:event:bc9d882a4c6ebc0d",
+      "to": "aom:api:230ef850909a1ecd",
+      "type": "requests",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:a59618ec3baeca05"
+      ]
+    },
+    {
+      "id": "edge:c07e55d4aa33e445",
+      "from": "aom:event:bc9d872a4c6eba5a",
+      "to": "aom:event:bc9d882a4c6ebc0d",
+      "type": "observed_before",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:a59618ec3baeca05"
+      ]
+    },
+    {
+      "id": "edge:7b5ebab6712218e0",
+      "from": "aom:app:699184c37ef598e5",
+      "to": "aom:event:bc9d812a4c6eb028",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:a59618ec3baeca05"
+      ]
+    },
+    {
+      "id": "edge:09a154f67ab33612",
+      "from": "aom:event:bc9d812a4c6eb028",
+      "to": "aom:api:3720b977b2105972",
+      "type": "requests",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:a59618ec3baeca05"
+      ]
+    },
+    {
+      "id": "edge:192ca513a0b46258",
+      "from": "aom:event:bc9d882a4c6ebc0d",
+      "to": "aom:event:bc9d812a4c6eb028",
+      "type": "observed_before",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:a59618ec3baeca05"
+      ]
+    },
+    {
+      "id": "edge:ff8cb8aeb81372a6",
+      "from": "aom:app:699184c37ef598e5",
+      "to": "aom:event:bc9d822a4c6eb1db",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:f2a379b423accd93"
+      ]
+    },
+    {
+      "id": "edge:027100e82b8d0ccc",
+      "from": "aom:event:bc9d822a4c6eb1db",
+      "to": "aom:api:230ef850909a1ecd",
+      "type": "requests",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:f2a379b423accd93"
+      ]
+    },
+    {
+      "id": "edge:6f9fbb76231a1b3e",
+      "from": "aom:event:bc9d812a4c6eb028",
+      "to": "aom:event:bc9d822a4c6eb1db",
+      "type": "observed_before",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:f2a379b423accd93"
+      ]
+    },
+    {
+      "id": "edge:aaedc319e28e110a",
+      "from": "aom:app:699184c37ef598e5",
+      "to": "aom:event:bc9d832a4c6eb38e",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:f2a379b423accd93"
+      ]
+    },
+    {
+      "id": "edge:c05a683df986d750",
+      "from": "aom:event:bc9d832a4c6eb38e",
+      "to": "aom:api:3720b977b2105972",
+      "type": "requests",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:f2a379b423accd93"
+      ]
+    },
+    {
+      "id": "edge:22daab3f89083db4",
+      "from": "aom:event:bc9d822a4c6eb1db",
+      "to": "aom:event:bc9d832a4c6eb38e",
+      "type": "observed_before",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:f2a379b423accd93"
+      ]
+    },
+    {
+      "id": "edge:15b10ed9d459a143",
+      "from": "aom:app:699184c37ef598e5",
+      "to": "aom:event:bc9d842a4c6eb541",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:b567318be6f5f308"
+      ]
+    },
+    {
+      "id": "edge:7283eb01c177bafb",
+      "from": "aom:view:837d46624311989f",
+      "to": "aom:event:bc9d842a4c6eb541",
+      "type": "triggers",
+      "confidence": 0.95,
+      "evidenceIds": [
+        "evidence:analysis:b567318be6f5f308"
+      ]
+    },
+    {
+      "id": "edge:c90ee8f4c08b7511",
+      "from": "aom:event:bc9d832a4c6eb38e",
+      "to": "aom:event:bc9d842a4c6eb541",
+      "type": "observed_before",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:b567318be6f5f308"
+      ]
+    },
+    {
+      "id": "edge:57361cc331e4477a",
+      "from": "aom:app:699184c37ef598e5",
+      "to": "aom:event:bc9d7d2a4c6ea95c",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:5c5e835f48f266cb"
+      ]
+    },
+    {
+      "id": "edge:66e9fd1a430e9a79",
+      "from": "aom:view:c8ba56376d1629cb",
+      "to": "aom:event:bc9d7d2a4c6ea95c",
+      "type": "triggers",
+      "confidence": 0.95,
+      "evidenceIds": [
+        "evidence:analysis:5c5e835f48f266cb"
+      ]
+    },
+    {
+      "id": "edge:e4e90037183571b7",
+      "from": "aom:event:bc9d842a4c6eb541",
+      "to": "aom:event:bc9d7d2a4c6ea95c",
+      "type": "observed_before",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:5c5e835f48f266cb"
+      ]
+    },
+    {
+      "id": "edge:ba26b3a2052694be",
+      "from": "aom:app:699184c37ef598e5",
+      "to": "aom:event:bc9d7e2a4c6eab0f",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:8b8d172ade9d5c8c"
+      ]
+    },
+    {
+      "id": "edge:f82ce44a7e4a720d",
+      "from": "aom:view:d3a729663b48f7dd",
+      "to": "aom:event:bc9d7e2a4c6eab0f",
+      "type": "triggers",
+      "confidence": 0.95,
+      "evidenceIds": [
+        "evidence:analysis:8b8d172ade9d5c8c"
+      ]
+    },
+    {
+      "id": "edge:77d903f3a0948b60",
+      "from": "aom:event:bc9d7d2a4c6ea95c",
+      "to": "aom:event:bc9d7e2a4c6eab0f",
+      "type": "observed_before",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:8b8d172ade9d5c8c"
+      ]
+    },
+    {
+      "id": "edge:50c5ae4b4997a8ed",
+      "from": "aom:app:699184c37ef598e5",
+      "to": "aom:event:ee6390dfe023a895",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:19736950d7a7af2a"
+      ]
+    },
+    {
+      "id": "edge:270bbd407f8120cd",
+      "from": "aom:event:ee6390dfe023a895",
+      "to": "aom:screen:8490ecde80c3fc52",
+      "type": "has_effect",
+      "confidence": 0.75,
+      "evidenceIds": [
+        "evidence:analysis:19736950d7a7af2a"
+      ]
+    },
+    {
+      "id": "edge:d215171bfefec4ff",
+      "from": "aom:event:bc9d7e2a4c6eab0f",
+      "to": "aom:event:ee6390dfe023a895",
+      "type": "observed_before",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:19736950d7a7af2a"
+      ]
+    },
+    {
+      "id": "edge:8632b2e5ca9ac80d",
+      "from": "aom:app:699184c37ef598e5",
+      "to": "aom:event:ee638fdfe023a6e2",
+      "type": "contains",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:19736950d7a7af2a"
+      ]
+    },
+    {
+      "id": "edge:f53e85f0ce8c3909",
+      "from": "aom:event:ee638fdfe023a6e2",
+      "to": "aom:screen:8490ecde80c3fc52",
+      "type": "has_effect",
+      "confidence": 0.75,
+      "evidenceIds": [
+        "evidence:analysis:19736950d7a7af2a"
+      ]
+    },
+    {
+      "id": "edge:f44b43ef8855127e",
+      "from": "aom:event:ee6390dfe023a895",
+      "to": "aom:event:ee638fdfe023a6e2",
+      "type": "observed_before",
+      "confidence": 1.0,
+      "evidenceIds": [
+        "evidence:analysis:19736950d7a7af2a"
+      ]
+    },
+    {
+      "id": "edge:1d3ca3473b344dc1",
+      "from": "aom:screen:b6aa130ba13de42c",
+      "to": "aom:screen:8490ecde80c3fc52",
+      "type": "navigates_to",
+      "confidence": 0.85,
+      "evidenceIds": [
+        "evidence:analysis:85ec6edd3d454994"
+      ]
+    }
+  ],
+  "evidence": [
+    {
+      "evidenceId": "evidence:analysis:05e470f86d752ee8",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Interactive view observed: button|Orders|submit",
+      "timestamp": 1782374854731,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782374854731",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:11d9aea9070b7ad3",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Runtime surface classified as Sign in",
+      "timestamp": 1782374853913,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782374853913",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:19736950d7a7af2a",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Runtime event observed: StateChange",
+      "timestamp": 1782374854723,
+      "sourceIds": [
+        "evidence:event:target:platerun-analysis:11",
+        "evidence:analyzer:target%3Aplaterun-analysis:drain_events:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:1e1387d6373a94d3",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Interactive view observed: button|Browse|submit",
+      "timestamp": 1782374854731,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782374854731",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:244dc5a8af29012e",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Interactive view observed: button|Sign in|submit",
+      "timestamp": 1782374853913,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782374853913",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:2946df16b3908472",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Runtime surface classified as Browse restaurants",
+      "timestamp": 1782374854731,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782374854731",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:2cdfad259141c4dc",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Interactive view observed: button|Add Pan-fried Gyoza|submit",
+      "timestamp": 1782374854731,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782374854731",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:566c21a082a0283f",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Interactive view observed: button|Asian|submit",
+      "timestamp": 1782374854731,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782374854731",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:58462df3dc66a674",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Interactive view observed: input|text input|text",
+      "timestamp": 1782374853913,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782374853913",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:5c5e835f48f266cb",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Runtime event observed: SurfaceTextInput",
+      "timestamp": 1782374854723,
+      "sourceIds": [
+        "evidence:event:target:platerun-analysis:8",
+        "evidence:analyzer:target%3Aplaterun-analysis:drain_events:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:5e00b02ab9af97b1",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Static API endpoint observed: /api/stores/:id",
+      "timestamp": 1782374853905,
+      "sourceIds": [
+        "evidence:static:endpoint:%2Fapi%2Fstores%2F%3Aid"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:6686d32b3c95e6ca",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Interactive view observed: button|Healthy|submit",
+      "timestamp": 1782374854731,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782374854731",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:7c878c5b50c871a2",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Interactive view observed: button|Add Tonkotsu Ramen|submit",
+      "timestamp": 1782374854731,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782374854731",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:80d2627fb207f436",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Static API endpoint observed: /api/login",
+      "timestamp": 1782374853905,
+      "sourceIds": [
+        "evidence:static:endpoint:%2Fapi%2Flogin"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:82d6b769e4d99d0b",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Interactive view observed: input|Search food or restaurants|text",
+      "timestamp": 1782374854731,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782374854731",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:85ec6edd3d454994",
+      "targetId": "target:platerun-analysis",
+      "kind": "inferred",
+      "summary": "Screen transition inferred from ordered snapshots: Sign in -> Browse restaurants",
+      "timestamp": 1782374854731,
+      "sourceIds": [],
+      "derivedFrom": [
+        "evidence:event:target:platerun-analysis:1",
+        "evidence:analyzer:target%3Aplaterun-analysis:drain_events:tool%3Aplaywright-electron",
+        "evidence:event:target:platerun-analysis:2",
+        "evidence:analyzer:target%3Aplaterun-analysis:drain_events:tool%3Aplaywright-electron",
+        "evidence:event:target:platerun-analysis:3",
+        "evidence:analyzer:target%3Aplaterun-analysis:drain_events:tool%3Aplaywright-electron",
+        "evidence:event:target:platerun-analysis:4",
+        "evidence:analyzer:target%3Aplaterun-analysis:drain_events:tool%3Aplaywright-electron",
+        "evidence:event:target:platerun-analysis:5",
+        "evidence:analyzer:target%3Aplaterun-analysis:drain_events:tool%3Aplaywright-electron",
+        "evidence:event:target:platerun-analysis:6",
+        "evidence:analyzer:target%3Aplaterun-analysis:drain_events:tool%3Aplaywright-electron",
+        "evidence:event:target:platerun-analysis:7",
+        "evidence:analyzer:target%3Aplaterun-analysis:drain_events:tool%3Aplaywright-electron",
+        "evidence:event:target:platerun-analysis:8",
+        "evidence:analyzer:target%3Aplaterun-analysis:drain_events:tool%3Aplaywright-electron",
+        "evidence:event:target:platerun-analysis:9",
+        "evidence:analyzer:target%3Aplaterun-analysis:drain_events:tool%3Aplaywright-electron",
+        "evidence:event:target:platerun-analysis:10",
+        "evidence:analyzer:target%3Aplaterun-analysis:drain_events:tool%3Aplaywright-electron",
+        "evidence:event:target:platerun-analysis:11",
+        "evidence:analyzer:target%3Aplaterun-analysis:drain_events:tool%3Aplaywright-electron"
+      ],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:8b8d172ade9d5c8c",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Runtime event observed: SurfaceClick",
+      "timestamp": 1782374854723,
+      "sourceIds": [
+        "evidence:event:target:platerun-analysis:9",
+        "evidence:analyzer:target%3Aplaterun-analysis:drain_events:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:9453978b2d6f27a1",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Interactive view observed: button|Dessert|submit",
+      "timestamp": 1782374854731,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782374854731",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:993821cc05974c35",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Static API endpoint observed: /api/me",
+      "timestamp": 1782374853905,
+      "sourceIds": [
+        "evidence:static:endpoint:%2Fapi%2Fme"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:9b01d908c460e0ac",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Interactive view observed: input|password input|password",
+      "timestamp": 1782374853913,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782374853913",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:a22daf4941976e5d",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Interactive view observed: button|submit input|submit",
+      "timestamp": 1782374854731,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782374854731",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:a59618ec3baeca05",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Runtime event observed: NetworkRequest",
+      "timestamp": 1782374854722,
+      "sourceIds": [
+        "evidence:event:target:platerun-analysis:4",
+        "evidence:analyzer:target%3Aplaterun-analysis:drain_events:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:afeaa585ae2e7cd5",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Interactive view observed: button|Open cart|submit",
+      "timestamp": 1782374854731,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782374854731",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:b30b65770434a4f5",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Static API endpoint observed: /api/stores",
+      "timestamp": 1782374853905,
+      "sourceIds": [
+        "evidence:static:endpoint:%2Fapi%2Fstores"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:b567318be6f5f308",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Runtime event observed: SurfaceTextInput",
+      "timestamp": 1782374854722,
+      "sourceIds": [
+        "evidence:event:target:platerun-analysis:7",
+        "evidence:analyzer:target%3Aplaterun-analysis:drain_events:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:b570894bf4e05165",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Interactive view observed: button|Western|submit",
+      "timestamp": 1782374854731,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782374854731",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:b59bd2b088c40a33",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Static API endpoint observed: /api/categories",
+      "timestamp": 1782374853905,
+      "sourceIds": [
+        "evidence:static:endpoint:%2Fapi%2Fcategories"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:cddaadd32aaf5ac2",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Application artifact and component graph observed",
+      "timestamp": 1782374853905,
+      "sourceIds": [
+        "evidence:static:artifact:electron:root:target%3Aplaterun-analysis",
+        "evidence:static:artifact:electron:d717d915e31e7c27",
+        "evidence:static:artifact:electron:asar:782a163aa69d6771",
+        "evidence:static:artifact:electron:asar-entry:850fbc3eb150a1c9",
+        "evidence:static:artifact:electron:asar-entry:09b3df6c2ce6a20d",
+        "evidence:static:artifact:electron:asar-entry:517aea7541d89f6e",
+        "evidence:static:artifact:electron:asar-entry:0bbd45002cd92c82",
+        "evidence:static:artifact:electron:asar-entry:08791eefe7caec5f",
+        "evidence:static:artifact:electron:asar-entry:331849827e7986f5",
+        "evidence:static:artifact:electron:asar-entry:d02dec2ed80953ab",
+        "evidence:static:artifact:electron:asar-entry:73d33c5ba641db65",
+        "evidence:static:artifact:electron:asar-entry:0ffca59b5f70bf18",
+        "evidence:static:artifact:electron:asar-entry:210eb5f86205ee13",
+        "evidence:static:process:main",
+        "evidence:static:process:renderer",
+        "evidence:static:process:backend",
+        "evidence:static:module:accepts",
+        "evidence:static:module:body-parser",
+        "evidence:static:module:bytes",
+        "evidence:static:module:call-bind-apply-helpers",
+        "evidence:static:module:call-bound",
+        "evidence:static:module:content-disposition",
+        "evidence:static:module:content-type",
+        "evidence:static:module:cookie",
+        "evidence:static:module:cookie-signature",
+        "evidence:static:module:cors",
+        "evidence:static:module:debug",
+        "evidence:static:module:depd",
+        "evidence:static:module:dunder-proto",
+        "evidence:static:module:ee-first",
+        "evidence:static:module:encodeurl",
+        "evidence:static:module:es-define-property",
+        "evidence:static:module:es-errors",
+        "evidence:static:module:es-object-atoms",
+        "evidence:static:module:escape-html",
+        "evidence:static:module:etag",
+        "evidence:static:module:express",
+        "evidence:static:module:finalhandler",
+        "evidence:static:module:forwarded",
+        "evidence:static:module:fresh",
+        "evidence:static:module:function-bind",
+        "evidence:static:module:get-intrinsic",
+        "evidence:static:module:get-proto",
+        "evidence:static:module:gopd",
+        "evidence:static:module:has-symbols",
+        "evidence:static:module:hasown",
+        "evidence:static:module:http-errors",
+        "evidence:static:module:iconv-lite",
+        "evidence:static:module:inherits",
+        "evidence:static:module:ipaddr.js",
+        "evidence:static:module:is-promise",
+        "evidence:static:module:lucide-react",
+        "evidence:static:module:math-intrinsics",
+        "evidence:static:module:media-typer",
+        "evidence:static:module:merge-descriptors",
+        "evidence:static:module:mime-db",
+        "evidence:static:module:mime-types",
+        "evidence:static:module:ms",
+        "evidence:static:module:negotiator",
+        "evidence:static:module:object-assign",
+        "evidence:static:module:object-inspect",
+        "evidence:static:module:on-finished",
+        "evidence:static:module:once",
+        "evidence:static:module:parseurl",
+        "evidence:static:module:path-to-regexp",
+        "evidence:static:module:proxy-addr",
+        "evidence:static:module:qs",
+        "evidence:static:module:range-parser",
+        "evidence:static:module:raw-body",
+        "evidence:static:module:react",
+        "evidence:static:module:react-dom",
+        "evidence:static:module:router",
+        "evidence:static:module:safer-buffer",
+        "evidence:static:module:scheduler",
+        "evidence:static:module:send",
+        "evidence:static:module:serve-static",
+        "evidence:static:module:setprototypeof",
+        "evidence:static:module:side-channel",
+        "evidence:static:module:side-channel-list",
+        "evidence:static:module:side-channel-map",
+        "evidence:static:module:side-channel-weakmap",
+        "evidence:static:module:statuses",
+        "evidence:static:module:toidentifier",
+        "evidence:static:module:type-is",
+        "evidence:static:module:unpipe",
+        "evidence:static:module:vary",
+        "evidence:static:module:wrappy",
+        "evidence:static:module:..%2Fserver%2Fserver.js",
+        "evidence:static:module:electron",
+        "evidence:static:module:node%3Apath",
+        "evidence:static:module:node%3Aurl",
+        "evidence:static:endpoint:%2Fapi%2Faddresses",
+        "evidence:static:endpoint:%2Fapi%2Fcategories",
+        "evidence:static:endpoint:%2Fapi%2Flogin",
+        "evidence:static:endpoint:%2Fapi%2Forders",
+        "evidence:static:module:.%2Fserver.js",
+        "evidence:static:module:.%2Fdata.js",
+        "evidence:static:module:node%3Ahttp",
+        "evidence:static:endpoint:%2Fapi%2Fme",
+        "evidence:static:endpoint:%2Fapi%2Fstores",
+        "evidence:static:endpoint:%2Fapi%2Fstores%2F%3Aid",
+        "evidence:tool:electron-asar:782a163aa69d6771",
+        "evidence:tool:electron-fuses:..%2FtargetAPP%2Frelease%2Fmac-arm64%2FPlateRun.app",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_static:tool%3Aelectron-asar",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_static:tool%3Aelectron-fuses"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:eb201118158a3e09",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Static API endpoint observed: /api/addresses",
+      "timestamp": 1782374853905,
+      "sourceIds": [
+        "evidence:static:endpoint:%2Fapi%2Faddresses"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:ee854d62b7d6ee31",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Interactive view observed: button|Add Spicy Miso Ramen|submit",
+      "timestamp": 1782374854731,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782374854731",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:f2a379b423accd93",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Runtime event observed: NetworkResponse",
+      "timestamp": 1782374854722,
+      "sourceIds": [
+        "evidence:event:target:platerun-analysis:6",
+        "evidence:analyzer:target%3Aplaterun-analysis:drain_events:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:f60258ace2f03dd0",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Interactive view observed: button|All|submit",
+      "timestamp": 1782374854731,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782374854731",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:f7d5d8541733c71f",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Interactive view observed: button|Addresses|submit",
+      "timestamp": 1782374854731,
+      "sourceIds": [
+        "evidence:runtime:snapshot:1782374854731",
+        "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analysis:fcc3b96b6a6827b8",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "Static API endpoint observed: /api/orders",
+      "timestamp": 1782374853905,
+      "sourceIds": [
+        "evidence:static:endpoint:%2Fapi%2Forders"
+      ],
+      "derivedFrom": [],
+      "metadata": {}
+    },
+    {
+      "evidenceId": "evidence:analyzer:target%3Aplaterun-analysis:collect_runtime:tool%3Aplaywright-electron",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "playwright collect_runtime",
+      "timestamp": 1782374854731,
+      "sourceIds": [
+        "analyzer:collect_runtime:target:platerun-analysis"
+      ],
+      "derivedFrom": [],
+      "metadata": {
+        "capabilities": [
+          "electron_launch",
+          "dom_actions",
+          "cdp_session"
+        ],
+        "mode": "library",
+        "operation": "collect_runtime",
+        "toolId": "tool:playwright-electron"
+      }
+    },
+    {
+      "evidenceId": "evidence:analyzer:target%3Aplaterun-analysis:collect_static:tool%3Aelectron-asar",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "@electron/asar collect_static",
+      "timestamp": 1782374854731,
+      "sourceIds": [
+        "analyzer:collect_static:target:platerun-analysis"
+      ],
+      "derivedFrom": [],
+      "metadata": {
+        "capabilities": [
+          "asar_list",
+          "asar_stat",
+          "asar_extract"
+        ],
+        "mode": "library",
+        "operation": "collect_static",
+        "toolId": "tool:electron-asar"
+      }
+    },
+    {
+      "evidenceId": "evidence:analyzer:target%3Aplaterun-analysis:collect_static:tool%3Aelectron-fuses",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "@electron/fuses collect_static",
+      "timestamp": 1782374854731,
+      "sourceIds": [
+        "analyzer:collect_static:target:platerun-analysis"
+      ],
+      "derivedFrom": [],
+      "metadata": {
+        "capabilities": [
+          "electron_fuse_read"
+        ],
+        "mode": "library",
+        "operation": "collect_static",
+        "toolId": "tool:electron-fuses"
+      }
+    },
+    {
+      "evidenceId": "evidence:analyzer:target%3Aplaterun-analysis:drain_events:tool%3Aplaywright-electron",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "playwright drain_events",
+      "timestamp": 1782374854731,
+      "sourceIds": [
+        "analyzer:drain_events:target:platerun-analysis"
+      ],
+      "derivedFrom": [],
+      "metadata": {
+        "capabilities": [
+          "electron_launch",
+          "dom_actions",
+          "cdp_session"
+        ],
+        "mode": "library",
+        "operation": "drain_events",
+        "toolId": "tool:playwright-electron"
+      }
+    },
+    {
+      "evidenceId": "evidence:analyzer:target%3Aplaterun-analysis:initialize:tool%3Aelectron-asar",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "@electron/asar initialize",
+      "timestamp": 1782374854731,
+      "sourceIds": [
+        "analyzer:initialize:target:platerun-analysis"
+      ],
+      "derivedFrom": [],
+      "metadata": {
+        "capabilities": [
+          "asar_list",
+          "asar_stat",
+          "asar_extract"
+        ],
+        "mode": "library",
+        "operation": "initialize",
+        "toolId": "tool:electron-asar"
+      }
+    },
+    {
+      "evidenceId": "evidence:analyzer:target%3Aplaterun-analysis:initialize:tool%3Aelectron-fuses",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "@electron/fuses initialize",
+      "timestamp": 1782374854731,
+      "sourceIds": [
+        "analyzer:initialize:target:platerun-analysis"
+      ],
+      "derivedFrom": [],
+      "metadata": {
+        "capabilities": [
+          "electron_fuse_read"
+        ],
+        "mode": "library",
+        "operation": "initialize",
+        "toolId": "tool:electron-fuses"
+      }
+    },
+    {
+      "evidenceId": "evidence:analyzer:target%3Aplaterun-analysis:initialize:tool%3Aplaywright-electron",
+      "targetId": "target:platerun-analysis",
+      "kind": "observed",
+      "summary": "playwright initialize",
+      "timestamp": 1782374854731,
+      "sourceIds": [
+        "analyzer:initialize:target:platerun-analysis"
+      ],
+      "derivedFrom": [],
+      "metadata": {
+        "capabilities": [
+          "electron_launch",
+          "dom_actions",
+          "cdp_session"
+        ],
+        "mode": "library",
+        "operation": "initialize",
+        "toolId": "tool:playwright-electron"
+      }
+    }
+  ]
+}

@@ -1,0 +1,316 @@
+[
+  {
+    "capability": {
+      "id": "aom:capability:c49442cd6c0dba3a",
+      "name": "add_to_cart",
+      "description": "Add a selected menu item to the cart",
+      "inputSlots": [
+        {
+          "name": "product",
+          "dataKind": "object_ref",
+          "required": false,
+          "sensitive": false
+        }
+      ],
+      "actionSummary": [
+        "Click product add control",
+        "Observe cart state change",
+        "Verify cart.items changed"
+      ],
+      "expectedEffects": [
+        "cart.items should increase or update"
+      ],
+      "riskLevel": "low",
+      "confidence": 0.75,
+      "evidenceIds": [
+        "evidence:analysis:a2b6bf95452eb12d"
+      ]
+    },
+    "availability": "available",
+    "actionPlan": [
+      {
+        "stepId": "cart.add",
+        "kind": "click",
+        "summary": "Click product add control",
+        "targetNodeId": "aom:view:09cf21a5e638145f",
+        "targetLabel": "Add Spicy Miso Ramen",
+        "inputSlot": "product",
+        "params": {
+          "transportNeutral": true
+        }
+      },
+      {
+        "stepId": "cart.observe",
+        "kind": "observe",
+        "summary": "Observe cart state change",
+        "targetLabel": "Cart items",
+        "params": {
+          "transportNeutral": true
+        }
+      },
+      {
+        "stepId": "cart.verify",
+        "kind": "verify",
+        "summary": "Verify cart.items changed",
+        "targetLabel": "Cart items",
+        "params": {
+          "transportNeutral": true
+        }
+      }
+    ],
+    "expectedEffects": [
+      {
+        "summary": "cart.items should increase or update",
+        "targetNodeId": "aom:storage:5be2113032968a18",
+        "targetLabel": "Cart items",
+        "evidenceIds": []
+      }
+    ],
+    "automation": {
+      "riskLevel": "low",
+      "canAutoExecute": true,
+      "reason": "low-risk capability with sufficient confidence and a concrete target"
+    },
+    "reasons": [
+      "add_to_cart is grounded by Add controls and cart.items storage"
+    ]
+  },
+  {
+    "capability": {
+      "id": "aom:capability:749f870e3fcfbf93",
+      "name": "login",
+      "description": "Authenticate the user and establish an application session",
+      "inputSlots": [
+        {
+          "name": "username",
+          "dataKind": "text",
+          "required": true,
+          "sensitive": false
+        },
+        {
+          "name": "password",
+          "dataKind": "secret",
+          "required": true,
+          "sensitive": true
+        }
+      ],
+      "actionSummary": [
+        "Fill username",
+        "Fill password",
+        "Submit login form",
+        "Verify authenticated session"
+      ],
+      "expectedEffects": [
+        "Authenticated session should become available"
+      ],
+      "riskLevel": "medium",
+      "confidence": 0.75,
+      "evidenceIds": [
+        "evidence:analysis:35582f5c3a208b7a"
+      ]
+    },
+    "availability": "missing_target",
+    "actionPlan": [
+      {
+        "stepId": "login.username",
+        "kind": "set_text",
+        "summary": "Fill username",
+        "inputSlot": "username",
+        "params": {
+          "transportNeutral": true
+        }
+      },
+      {
+        "stepId": "login.password",
+        "kind": "set_text",
+        "summary": "Fill password",
+        "inputSlot": "password",
+        "params": {
+          "transportNeutral": true
+        }
+      },
+      {
+        "stepId": "login.submit",
+        "kind": "click",
+        "summary": "Submit login form",
+        "params": {
+          "transportNeutral": true
+        }
+      },
+      {
+        "stepId": "login.verify",
+        "kind": "verify",
+        "summary": "Verify authenticated session",
+        "targetLabel": "Authenticated session",
+        "params": {
+          "transportNeutral": true
+        }
+      }
+    ],
+    "expectedEffects": [
+      {
+        "summary": "Authenticated session should become available",
+        "targetNodeId": "aom:storage:7330579279e74267",
+        "targetLabel": "Authenticated session",
+        "evidenceIds": []
+      }
+    ],
+    "automation": {
+      "riskLevel": "medium",
+      "canAutoExecute": false,
+      "reason": "medium/high risk capability requires Gateway policy before execution"
+    },
+    "reasons": [
+      "login uses credential slots and writes session.authenticated"
+    ]
+  },
+  {
+    "capability": {
+      "id": "aom:capability:4ae6cbd53cd795d0",
+      "name": "search_product",
+      "description": "Search visible restaurants or products",
+      "inputSlots": [
+        {
+          "name": "keyword",
+          "dataKind": "text",
+          "required": true,
+          "sensitive": false
+        }
+      ],
+      "actionSummary": [
+        "Enter search keyword",
+        "Observe store search request",
+        "Verify result list changed"
+      ],
+      "expectedEffects": [
+        "search.query should update from keyword",
+        "/api/stores results should be observed"
+      ],
+      "riskLevel": "low",
+      "confidence": 0.75,
+      "evidenceIds": [
+        "evidence:analysis:830970bb219f2f75"
+      ]
+    },
+    "availability": "available",
+    "actionPlan": [
+      {
+        "stepId": "search.keyword",
+        "kind": "set_text",
+        "summary": "Enter search keyword",
+        "targetNodeId": "aom:view:f999a88039c56b15",
+        "targetLabel": "Search food or restaurants",
+        "inputSlot": "keyword",
+        "params": {
+          "transportNeutral": true
+        }
+      },
+      {
+        "stepId": "search.observe",
+        "kind": "observe",
+        "summary": "Observe store search request",
+        "targetNodeId": "aom:api:ee0795f1d976c14d",
+        "targetLabel": "/api/stores",
+        "params": {
+          "transportNeutral": true
+        }
+      },
+      {
+        "stepId": "search.verify",
+        "kind": "verify",
+        "summary": "Verify result list changed",
+        "targetLabel": "Search query",
+        "params": {
+          "transportNeutral": true
+        }
+      }
+    ],
+    "expectedEffects": [
+      {
+        "summary": "search.query should update from keyword",
+        "targetNodeId": "aom:storage:75683408e3e5c112",
+        "targetLabel": "Search query",
+        "evidenceIds": []
+      },
+      {
+        "summary": "/api/stores results should be observed",
+        "targetNodeId": "aom:api:ee0795f1d976c14d",
+        "targetLabel": "/api/stores",
+        "evidenceIds": []
+      }
+    ],
+    "automation": {
+      "riskLevel": "low",
+      "canAutoExecute": true,
+      "reason": "low-risk capability with sufficient confidence and a concrete target"
+    },
+    "reasons": [
+      "search_product is grounded by Search UI text, /api/stores, or search.query"
+    ]
+  },
+  {
+    "capability": {
+      "id": "aom:capability:2542e950f4ee2b09",
+      "name": "view_product_detail",
+      "description": "Open a product or restaurant detail surface",
+      "inputSlots": [
+        {
+          "name": "item",
+          "dataKind": "object_ref",
+          "required": false,
+          "sensitive": false
+        }
+      ],
+      "actionSummary": [
+        "Open selected item detail",
+        "Verify detail screen or menu section is visible"
+      ],
+      "expectedEffects": [
+        "Selected item or store detail should be visible"
+      ],
+      "riskLevel": "low",
+      "confidence": 0.75,
+      "evidenceIds": [
+        "evidence:analysis:14c0c5f8bf24c764"
+      ]
+    },
+    "availability": "available",
+    "actionPlan": [
+      {
+        "stepId": "detail.open",
+        "kind": "click",
+        "summary": "Open selected item detail",
+        "targetNodeId": "aom:view:8267f5352b5ca3ed",
+        "targetLabel": "North Street Bistro",
+        "inputSlot": "item",
+        "params": {
+          "transportNeutral": true
+        }
+      },
+      {
+        "stepId": "detail.verify",
+        "kind": "verify",
+        "summary": "Verify detail screen or menu section is visible",
+        "params": {
+          "transportNeutral": true
+        }
+      }
+    ],
+    "expectedEffects": [
+      {
+        "summary": "Selected item or store detail should be visible",
+        "targetNodeId": "aom:view:8267f5352b5ca3ed",
+        "targetLabel": "North Street Bistro",
+        "evidenceIds": []
+      }
+    ],
+    "automation": {
+      "riskLevel": "low",
+      "canAutoExecute": true,
+      "reason": "low-risk capability with sufficient confidence and a concrete target"
+    },
+    "reasons": [
+      "view_product_detail is available when navigable product or store views are present"
+    ]
+  }
+]

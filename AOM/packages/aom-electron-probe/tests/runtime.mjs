@@ -44,14 +44,16 @@ class FakeCdpClient {
           value: [
             {
               type: "surface_click",
+              observedAt: 10,
               rawId: "dom:html > body > button",
               label: "Checkout",
             },
             {
               type: "surface_text_input",
+              observedAt: 20,
               rawId: "dom:html > body > input",
             },
-            { type: "state_change", mutationCount: 2 },
+            { type: "state_change", observedAt: 30, mutationCount: 2 },
           ],
         },
       };
@@ -102,6 +104,7 @@ assert(events.some((event) => event.type === "surface_click"), "should collect c
 assert(events.some((event) => event.type === "surface_text_input"), "should collect input event");
 assert(events.some((event) => event.type === "navigation"), "should collect navigation event");
 assert(events.some((event) => event.type === "state_change"), "should collect state event");
+assert(events[0]?.type === "surface_click", "should merge event channels by observation time");
 assert(action.ok, "should execute CDP-backed click action");
 const requestEvent = events.find((event) => event.type === "network_request");
 assert(

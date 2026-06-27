@@ -11,6 +11,36 @@ dependencies = [
 ]
 
 [[package]]
+name = "aom-analysis-core"
+version = "0.1.0"
+dependencies = [
+ "aom-protocol-rs",
+ "serde",
+ "serde_json",
+]
+
+[[package]]
+name = "aom-analysis-server"
+version = "0.1.0"
+dependencies = [
+ "aom-analysis-core",
+ "aom-capability",
+ "aom-protocol-rs",
+ "serde",
+ "serde_json",
+]
+
+[[package]]
+name = "aom-capability"
+version = "0.1.0"
+dependencies = [
+ "aom-analysis-core",
+ "aom-protocol-rs",
+ "serde",
+ "serde_json",
+]
+
+[[package]]
 name = "aom-protocol-rs"
 version = "0.1.0"
 dependencies = [
