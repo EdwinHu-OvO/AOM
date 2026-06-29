@@ -10,6 +10,10 @@
 - `aom-console audit` 可读取 audit log，输出 tool timeline、session、参数摘要、结果摘要、
   action ok/error、event count、graph summary、capability summary 和错误信息。
 - `aom-console audit --json` 可输出机器可读摘要，方便后续图形化 Console 或测试消费。
+- Audit summary 会包含 LLM recognizer 的 provider、model、accepted/rejected、
+  repairAttempts 和 error 摘要。
+- Audit summary 会包含 analysis readiness，区分 runtime/analysis/semantic/capability
+  ready，便于判断 Agent 是在能力未就绪时误入自主循环，还是 recognizer 已完成但候选被拒。
 
 ## 已完成
 
@@ -54,4 +58,6 @@ pnpm --filter @aom/console run audit -- --file /tmp/aom-audit.jsonl --json
 - 增加 action detail view：展示 raw target、view label、action type、event diff 和 verification。
 - 增加 graph/context artifact dump：审计记录只保存摘要，但 Console 可按 auditId 关联完整
   graph/context 快照文件。
+- 增加 recognizer detail view：展示模型候选、validator 拒绝原因、accepted capability 和
+  对应 view/rawReference。
 - 后续用于查看 target 状态、snapshot、event stream、graph、capability 和 Gateway audit。

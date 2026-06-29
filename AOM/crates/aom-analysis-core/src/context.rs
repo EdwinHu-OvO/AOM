@@ -125,6 +125,7 @@ fn context_view(node: &&AOMNode) -> ContextView {
             .filter_map(Value::as_str)
             .map(str::to_string)
             .collect(),
+        raw_reference: string_feature(node, "rawReference"),
         operation_kind,
         mutates_state,
         expected_effect,

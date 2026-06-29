@@ -16,6 +16,23 @@
 
 ## 最新摘要
 
+### 2026-06-29
+
+- Agent Interaction Layer 新增 semantic context delta：`invoke_capability` 和
+  `invoke_view` 现在返回 `contextDelta`，描述 action 前后 UI、network、data-flow、
+  data object 和 capability 变化。
+- 新增 MCP 工具 `aom.context_delta`，用于在动作结果过大或被外部工具持久化后读取最近一次
+  变化，避免 Agent 丢失“刚刚发生了什么”。
+- 搜索类动作的 delta 会在观察到 search/suggest endpoint 或结果列表变化时标记
+  `outcome.status=verified`，并推荐 `open_content_result`，推动 Agent 从重复搜索转向打开结果。
+- B 站回归显示 delta 虽生效但默认返回仍过大：`invoke_*` 仍内联完整 analysis，导致
+  Claude Code 将 100KB-600KB 工具结果持久化并持续消耗上下文。现已改为默认 compact
+  analysis summary，完整 context pack 必须显式调用 `aom.context_pack`。
+- `contextDelta` 新增具体 `recommendedTargets`，搜索成功后可直接给出候选 result view；
+  `route_context` 会携带最近 delta 摘要，`context_window` offset 越界会夹到非空尾页。
+- 设计记录见 `AOM/docs/design/context-delta.md`；当前定位为 evidence-linked MVP semantic
+  diff，不宣称完整数据血缘。
+
 ### 2026-06-27
 
 - Phase 5 跳过完整 P4，先交付 Claude Code MCP demo surface：新增
@@ -30,6 +47,12 @@
 - Console audit baseline 已启动：新增 `@aom/console` CLI；`@aom/agent-mcp` 对每个
   MCP `tools/call` 写 JSONL audit record，Console 可查看调用 timeline、参数摘要、动作结果、
   event count、graph/capability 摘要和错误信息。
+- B站真实 app 复盘后修复两个对象层问题：Unicode label 现在参与稳定 ID，避免中文 view
+  碰撞；context view 暴露 `rawReference`，`aom.invoke_view` 支持 rawId fallback，但仍由
+  AOM graph 校验目标。
+- 新增 OpenAI-compatible LLM capability recognizer：MCP 启动时读取 `AOM/aom.config.json`，
+  默认关闭；启用后用小模型生成 capability candidates，再由 AOM 校验 current view、action、
+  rawReference 和 confidence 后转成 `ExecutableCapability`。
 - 真实 MCP 协议回归已通过：stdio `tools/call` 接入现有 handoff endpoint
   `http://127.0.0.1:64604`，`aom.context_pack` 返回 capabilities，`aom.detach` 返回
   retained target 信息。

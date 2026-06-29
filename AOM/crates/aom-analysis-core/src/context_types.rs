@@ -46,6 +46,7 @@ pub struct ContextView {
     pub role: String,
     pub label: String,
     pub actions: Vec<String>,
+    pub raw_reference: Option<String>,
     pub operation_kind: String,
     pub mutates_state: bool,
     pub expected_effect: Option<String>,

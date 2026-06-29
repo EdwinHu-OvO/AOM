@@ -29,6 +29,33 @@ fn semantic_view_ids_survive_raw_path_changes() {
 }
 
 #[test]
+fn unicode_view_labels_produce_distinct_ids_and_raw_context() {
+    let graph = Normalizer::normalize(support::runtime_input(vec![
+        support::node("dom:nav > a:nth-of-type(1)", Some("link"), Some("首页")),
+        support::node("dom:nav > a:nth-of-type(2)", Some("link"), Some("我的")),
+    ]));
+    let views = graph
+        .nodes
+        .iter()
+        .filter(|node| node.node_type == AOMNodeType::View)
+        .collect::<Vec<_>>();
+    let home = views
+        .iter()
+        .find(|node| node.label.as_deref() == Some("首页"))
+        .unwrap();
+    let mine = views
+        .iter()
+        .find(|node| node.label.as_deref() == Some("我的"))
+        .unwrap();
+    let context = build_context_pack(&graph);
+
+    assert_ne!(home.id, mine.id);
+    assert!(context.current_screen.views.iter().any(|view| {
+        view.label == "我的" && view.raw_reference.as_deref() == Some("dom:nav > a:nth-of-type(2)")
+    }));
+}
+
+#[test]
 fn context_pack_explains_and_verifies_login_transition() {
     let graph = Normalizer::normalize(input("dom:login", Some(after_snapshot())));
     let context = build_context_pack(&graph);

@@ -12,7 +12,7 @@ pub fn normalize(value: &str) -> String {
         .to_lowercase()
         .chars()
         .map(|character| {
-            if character.is_ascii_alphanumeric() {
+            if character.is_alphanumeric() {
                 character
             } else {
                 ' '

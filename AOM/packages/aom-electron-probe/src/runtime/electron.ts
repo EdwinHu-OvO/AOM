@@ -81,7 +81,12 @@ export class ElectronRuntimeProbe implements RuntimeProbe {
       return this.result(action, false, "target_mismatch");
     }
     try {
-      await this.evaluate(this.actionExpression(action), true);
+      if (action.type === "click") {
+        await this.click(action);
+      } else {
+        await this.evaluate(this.actionExpression(action), true);
+        await this.afterAction(action);
+      }
       return this.result(action, true);
     } catch (error) {
       return this.result(action, false, error instanceof Error ? error.message : "action_failed");
@@ -175,9 +180,9 @@ export class ElectronRuntimeProbe implements RuntimeProbe {
     const encodedValue = JSON.stringify(String(action.params.value ?? ""));
     switch (action.type) {
       case "click":
-        return `(() => { const element = document.querySelector(${encodedSelector}); if (!element) throw new Error("target_not_found"); element.click(); return true; })()`;
+        return `(() => { const element = document.querySelector(${encodedSelector}); if (!element) throw new Error("target_not_found"); element.focus?.(); const rect = element.getBoundingClientRect(); return { x: rect.left + rect.width / 2, y: rect.top + rect.height / 2, width: rect.width, height: rect.height }; })()`;
       case "set_text":
-        return `(() => { const element = document.querySelector(${encodedSelector}); if (!element || !("value" in element)) throw new Error("target_not_editable"); element.value = ${encodedValue}; element.dispatchEvent(new Event("input", { bubbles: true })); return true; })()`;
+        return `(() => { const element = document.querySelector(${encodedSelector}); if (!element || !("value" in element)) throw new Error("target_not_editable"); element.focus?.(); const descriptor = Object.getOwnPropertyDescriptor(Object.getPrototypeOf(element), "value"); descriptor?.set ? descriptor.set.call(element, ${encodedValue}) : element.value = ${encodedValue}; element.dispatchEvent(new InputEvent("input", { bubbles: true, inputType: "insertText", data: ${encodedValue} })); element.dispatchEvent(new Event("change", { bubbles: true })); return true; })()`;
       case "scroll":
         return `(() => { scrollBy(0, ${Number(action.params.deltaY ?? 500)}); return true; })()`;
       case "back":
@@ -185,6 +190,45 @@ export class ElectronRuntimeProbe implements RuntimeProbe {
       case "wait_for":
         return `new Promise((resolve, reject) => { const until = Date.now() + ${Number(action.params.timeoutMs ?? 5000)}; const poll = () => document.querySelector(${encodedSelector}) ? resolve(true) : Date.now() >= until ? reject(new Error("wait_timeout")) : setTimeout(poll, 50); poll(); })`;
     }
+  }
+
+  private async click(action: RawAction): Promise<void> {
+    const rect = await this.evaluate<ElementRect>(this.actionExpression(action), true);
+    if (rect && Number.isFinite(rect.x) && Number.isFinite(rect.y) && rect.width > 0 && rect.height > 0) {
+      await this.client.send("Input.dispatchMouseEvent", {
+        type: "mousePressed",
+        x: rect.x,
+        y: rect.y,
+        button: "left",
+        clickCount: 1,
+      });
+      await this.client.send("Input.dispatchMouseEvent", {
+        type: "mouseReleased",
+        x: rect.x,
+        y: rect.y,
+        button: "left",
+        clickCount: 1,
+      });
+      return;
+    }
+    await this.evaluate(this.domClickFallbackExpression(action), true);
+  }
+
+  private domClickFallbackExpression(action: RawAction): string {
+    const selector = action.targetRawId?.replace(/^dom:/, "") ?? String(action.params.selector ?? "");
+    const encodedSelector = JSON.stringify(selector);
+    return `(() => { const element = document.querySelector(${encodedSelector}); if (!element) throw new Error("target_not_found"); element.focus?.(); element.click(); return true; })()`;
+  }
+
+  private async afterAction(action: RawAction): Promise<void> {
+    if (action.type !== "set_text" || typeof action.params.submitKey !== "string") return;
+    await this.dispatchKey(action.params.submitKey);
+  }
+
+  private async dispatchKey(key: string): Promise<void> {
+    const event = keyEvent(key);
+    await this.client.send("Input.dispatchKeyEvent", { type: "rawKeyDown", ...event });
+    await this.client.send("Input.dispatchKeyEvent", { type: "keyUp", ...event });
   }
 
   private result(action: RawAction, ok: boolean, message?: string): RawActionResult {
@@ -205,6 +249,20 @@ export class ElectronRuntimeProbe implements RuntimeProbe {
       evidenceIds: [`evidence:action:${action.actionId}`],
     };
   }
+}
+
+interface ElementRect {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+}
+
+function keyEvent(key: string): Record<string, JsonValue> {
+  if (key === "Enter") {
+    return { key: "Enter", code: "Enter", windowsVirtualKeyCode: 13, nativeVirtualKeyCode: 13 };
+  }
+  return { key, code: key };
 }
 
 function eventPriority(type: RawEventType): number {

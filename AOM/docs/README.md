@@ -41,3 +41,7 @@
 - `design/electron-analyzer-toolchain.md`：Electron 静态/动态工具适配、局部依赖、fallback 和 Evidence 约定。
 - `design/claude-code-mcp-demo.md`：Claude Code 作为 MCP host 的 Phase 5 演示配置和工具流。
 - `design/console-audit.md`：Console audit baseline 的记录格式、边界和使用方式。
+- `design/llm-capability-recognizer.md`：OpenAI-compatible LLM capability recognizer 的配置、
+  验证边界和 B站测试暴露问题的修复说明。
+- `design/context-window-routing.md`：Agent-facing 上下文窗口、结构/重复/任务折叠、
+  多滑动窗口路由和数据流保留边界。

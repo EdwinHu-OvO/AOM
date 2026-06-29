@@ -9,8 +9,10 @@ class FakeCdpClient {
   listeners = new Map();
   failNextEvaluation = false;
   expressions = [];
+  methods = [];
 
   async send(method, params = {}) {
+    this.methods.push({ method, params });
     if (method !== "Runtime.evaluate") return {};
     this.expressions.push(String(params.expression));
     if (this.failNextEvaluation) {
@@ -57,6 +59,9 @@ class FakeCdpClient {
           ],
         },
       };
+    }
+    if (expression.includes("getBoundingClientRect")) {
+      return { result: { value: { x: 12, y: 24, width: 20, height: 10 } } };
     }
     return { result: { value: true } };
   }
@@ -106,6 +111,10 @@ assert(events.some((event) => event.type === "navigation"), "should collect navi
 assert(events.some((event) => event.type === "state_change"), "should collect state event");
 assert(events[0]?.type === "surface_click", "should merge event channels by observation time");
 assert(action.ok, "should execute CDP-backed click action");
+assert(
+  client.methods.some((item) => item.method === "Input.dispatchMouseEvent"),
+  "click should use CDP mouse events when a target rect is available",
+);
 const requestEvent = events.find((event) => event.type === "network_request");
 assert(
   requestEvent?.payload.metadata.headers.Authorization === "[redacted]",
@@ -144,7 +153,7 @@ const actionCases = [
     targetId: "target:platerun-electron",
     type: "set_text",
     targetRawId: "dom:#query",
-    params: { value: "noodles" },
+    params: { value: "noodles", submitKey: "Enter" },
     marker: "dispatchEvent",
   },
   {
@@ -178,3 +187,9 @@ for (const { marker, ...candidate } of actionCases) {
     `${candidate.type} should map to its CDP expression`,
   );
 }
+assert(
+  client.methods.some((item) =>
+    item.method === "Input.dispatchKeyEvent" && item.params.key === "Enter"
+  ),
+  "set_text submitKey should dispatch an Enter key event",
+);

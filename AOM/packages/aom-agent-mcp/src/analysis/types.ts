@@ -7,6 +7,7 @@ import type {
   RawRuntimeSnapshot,
   RawStaticSnapshot,
 } from "@aom/protocol";
+import type { CapabilityRecognitionTrace } from "../capability/types.js";
 
 export interface AnalysisInput {
   targetId: string;
@@ -29,6 +30,8 @@ export interface AnalysisOutput {
   contextPack: Record<string, unknown>;
   capabilities: ExecutableCapability[];
   verification: Record<string, unknown>;
+  recognition?: CapabilityRecognitionTrace;
+  readiness?: AnalysisReadiness;
 }
 
 export interface ExecutableCapability {
@@ -52,4 +55,13 @@ export interface CapabilityActionStep {
   targetLabel?: string;
   inputSlot?: string;
   params: Record<string, unknown>;
+}
+
+export interface AnalysisReadiness {
+  runtimeReady: boolean;
+  analysisReady: boolean;
+  semanticReady: boolean;
+  capabilityReady: boolean;
+  status: "ready" | "semantic_pending" | "semantic_failed" | "no_capability";
+  reason: string;
 }

@@ -3,6 +3,7 @@
 ## 当前状态
 
 - Phase 3 Capability MVP 已落地。
+- Phase 5 后新增 LLM-assisted capability recognizer baseline，用于真实 app 上的通用语义候选识别。
 - 新增 `aom-capability` Rust crate，输入为 Analysis Layer 的 `AOMGraphSnapshot`，
   输出 `ExecutableCapability`。
 - Capability Layer 不直接访问 Adapter Host、Probe、源码、DOM selector 或底层调试工具；
@@ -63,6 +64,27 @@
   - risk：high，不允许默认自动执行
 - `AnalysisService::capabilities()` 已返回 `Vec<ExecutableCapability>`。
 - `aom-analyze-bundle` 已输出 `capabilities.json`。
+- B站测试暴露当前 deterministic recipe 无法泛化到复杂内容 App：capabilities 为空，
+  verification 报 `graph has no capability nodes`。为此新增 OpenAI-compatible recognizer，
+  只负责从 current screen views/facts/dataFlows 生成 capability candidates。
+- LLM candidates 会经过 deterministic validator：必须引用 current screen 中存在的
+  `targetViewId` 或精确 `targetLabel`，目标 view 必须支持 action 且具备 `rawReference`；
+  未通过校验的候选不会进入 `ExecutableCapability`。
+- LLM recognizer parser 已支持常见字段别名和返回形态：root array、`candidates`、
+  `capabilities`、`actions`，以及 `capability`、`target_view_id`、`target_label`、`score`、
+  `probability`、`why` 等字段；规范化后仍必须通过 deterministic validator。
+- 当所有候选都因 schema/字段缺失被 validator 拒绝时，recognizer 支持一次可配置
+  schema repair：把原始输出和拒绝原因发回同一 OpenAI-compatible endpoint，只允许修正
+  字段结构，不允许增加 graph 中不存在的 target 或事实。
+- Analysis output 现在区分 `semanticReady` 与 `capabilityReady`。外置 LLM 分析完成但
+  0 个候选通过校验时，AOM 会报告 `semanticReady: true`、`capabilityReady: false`，而不是把
+  app 标记为可自主执行 capability。
+- B站审计显示 `search_content` 已可被 LLM recognizer 识别，但模型给出的 slot 名会在
+  `text input`、`input`、`text_input` 之间漂移。Agent Interaction Layer 已把这些输入名
+  映射到 capability slot，避免 `missing_input` 阻断能力调用。
+- 对搜索类 capability，执行层会把 `set_text` 与 `Enter` 提交绑定。当前这仍属于
+  evidence-linked MVP 行为闭环，不代表 AOM 已经完整理解所有搜索表单或按钮语义。
+- 默认配置位于 `AOM/aom.config.json`，`capabilityRecognizer.enabled` 默认为 false。
 
 ## 当前真实 Trace
 
@@ -91,6 +113,8 @@
 
 ## 近期目标
 
+- 用 B站 fixture/golden trace 锁定 `open_profile`、`search_content`、`open_video` 等通用
+  capability candidate 行为。
 - 用真实 add-to-cart GUI trace 替换 fixture-only capability effect 证明。
 - 采集 cart review/checkout_prepare live trace；当前 high risk 不自动执行已由 fixture 覆盖。
 - Phase 4 Gateway 接入后，将 `automation.canAutoExecute` 作为 policy 输入，而不是最终

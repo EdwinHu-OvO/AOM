@@ -47,6 +47,11 @@
 - TypeScript：`@aom/agent-mcp` smoke test 会通过 `aom-analysis-bridge` 读取真实
   PlateRun raw bundle，并验证 Rust AnalysisService 输出 product group、cart state、
   data flows 和 `add_to_cart` capability。
+- TypeScript：`@aom/agent-mcp` smoke test 验证 context view 暴露 `rawReference`，
+  `aom.invoke_view` 的 rawId fallback 可生成 graph-backed RawAction。
+- TypeScript：`@aom/agent-mcp` smoke test 用 monkeypatched OpenAI-compatible
+  `/chat/completions` 响应验证 LLM recognizer 解析候选并通过 deterministic validator 追加
+  `ExecutableCapability`，不需要真实网络。
 - TypeScript：`@aom/console` smoke test 使用临时 audit JSONL 验证 `aom-console audit`
   文本输出和 `--json` 输出。
 - 真实 MCP 协议：stdio server 通过 `tools/call` 调用 `aom.attach_existing` 接入
@@ -54,6 +59,7 @@
   返回 retained target 信息。
 - Rust：验证 `TargetConnection.lifecycle` 的 `attach_existing` 协议 round-trip。
 - Rust：验证语义 view ID 不受 raw DOM path 变化影响。
+- Rust：验证 Unicode view labels 生成不同稳定 ID，并在 context pack 中保留 rawReference。
 - Rust：验证静态/动态 endpoint 合并、登录 transition、event sequence、session/cart/menu
   分离和 product/action 关系。
 - Rust：验证 Phase 2 MVP node/edge 覆盖，包含 `capability`、`storage_key`、
@@ -75,6 +81,24 @@
 - Rust：验证低置信度 capability 不会默认自动执行。
 - Rust：验证 `AnalysisService::capabilities()` 返回 P3 executable capability 对象。
 - TypeScript：验证 DOM/CDP 两条事件通道按 observation timestamp 合并后再分配 sequence。
+- TypeScript：验证 Electron Runtime click 优先使用 CDP mouse event；`set_text` 支持
+  React-compatible value setter、`input/change` 事件和可选 `Enter` 提交。
+- TypeScript：`@aom/agent-mcp` smoke test 验证 capability 输入 slot 别名映射：
+  `search_product` 可用 `text_input` 输入映射到真实 `keyword` slot，并生成 `submitKey=Enter`。
+- TypeScript：`@aom/agent-mcp` smoke test 验证 context window routing：
+  `routeContext` 会为搜索任务选择 `ui:header` 和 `dataflow:all`，每个窗口都有
+  `beforeSummary + window + afterSummary`；`contextWindow` 可按 `windowId/offset/limit`
+  展开数据流和 UI 主窗口。
+- TypeScript：`@aom/agent-mcp` smoke test 验证 context delta：
+  搜索 capability 的前后 graph diff 出现 search endpoint 和新 clickable result view 时，
+  `contextDelta.outcome.status` 为 `verified`，并推荐 `open_content_result`，用于阻止
+  Agent 重复搜索；同时覆盖 `no_change` 和 action dispatch failed 两个负例，避免把无变化
+  或失败动作误判为任务成功。
+- TypeScript：`@aom/agent-mcp` smoke test 验证 Agent-facing compact payload 不包含完整
+  `contextPack`，并验证 search delta 会暴露具体 `recommendedTargets`，避免 Agent 只拿到
+  抽象下一步名称。
+- TypeScript：`@aom/agent-mcp` smoke test 验证 `contextWindow` offset 越界会夹到非空尾页，
+  避免空窗口导致 Agent 继续翻页扩大上下文。
 
 ## Phase 1 验证记录
 

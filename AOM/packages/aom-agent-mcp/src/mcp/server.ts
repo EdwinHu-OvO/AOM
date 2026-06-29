@@ -70,6 +70,12 @@ export class AOMMcpServer {
         return this.service.snapshot(requireSession(args));
       case "aom.context_pack":
         return this.service.contextPack(requireSession(args));
+      case "aom.route_context":
+        return this.service.routeContext(requireContextRoute(args));
+      case "aom.context_window":
+        return this.service.contextWindow(requireContextWindow(args));
+      case "aom.context_delta":
+        return this.service.contextDelta(requireSession(args));
       case "aom.capabilities":
         return this.service.capabilities(requireSession(args));
       case "aom.analysis_graph":
@@ -132,6 +138,32 @@ function requireSession(args: Record<string, unknown>): { sessionId: string } {
   return { sessionId: String(args.sessionId ?? "platerun") };
 }
 
+function requireContextRoute(args: Record<string, unknown>): {
+  sessionId: string;
+  task?: string;
+  limit?: number;
+} {
+  return {
+    sessionId: String(args.sessionId ?? "platerun"),
+    ...(typeof args.task === "string" ? { task: args.task } : {}),
+    ...(typeof args.limit === "number" ? { limit: args.limit } : {}),
+  };
+}
+
+function requireContextWindow(args: Record<string, unknown>): {
+  sessionId: string;
+  windowId?: string;
+  task?: string;
+  offset?: number;
+  limit?: number;
+} {
+  return {
+    ...requireContextRoute(args),
+    ...(typeof args.windowId === "string" ? { windowId: args.windowId } : {}),
+    ...(typeof args.offset === "number" ? { offset: args.offset } : {}),
+  };
+}
+
 function requireInvoke(args: Record<string, unknown>): {
   sessionId: string;
   capabilityId: string;
@@ -152,6 +184,7 @@ function requireViewInvoke(args: Record<string, unknown>): {
   sessionId: string;
   viewId?: string;
   label?: string;
+  rawId?: string;
   action?: string;
   value?: string;
 } {
@@ -160,6 +193,7 @@ function requireViewInvoke(args: Record<string, unknown>): {
     sessionId,
     ...(typeof args.viewId === "string" ? { viewId: args.viewId } : {}),
     ...(typeof args.label === "string" ? { label: args.label } : {}),
+    ...(typeof args.rawId === "string" ? { rawId: args.rawId } : {}),
     ...(typeof args.action === "string" ? { action: args.action } : {}),
     ...(typeof args.value === "string" ? { value: args.value } : {}),
   };

@@ -54,11 +54,16 @@ function summarizeArgs(args: Record<string, unknown>): Record<string, unknown> {
     "capabilityId",
     "viewId",
     "label",
+    "rawId",
     "action",
     "appPath",
     "artifactLocator",
     "executablePath",
     "timeoutMs",
+    "task",
+    "windowId",
+    "offset",
+    "limit",
   ];
   const summary: Record<string, unknown> = {};
   for (const key of keys) {
@@ -81,15 +86,37 @@ function summarizeResult(value: unknown): Record<string, unknown> {
       type: "action",
       actionResult: actionResultSummary(result.actionResult),
       eventCount: result.eventCount,
+      contextDelta: contextDeltaSummary(result.contextDelta),
       analysis: analysisSummary(result.analysis),
     };
+  }
+  if (result.outcome && result.currentGraphId) {
+    return { type: "context_delta", contextDelta: contextDeltaSummary(result) };
   }
   if (result.graphSummary || result.contextPack || result.capabilities) {
     return { type: "analysis", ...analysisSummary(result) };
   }
+  if (Array.isArray(result.windows)) {
+    return {
+      type: "context_route",
+      pageSummary: result.pageSummary,
+      routedBy: result.routedBy,
+      windows: result.windows.map(windowSummary),
+      handleCount: Array.isArray(result.handles) ? result.handles.length : undefined,
+    };
+  }
+  if (result.window && result.beforeSummary && result.afterSummary) {
+    return { type: "context_window", window: windowSummary(result) };
+  }
+  if (result.analysis) {
+    return {
+      ...pick(result, ["sessionId", "targetId", "lifecycle", "cdpUrl", "processId", "detached", "targetRetained"]),
+      analysis: analysisSummary(result.analysis),
+    };
+  }
   if (Array.isArray(result.nodes)) return { type: "runtime_snapshot", nodeCount: result.nodes.length };
   if (Array.isArray(result.sessions)) return { type: "status", sessionCount: result.sessions.length };
-  return pick(result, ["sessionId", "targetId", "lifecycle", "cdpUrl", "processId", "detached", "targetRetained"]);
+  return pick(result, ["sessionId", "targetId", "lifecycle", "cdpUrl", "processId", "detached", "targetRetained", "readiness"]);
 }
 
 function analysisSummary(value: unknown): Record<string, unknown> {
@@ -101,7 +128,65 @@ function analysisSummary(value: unknown): Record<string, unknown> {
   const context = analysis.contextPack as { dataFlows?: unknown[] } | undefined;
   if (context?.dataFlows) summary.dataFlowCount = context.dataFlows.length;
   if (analysis.verification) summary.verification = analysis.verification;
+  if (analysis.recognition) summary.recognition = recognitionSummary(analysis.recognition);
+  if (analysis.readiness) summary.readiness = analysis.readiness;
   return summary;
+}
+
+function recognitionSummary(value: unknown): Record<string, unknown> {
+  const recognition = value as Record<string, unknown>;
+  return pick(recognition, ["provider", "model", "enabled", "accepted", "rejected", "repairAttempts", "error"]);
+}
+
+function windowSummary(value: unknown): Record<string, unknown> {
+  const window = value as Record<string, unknown>;
+  const exact = window.window as { items?: unknown[]; repeatedGroups?: unknown[] } | undefined;
+  return {
+    windowId: window.windowId,
+    kind: window.kind,
+    title: window.title,
+    scope: window.scope,
+    exactItemCount: exact?.items?.length,
+    repeatedGroupCount: exact?.repeatedGroups?.length,
+    before: (window.beforeSummary as Record<string, unknown> | undefined)?.summary,
+    after: (window.afterSummary as Record<string, unknown> | undefined)?.summary,
+  };
+}
+
+function contextDeltaSummary(value: unknown): Record<string, unknown> | undefined {
+  if (!value || typeof value !== "object") return undefined;
+  const delta = value as Record<string, unknown>;
+  const ui = delta.ui as { added?: unknown[]; removed?: unknown[]; updated?: unknown[] } | undefined;
+  const data = delta.data as { addedObjects?: unknown[]; updatedObjects?: unknown[] } | undefined;
+  const network = delta.network as { requests?: unknown[]; responses?: unknown[] } | undefined;
+  const dataFlow = delta.dataFlow as { addedEdges?: unknown[]; removedEdges?: unknown[] } | undefined;
+  const capabilities = delta.capabilities as {
+    added?: unknown[];
+    removed?: unknown[];
+    changed?: unknown[];
+    recommendedNext?: unknown[];
+    recommendedTargets?: unknown[];
+  } | undefined;
+  const outcome = delta.outcome as Record<string, unknown> | undefined;
+  return {
+    previousGraphId: delta.previousGraphId,
+    currentGraphId: delta.currentGraphId,
+    cause: delta.cause,
+    outcome: outcome ? pick(outcome, ["status", "summary", "nextStepHint"]) : undefined,
+    uiAdded: ui?.added?.length,
+    uiRemoved: ui?.removed?.length,
+    uiUpdated: ui?.updated?.length,
+    dataAdded: data?.addedObjects?.length,
+    dataUpdated: data?.updatedObjects?.length,
+    networkRequests: network?.requests?.length,
+    networkResponses: network?.responses?.length,
+    dataFlowAdded: dataFlow?.addedEdges?.length,
+    capabilityAdded: capabilities?.added?.length,
+    capabilityRemoved: capabilities?.removed?.length,
+    capabilityChanged: capabilities?.changed?.length,
+    recommendedNext: capabilities?.recommendedNext,
+    recommendedTargetCount: capabilities?.recommendedTargets?.length,
+  };
 }
 
 function graphSummary(graph: Record<string, unknown>): Record<string, unknown> {

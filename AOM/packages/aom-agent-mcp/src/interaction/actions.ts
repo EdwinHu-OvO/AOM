@@ -14,16 +14,21 @@ export function actionForCapability(
   const targetNodeId = productTarget(analysis, capability, inputs) ?? step.targetNodeId;
   const rawReference = rawReferenceForNode(analysis, targetNodeId);
   if (!rawReference) throw new Error(`capability_target_missing_raw_reference: ${capabilityId}`);
-  return action(targetId, actionType(step), rawReference, paramsForStep(step, inputs));
+  return action(targetId, actionType(step), rawReference, paramsForStep(capability, step, inputs));
 }
 
 export function actionForView(
   analysis: AnalysisOutput,
   targetId: string,
-  input: { viewId?: string; label?: string; action?: string; value?: string },
+  input: { viewId?: string; label?: string; rawId?: string; action?: string; value?: string },
 ): RawAction {
   const view = analysis.graph.nodes.find((node) =>
-    node.type === "view" && (node.id === input.viewId || node.label === input.label)
+    node.type === "view"
+      && (
+        node.id === input.viewId
+        || node.label === input.label
+        || featureString(node.features, "rawReference") === input.rawId
+      )
   );
   if (!view) throw new Error("view_not_found");
   const rawReference = featureString(view.features, "rawReference");
@@ -85,13 +90,18 @@ function actionType(step: CapabilityActionStep): RawAction["type"] {
 }
 
 function paramsForStep(
+  capability: ExecutableCapability,
   step: CapabilityActionStep,
   inputs: Record<string, unknown>,
 ): RawAction["params"] {
   if (step.kind !== "set_text") return {};
-  const value = inputs[step.inputSlot ?? "query"];
-  if (typeof value !== "string") throw new Error(`missing_input: ${step.inputSlot ?? "query"}`);
-  return { value };
+  const slot = step.inputSlot ?? capability.capability.inputSlots[0]?.name ?? "query";
+  const value = inputValue(inputs, slot);
+  if (typeof value !== "string") throw new Error(`missing_input: ${slot}`);
+  return {
+    value,
+    ...(shouldSubmitWithEnter(capability, step) ? { submitKey: "Enter" } : {}),
+  };
 }
 
 function action(
@@ -101,4 +111,36 @@ function action(
   params: RawAction["params"],
 ): RawAction {
   return { actionId: `action:mcp:${Date.now()}`, targetId, type, targetRawId, params };
+}
+
+function inputValue(inputs: Record<string, unknown>, slot: string): unknown {
+  const aliases = [
+    slot,
+    normalizeKey(slot),
+    "query",
+    "keyword",
+    "text",
+    "input",
+    "value",
+    "text input",
+    "text_input",
+    "search",
+    "search query",
+    "search_query",
+  ];
+  for (const alias of aliases) {
+    if (inputs[alias] !== undefined) return inputs[alias];
+  }
+  const normalizedSlot = normalizeKey(slot);
+  return Object.entries(inputs).find(([key]) => normalizeKey(key) === normalizedSlot)?.[1];
+}
+
+function normalizeKey(value: string): string {
+  return value.trim().toLowerCase().replace(/[\s-]+/g, "_");
+}
+
+function shouldSubmitWithEnter(capability: ExecutableCapability, step: CapabilityActionStep): boolean {
+  const name = capability.capability.name.toLowerCase();
+  const summary = `${step.summary} ${capability.capability.description ?? ""}`.toLowerCase();
+  return /search|query|find/.test(name) || /search|query|搜索/.test(summary);
 }

@@ -20,6 +20,21 @@ pub fn input(raw_button_id: &str, after: Option<RawRuntimeSnapshot>) -> Analysis
     }
 }
 
+pub fn runtime_input(nodes: Vec<RawRuntimeNode>) -> AnalysisInput {
+    AnalysisInput {
+        target_id: "target:test".into(),
+        static_snapshot: static_snapshot(),
+        before: runtime_snapshot(2, nodes),
+        events: vec![],
+        after: None,
+        analyzer_evidence: vec![],
+    }
+}
+
+pub fn node(raw_id: &str, role: Option<&str>, label: Option<&str>) -> RawRuntimeNode {
+    runtime_node(raw_id, role, label, "a", None)
+}
+
 fn static_snapshot() -> RawStaticSnapshot {
     RawStaticSnapshot {
         snapshot_id: "static:1".into(),
