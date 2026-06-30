@@ -3,7 +3,23 @@ import path from "node:path";
 
 export interface AOMRuntimeConfig {
   capabilityRecognizer?: LlmRecognizerConfig;
+  features?: Record<string, AOMFeatureConfig>;
+  logging?: AOMLoggingConfig;
 }
+
+export interface AOMFeatureConfig {
+  enabled?: boolean;
+  [key: string]: unknown;
+}
+
+export interface AOMLoggingConfig {
+  level?: AOMLogLevel;
+  modules?: Record<string, AOMLogLevel>;
+  auditLevel?: AOMAuditLevel;
+}
+
+export type AOMLogLevel = "off" | "error" | "warn" | "info" | "debug" | "trace";
+export type AOMAuditLevel = "off" | "summary" | "normal" | "verbose" | "full";
 
 export interface LlmRecognizerConfig {
   enabled: boolean;

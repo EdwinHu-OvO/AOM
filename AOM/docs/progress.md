@@ -48,6 +48,9 @@
 - 调用链会在搜索等效果已验证后优先转向 `recommendedTargets`，在 `failed/no_change` 后回到
   `route_context` + `context_window`，用于减少重复搜索、重复点击和上下文爆炸。设计记录见
   `AOM/docs/design/dynamic-call-chain.md`。
+- 新增 `AOM-cli` 配置控制面，范围收窄为 feature flags/参数与日志等级/audit verbosity；
+  不承担 session、target、调试、分析或脚本入口。各层级支持 `-help`，设计记录见
+  `AOM/docs/design/cli-config-control.md`。
 
 ### 2026-06-27
 

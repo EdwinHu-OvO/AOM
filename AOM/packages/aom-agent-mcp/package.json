@@ -6,11 +6,12 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "bin": {
+    "AOM-cli": "dist/bin/AOM-cli.js",
     "aom-mcp-server": "dist/bin/aom-mcp-server.js"
   },
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
-    "test": "pnpm run typecheck && pnpm run build && node tests/mcp-smoke.mjs",
+    "test": "pnpm run typecheck && pnpm run build && node tests/mcp-smoke.mjs && node tests/cli-config.mjs",
     "typecheck": "tsc --noEmit -p tsconfig.json"
   },
   "dependencies": {

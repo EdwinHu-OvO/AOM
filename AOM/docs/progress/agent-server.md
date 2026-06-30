@@ -67,6 +67,13 @@
   - 当最近一次动作 `failed` 或 `no_change` 时，调用链会回到 `route_context` +
     `context_window`，要求重新选目标而不是机械重试。
   - 设计记录见 `AOM/docs/design/dynamic-call-chain.md`。
+- 新增 AOM CLI 配置控制面：
+  - `AOM-cli` 只管理 feature flags、feature 参数、全局/模块日志等级和 audit verbosity。
+  - 支持顶层与各层级 `-help`：`-feature -help`、`-log -help`、`-config -help`。
+  - 明确不承担调试入口、脚本入口、target 启动、session 管理、分析执行或 capability 调用。
+  - `llm_capability_recognizer` 会同步到现有 `capabilityRecognizer` 配置，保持 MCP 启动兼容。
+  - `-config -show` 会对 `apiKey` 脱敏，写配置时保留未知字段和本地私有配置。
+  - 设计记录见 `AOM/docs/design/cli-config-control.md`。
 - MCP 默认返回面已收窄：
   - `aom.launch_for_handoff`、`aom.attach_existing`、`aom.invoke_capability` 和
     `aom.invoke_view` 默认只返回 compact analysis summary，不再内联完整 context pack。
