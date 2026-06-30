@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "pnpm -r build",
+    "release:dev": "node scripts/build-dev-release.mjs",
     "test": "pnpm -r test",
     "test:integration:electron": "pnpm build && node tests/integration/electron-runtime.mjs",
     "typecheck": "pnpm -r typecheck"

@@ -94,7 +94,7 @@ interface CapabilityDelta {
   after?: string;
 }
 
-interface RecommendedTarget {
+export interface RecommendedTarget {
   toolName: "aom.invoke_view" | "aom.invoke_capability";
   action: "click" | "set_text";
   viewId?: string;

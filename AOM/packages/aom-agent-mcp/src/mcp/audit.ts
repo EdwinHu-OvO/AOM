@@ -64,6 +64,7 @@ function summarizeArgs(args: Record<string, unknown>): Record<string, unknown> {
     "windowId",
     "offset",
     "limit",
+    "maxSteps",
   ];
   const summary: Record<string, unknown> = {};
   for (const key of keys) {
@@ -87,14 +88,22 @@ function summarizeResult(value: unknown): Record<string, unknown> {
       actionResult: actionResultSummary(result.actionResult),
       eventCount: result.eventCount,
       contextDelta: contextDeltaSummary(result.contextDelta),
+      nextCallChain: callChainSummary(result.nextCallChain),
       analysis: analysisSummary(result.analysis),
     };
   }
+  if (result.chainId && Array.isArray(result.steps)) {
+    return { type: "call_chain", callChain: callChainSummary(result) };
+  }
   if (result.outcome && result.currentGraphId) {
-    return { type: "context_delta", contextDelta: contextDeltaSummary(result) };
+    return {
+      type: "context_delta",
+      contextDelta: contextDeltaSummary(result),
+      nextCallChain: callChainSummary(result.nextCallChain),
+    };
   }
   if (result.graphSummary || result.contextPack || result.capabilities) {
-    return { type: "analysis", ...analysisSummary(result) };
+    return { type: "analysis", ...analysisSummary(result), nextCallChain: callChainSummary(result.nextCallChain) };
   }
   if (Array.isArray(result.windows)) {
     return {
@@ -103,15 +112,22 @@ function summarizeResult(value: unknown): Record<string, unknown> {
       routedBy: result.routedBy,
       windows: result.windows.map(windowSummary),
       handleCount: Array.isArray(result.handles) ? result.handles.length : undefined,
+      lastContextDelta: contextDeltaSummary(result.lastContextDelta),
+      nextCallChain: callChainSummary(result.nextCallChain),
     };
   }
   if (result.window && result.beforeSummary && result.afterSummary) {
-    return { type: "context_window", window: windowSummary(result) };
+    return {
+      type: "context_window",
+      window: windowSummary(result),
+      nextCallChain: callChainSummary(result.nextCallChain),
+    };
   }
   if (result.analysis) {
     return {
       ...pick(result, ["sessionId", "targetId", "lifecycle", "cdpUrl", "processId", "detached", "targetRetained"]),
       analysis: analysisSummary(result.analysis),
+      nextCallChain: callChainSummary(result.nextCallChain),
     };
   }
   if (Array.isArray(result.nodes)) return { type: "runtime_snapshot", nodeCount: result.nodes.length };
@@ -186,6 +202,23 @@ function contextDeltaSummary(value: unknown): Record<string, unknown> | undefine
     capabilityChanged: capabilities?.changed?.length,
     recommendedNext: capabilities?.recommendedNext,
     recommendedTargetCount: capabilities?.recommendedTargets?.length,
+  };
+}
+
+function callChainSummary(value: unknown): Record<string, unknown> | undefined {
+  if (!value || typeof value !== "object") return undefined;
+  const chain = value as Record<string, unknown>;
+  const steps = Array.isArray(chain.steps) ? chain.steps as Record<string, unknown>[] : [];
+  return {
+    chainId: chain.chainId,
+    status: chain.status,
+    graphId: chain.graphId,
+    summary: chain.summary,
+    stepCount: steps.length,
+    tools: steps.map((item) => item.toolName),
+    firstStep: steps[0]
+      ? pick(steps[0], ["toolName", "arguments", "reason", "stopIf"])
+      : undefined,
   };
 }
 

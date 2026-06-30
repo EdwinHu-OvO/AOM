@@ -5,6 +5,7 @@ import { contextWindow, routeContext } from "../context/windows.js";
 import { loadAomConfig } from "../config.js";
 import { agentPayload, analyzeSession, compactAgentPayload } from "./analysis.js";
 import { actionForCapability, actionForView } from "./actions.js";
+import { buildCallChain, type CallChainInput } from "../orchestration/call-chain.js";
 import { resolveLaunchTarget } from "./paths.js";
 import { collectStatic } from "./static.js";
 import type { AgentSession } from "./types.js";
@@ -36,7 +37,8 @@ export class AgentInteractionService {
       ...(runtime.processId ? { processId: runtime.processId } : {}),
       ...(target.artifactLocator ? { artifactLocator: target.artifactLocator } : {}),
     });
-    return this.sessionPayload(session, await analyzeSession(session));
+    const analysis = await analyzeSession(session);
+    return this.sessionPayload(session, analysis);
   }
 
   async attachExisting(input: AttachInput): Promise<unknown> {
@@ -58,7 +60,8 @@ export class AgentInteractionService {
         ? { artifactLocator: input.artifactLocator ?? input.appPath }
         : {}),
     });
-    return this.sessionPayload(session, await analyzeSession(session));
+    const analysis = await analyzeSession(session);
+    return this.sessionPayload(session, analysis);
   }
 
   async snapshot(input: SessionInput): Promise<unknown> {
@@ -66,39 +69,71 @@ export class AgentInteractionService {
   }
 
   async contextPack(input: SessionInput): Promise<unknown> {
-    return agentPayload(await analyzeSession(this.requireSession(input.sessionId)));
+    const session = this.requireSession(input.sessionId);
+    const analysis = await analyzeSession(session);
+    return {
+      ...agentPayload(analysis),
+      nextCallChain: this.refreshCallChain(session, analysis),
+    };
   }
 
   async routeContext(input: ContextRouteInput): Promise<unknown> {
     const session = this.requireSession(input.sessionId);
     const deltaTask = session.lastDelta?.outcome.nextStepHint;
     const routeInput = input.task || !deltaTask ? input : { ...input, task: deltaTask };
+    if (routeInput.task) session.lastTask = routeInput.task;
+    const analysis = await analyzeSession(session);
     const routed = routeContext(
-      await analyzeSession(session),
+      analysis,
       routeInput,
     );
+    const nextCallChain = this.refreshCallChain(session, analysis, routeInput.task);
     return {
       ...routed,
       ...(session.lastDelta ? { lastContextDelta: compactDelta(session.lastDelta) } : {}),
+      nextCallChain,
     };
   }
 
   async contextWindow(input: ContextWindowInput): Promise<unknown> {
-    return contextWindow(await analyzeSession(this.requireSession(input.sessionId)), input);
+    const session = this.requireSession(input.sessionId);
+    if (input.task) session.lastTask = input.task;
+    const analysis = await analyzeSession(session);
+    return {
+      ...contextWindow(analysis, input),
+      nextCallChain: this.refreshCallChain(session, analysis, input.task),
+    };
   }
 
   async contextDelta(input: SessionInput): Promise<unknown> {
-    const delta = this.requireSession(input.sessionId).lastDelta;
+    const session = this.requireSession(input.sessionId);
+    const delta = session.lastDelta;
     if (!delta) throw new Error(`context_delta_not_available: ${input.sessionId}`);
-    return delta;
+    return {
+      ...delta,
+      ...(session.lastAnalysis ? { nextCallChain: this.refreshCallChain(session, session.lastAnalysis) } : {}),
+    };
+  }
+
+  async callChain(input: CallChainInput): Promise<unknown> {
+    const session = this.requireSession(input.sessionId);
+    if (input.task) session.lastTask = input.task;
+    const analysis = await analyzeSession(session);
+    return this.refreshCallChain(session, analysis, input.task, input.maxSteps);
   }
 
   async capabilities(input: SessionInput): Promise<unknown> {
-    return (await analyzeSession(this.requireSession(input.sessionId))).capabilities;
+    const session = this.requireSession(input.sessionId);
+    const analysis = await analyzeSession(session);
+    this.refreshCallChain(session, analysis);
+    return analysis.capabilities;
   }
 
   async analysisGraph(input: SessionInput): Promise<unknown> {
-    return (await analyzeSession(this.requireSession(input.sessionId))).graph;
+    const session = this.requireSession(input.sessionId);
+    const analysis = await analyzeSession(session);
+    this.refreshCallChain(session, analysis);
+    return analysis.graph;
   }
 
   async invokeCapability(input: InvokeInput): Promise<unknown> {
@@ -168,10 +203,12 @@ export class AgentInteractionService {
       eventCount: events.length,
     });
     session.lastDelta = contextDelta;
+    const nextCallChain = this.refreshCallChain(session, analysis);
     return {
       actionResult: result,
       eventCount: events.length,
       contextDelta,
+      nextCallChain,
       analysis: compactAgentPayload(analysis),
     };
   }
@@ -190,7 +227,29 @@ export class AgentInteractionService {
   }
 
   private sessionPayload(session: AgentSession, analysis: Awaited<ReturnType<typeof analyzeSession>>) {
-    return { ...this.describe(session), analysis: compactAgentPayload(analysis) };
+    return {
+      ...this.describe(session),
+      analysis: compactAgentPayload(analysis),
+      nextCallChain: this.refreshCallChain(session, analysis),
+    };
+  }
+
+  private refreshCallChain(
+    session: AgentSession,
+    analysis: Awaited<ReturnType<typeof analyzeSession>>,
+    task?: string,
+    maxSteps?: number,
+  ) {
+    if (task?.trim()) session.lastTask = task.trim();
+    const chain = buildCallChain({
+      sessionId: session.sessionId,
+      analysis,
+      ...(session.lastDelta ? { lastDelta: session.lastDelta } : {}),
+      ...(session.lastTask ? { task: session.lastTask } : {}),
+      ...(maxSteps ? { maxSteps } : {}),
+    });
+    session.lastCallChain = chain;
+    return chain;
   }
 
   private describe(session: AgentSession): Record<string, unknown> {
@@ -203,6 +262,13 @@ export class AgentInteractionService {
       artifactLocator: session.artifactLocator,
       lastNodeCount: session.lastSnapshot?.nodes.length,
       readiness: session.lastAnalysis?.readiness,
+      lastCallChain: session.lastCallChain
+        ? {
+            chainId: session.lastCallChain.chainId,
+            status: session.lastCallChain.status,
+            stepCount: session.lastCallChain.steps.length,
+          }
+        : undefined,
     };
   }
 }

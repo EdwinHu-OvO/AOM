@@ -11,6 +11,7 @@ import { buildContextDelta } from "../dist/context/delta.js";
 import { contextWindow, routeContext } from "../dist/context/windows.js";
 import { actionForCapability, actionForView } from "../dist/interaction/actions.js";
 import { compactAgentPayload } from "../dist/interaction/analysis.js";
+import { buildCallChain } from "../dist/orchestration/call-chain.js";
 
 const auditFile = path.join(mkdtempSync(path.join(tmpdir(), "aom-audit-")), "audit.jsonl");
 const child = spawn(
@@ -35,6 +36,7 @@ try {
   assert.ok(toolNames.includes("aom.route_context"));
   assert.ok(toolNames.includes("aom.context_window"));
   assert.ok(toolNames.includes("aom.context_delta"));
+  assert.ok(toolNames.includes("aom.call_chain"));
   assert.ok(toolNames.includes("aom.analysis_graph"));
   assert.ok(toolNames.includes("aom.detach"));
   assert.ok(toolNames.includes("aom.invoke_capability"));
@@ -135,6 +137,18 @@ try {
   assert.ok(delta.capabilities.recommendedTargets.some((item) =>
     item.toolName === "aom.invoke_view" && item.viewId === "aom:view:search-result-1"
   ));
+  const verifiedChain = buildCallChain({
+    sessionId: "platerun",
+    analysis: afterSearch,
+    lastDelta: delta,
+    task: "搜索科技资讯后打开一个结果",
+  });
+  assert.equal(verifiedChain.status, "ready");
+  assert.equal(verifiedChain.allInterfacesRemainAvailable, true);
+  assert.equal(verifiedChain.steps[0].toolName, "aom.invoke_view");
+  assert.equal(verifiedChain.steps[0].arguments.viewId, "aom:view:search-result-1");
+  assert.ok(verifiedChain.steps.some((item) => item.toolName === "aom.context_delta"));
+  assert.match(verifiedChain.steps[0].stopIf, /failed\/no_change|failed|no_change/);
   const noChangeDelta = buildContextDelta({
     before: analysis,
     after: structuredClone(analysis),
@@ -144,6 +158,14 @@ try {
   });
   assert.equal(noChangeDelta.outcome.status, "no_change");
   assert.equal(noChangeDelta.capabilities.recommendedNext.length, 0);
+  const recoveryChain = buildCallChain({
+    sessionId: "platerun",
+    analysis,
+    lastDelta: noChangeDelta,
+    task: "搜索 ramen",
+  });
+  assert.equal(recoveryChain.steps[0].toolName, "aom.route_context");
+  assert.equal(recoveryChain.steps[1].toolName, "aom.context_window");
   const failedDelta = buildContextDelta({
     before: analysis,
     after: structuredClone(analysis),
@@ -187,6 +209,14 @@ try {
   );
   assert.equal(searchCapabilityAction.params.value, "ramen");
   assert.equal(searchCapabilityAction.params.submitKey, "Enter");
+  const searchChain = buildCallChain({
+    sessionId: "platerun",
+    analysis,
+    task: "搜索 ramen",
+  });
+  assert.equal(searchChain.steps[0].toolName, "aom.invoke_capability");
+  assert.equal(searchChain.steps[0].arguments.capabilityId, "search_product");
+  assert.deepEqual(searchChain.steps[0].arguments.inputs, { keyword: "ramen" });
   const viewAction = actionForView(analysis, "target:fixture", { rawId: addView.rawReference });
   assert.equal(viewAction.targetRawId, addView.rawReference);
 

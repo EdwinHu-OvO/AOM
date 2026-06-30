@@ -76,6 +76,8 @@ export class AOMMcpServer {
         return this.service.contextWindow(requireContextWindow(args));
       case "aom.context_delta":
         return this.service.contextDelta(requireSession(args));
+      case "aom.call_chain":
+        return this.service.callChain(requireCallChain(args));
       case "aom.capabilities":
         return this.service.capabilities(requireSession(args));
       case "aom.analysis_graph":
@@ -161,6 +163,18 @@ function requireContextWindow(args: Record<string, unknown>): {
     ...requireContextRoute(args),
     ...(typeof args.windowId === "string" ? { windowId: args.windowId } : {}),
     ...(typeof args.offset === "number" ? { offset: args.offset } : {}),
+  };
+}
+
+function requireCallChain(args: Record<string, unknown>): {
+  sessionId: string;
+  task?: string;
+  maxSteps?: number;
+} {
+  return {
+    sessionId: String(args.sessionId ?? "platerun"),
+    ...(typeof args.task === "string" ? { task: args.task } : {}),
+    ...(typeof args.maxSteps === "number" ? { maxSteps: args.maxSteps } : {}),
   };
 }
 

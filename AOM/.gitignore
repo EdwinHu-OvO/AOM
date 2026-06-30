@@ -18,6 +18,9 @@ yarn-error.log*
 # Local runtime configuration
 aom.config.json
 
+# Local dev release artifacts
+/releases/
+
 # Temporary files
 .cache/
 .tmp/

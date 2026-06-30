@@ -61,6 +61,8 @@ opening or inspecting a result.
   state, but planning should combine `contextDelta.outcome` with the new windows. If no explicit
   task is provided, the MCP layer may use the last delta's next-step hint for routing.
 - `aom.context_window` remains the way to expand a summarized region.
+- `aom.call_chain` consumes the latest delta and current graph to propose the next small tool-call
+  sequence. Delta remains the source of causal explanation; call chain is only orchestration advice.
 
 ## Boundaries
 

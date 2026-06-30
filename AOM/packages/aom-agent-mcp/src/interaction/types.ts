@@ -3,6 +3,7 @@ import type { EvidenceRef, RawRuntimeSnapshot, RawStaticSnapshot } from "@aom/pr
 import type { AnalysisOutput } from "../analysis/types.js";
 import type { AOMRuntimeConfig } from "../config.js";
 import type { ContextDelta } from "../context/delta.js";
+import type { CallChainPlan } from "../orchestration/call-chain.js";
 
 export interface AgentSession {
   sessionId: string;
@@ -18,4 +19,6 @@ export interface AgentSession {
   lastSnapshot?: RawRuntimeSnapshot;
   lastAnalysis?: AnalysisOutput;
   lastDelta?: ContextDelta;
+  lastTask?: string;
+  lastCallChain?: CallChainPlan;
 }

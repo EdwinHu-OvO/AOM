@@ -55,6 +55,18 @@
   - `contextDelta.capabilities.recommendedTargets` 现在会给出可直接 `aom.invoke_view`
     的候选结果 view，优先包含本次 action 后新增的 clickable result，避免 Agent 只能看到
     抽象的 `open_content_result` 却不知道点哪里。
+- 新增 dynamic call chain：
+  - MCP 工具 `aom.call_chain` 只返回建议调用链，不执行动作，也不隐藏现有工具接口。
+  - 每个 step 包含 `toolName`、`arguments`、`reason`、`expectedOutcome` 和 `stopIf`，
+    用于让外部 Agent 在每次工具调用后重新评估，而不是沿用旧计划。
+  - `launch_for_handoff`、`attach_existing`、`route_context`、`context_window`、
+    `context_delta`、`context_pack`、`capabilities`、`analysis_graph`、`invoke_capability`
+    和 `invoke_view` 都会刷新 session 的 `nextCallChain`。
+  - 当最近一次 `contextDelta` 已验证搜索/状态变化且存在 `recommendedTargets` 时，调用链会把
+    下一步切到具体 `invoke_view`/`invoke_capability`，避免 Agent 继续重复已成功动作。
+  - 当最近一次动作 `failed` 或 `no_change` 时，调用链会回到 `route_context` +
+    `context_window`，要求重新选目标而不是机械重试。
+  - 设计记录见 `AOM/docs/design/dynamic-call-chain.md`。
 - MCP 默认返回面已收窄：
   - `aom.launch_for_handoff`、`aom.attach_existing`、`aom.invoke_capability` 和
     `aom.invoke_view` 默认只返回 compact analysis summary，不再内联完整 context pack。
@@ -66,7 +78,7 @@
 - `aom.context_window` 的 offset 越界现在会夹到最后一个非空窗口页，不再返回空窗口诱导
   Agent 继续翻页。
 - MCP tool descriptions 已改为操作契约，明确推荐流程：
-  `launch/attach -> route_context -> context_window 按需展开 -> invoke_capability -> contextDelta + route_context 验证效果`。
+  `launch/attach -> call_chain/route_context -> context_window 按需展开 -> invoke_capability -> contextDelta + call_chain 验证并重规划`。
   `context_pack`、`analysis_graph`、`snapshot` 被标记为 debug/legacy/large context 工具，避免
   Agent 默认读取大 JSON 后自行猜测按钮。
 - `invoke_capability` 和 `invoke_view` 的描述现在明确区分 action dispatch 成功与任务效果成功；

@@ -16,6 +16,17 @@
 
 ## 最新摘要
 
+### 2026-06-30
+
+- 完成第一个本地 dev build 收口：`0.1.0-dev.1` 定位为 PoC baseline 的可复现本地构建，
+  不作为公开 npm/crates.io 发布。
+- 新增 `pnpm release:dev 0.1.0-dev.1`，会构建 AOM workspace、打包 TypeScript package
+  tarballs、生成 source+dist workspace archive、`manifest.json` 和 `SHA256SUMS`。
+- Release note 见 `AOM/docs/releases/0.1.0-dev.1.md`；生成制品写入 git-ignored
+  `AOM/releases/0.1.0-dev.1/`。
+- 当前收口边界：Analysis/Capability/Agent MCP/Console audit/Context Delta/Dynamic Call
+  Chain 进入 dev baseline；Safety Gateway、通用 OS runtime coverage 和完整数据血缘仍是后续阶段。
+
 ### 2026-06-29
 
 - Agent Interaction Layer 新增 semantic context delta：`invoke_capability` 和
@@ -32,6 +43,11 @@
   `route_context` 会携带最近 delta 摘要，`context_window` offset 越界会夹到非空尾页。
 - 设计记录见 `AOM/docs/design/context-delta.md`；当前定位为 evidence-linked MVP semantic
   diff，不宣称完整数据血缘。
+- 新增动态调用链编排：`aom.call_chain` 只返回建议工具调用链，不执行动作，也不隐藏现有
+  AOM 工具；各关键工具结果会刷新 `nextCallChain`，让 Agent 每次调用后重新规划。
+- 调用链会在搜索等效果已验证后优先转向 `recommendedTargets`，在 `failed/no_change` 后回到
+  `route_context` + `context_window`，用于减少重复搜索、重复点击和上下文爆炸。设计记录见
+  `AOM/docs/design/dynamic-call-chain.md`。
 
 ### 2026-06-27
 

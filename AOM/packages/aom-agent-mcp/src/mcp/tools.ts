@@ -91,6 +91,21 @@ export const tools: ToolDefinition[] = [
     inputSchema: sessionSchema(),
   },
   {
+    name: "aom.call_chain",
+    description: [
+      "Return only AOM's current dynamic tool-call chain recommendation.",
+      "This tool does not execute anything and does not hide other AOM tools; it only proposes the next small sequence.",
+      "Call it after every meaningful tool result before continuing autonomous work, because every invoke/route/window call can change the best chain.",
+      "If the chain starts with invoke_* and that call verifies an effect, regenerate the chain instead of repeating prior actions.",
+      "Use this when the agent is looping, unsure which context window to open, or choosing between capability and view invocation.",
+    ].join(" "),
+    inputSchema: objectSchema({
+      sessionId: stringSchema("Active AOM session id."),
+      task: stringSchema("Optional user task goal. Stored as the session planning task when present."),
+      maxSteps: numberSchema("Maximum suggested steps to return. Defaults to 4, capped at 8."),
+    }, ["sessionId"]),
+  },
+  {
     name: "aom.analysis_graph",
     description: [
       "Debug/explanation tool: return the full current AOM graph from AnalysisService.",

@@ -14,6 +14,7 @@
 - `progress/target-app.md`：demo 目标应用相关进度。
 - `design/`：模块设计和工具链边界。
 - `decisions/`：架构决策记录。
+- `releases/`：dev/local release notes and build handoff records.
 - `traces/`：关键 demo、测试或验证链路记录。
 
 进度类文件可以忽略仓库中普通文件的行数限制，但必须按模块拆分，避免单个总进度文件占用过多上下文。需要继续某个模块时，优先只读取该模块进度文件和必要的索引摘要。
@@ -45,3 +46,9 @@
   验证边界和 B站测试暴露问题的修复说明。
 - `design/context-window-routing.md`：Agent-facing 上下文窗口、结构/重复/任务折叠、
   多滑动窗口路由和数据流保留边界。
+- `design/context-delta.md`：动作前后语义 diff、推荐目标和 compact response 边界。
+- `design/dynamic-call-chain.md`：只返回建议调用链的动态工具编排层。
+
+当前 dev release：
+
+- `releases/0.1.0-dev.1.md`：第一个本地 dev build 的范围、构建命令和交接说明。
