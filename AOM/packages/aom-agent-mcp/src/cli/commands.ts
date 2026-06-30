@@ -1,5 +1,6 @@
 import type { AOMRuntimeConfig } from "../config.js";
 import { helpFor } from "./help.js";
+import { initCommand } from "./init.js";
 import {
   assertAuditLevel,
   assertLogLevel,
@@ -31,6 +32,8 @@ export function runCommand(args: string[], filePath: string): CliResult {
       return logCommand(args.slice(1), config, filePath);
     case "-config":
       return configCommand(args.slice(1), config, filePath);
+    case "-init":
+      return initCommand(args.slice(1), config, filePath);
     default:
       throw new Error(`unknown_function: ${moduleName}`);
   }

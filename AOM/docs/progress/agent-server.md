@@ -70,6 +70,8 @@
 - 新增 AOM CLI 配置控制面：
   - `AOM-cli` 只管理 feature flags、feature 参数、全局/模块日志等级和 audit verbosity。
   - 支持顶层与各层级 `-help`：`-feature -help`、`-log -help`、`-config -help`。
+  - 新增 `-init` setup guide：默认输出配置引导，`-init -check` 检查 baseline sections，
+    `-init -write-default` 合并安全默认配置。
   - 明确不承担调试入口、脚本入口、target 启动、session 管理、分析执行或 capability 调用。
   - `llm_capability_recognizer` 会同步到现有 `capabilityRecognizer` 配置，保持 MCP 启动兼容。
   - `-config -show` 会对 `apiKey` 脱敏，写配置时保留未知字段和本地私有配置。

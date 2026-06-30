@@ -19,6 +19,7 @@ Current functions:
 - `-feature`: list, inspect, enable, disable, or set feature options.
 - `-log`: inspect or set global/module log levels and audit verbosity.
 - `-config`: show config path, redacted config, or validation result.
+- `-init`: print a setup guide, check baseline config sections, or merge safe defaults.
 - `-help`: top-level help. Each function also supports `-help`.
 
 Global options:
@@ -41,10 +42,18 @@ Global options:
 
 ./AOM-cli -config -show
 ./AOM-cli -config -validate
+
+./AOM-cli -init
+./AOM-cli -init -check
+./AOM-cli -init -write-default
 ```
 
 `llm_capability_recognizer` is bridged to the existing `capabilityRecognizer` config so current MCP
 startup behavior remains compatible while AOM grows a more general `features` namespace.
+
+`-init -write-default` merges baseline `features` and `logging` sections into the selected config
+file. It must preserve unknown fields and local secrets; it is not a project bootstrapper or runtime
+launcher.
 
 ## Boundaries
 

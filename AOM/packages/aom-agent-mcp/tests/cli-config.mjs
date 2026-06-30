@@ -21,6 +21,11 @@ assert.match(run(["-help"]), /feature flags and logging/);
 assert.match(run(["-feature", "-help"]), /Feature configuration commands/);
 assert.match(run(["-log", "-help"]), /Logging configuration commands/);
 assert.match(run(["-config", "-help"]), /Config inspection commands/);
+assert.match(run(["-init", "-help"]), /Setup guide commands/);
+assert.match(run(["-file", configFile, "-init"]), /AOM setup guide/);
+const initCheckBefore = JSON.parse(run(["-file", configFile, "-format", "json", "-init", "-check"]));
+assert.equal(initCheckBefore.ok, false);
+assert.ok(initCheckBefore.missing.includes("features"));
 
 const list = JSON.parse(run(["-file", configFile, "-format", "json", "-feature", "-list"]));
 assert.ok(list.some((item) => item.name === "llm_capability_recognizer"));
@@ -44,6 +49,18 @@ assert.equal(saved.capabilityRecognizer.apiKey, "secret-test-key");
 assert.equal(saved.logging.level, "debug");
 assert.equal(saved.logging.modules.orchestration, "trace");
 assert.equal(saved.logging.auditLevel, "verbose");
+
+run(["-file", configFile, "-init", "-write-default"]);
+const initialized = JSON.parse(readFileSync(configFile, "utf8"));
+assert.equal(initialized.capabilityRecognizer.apiKey, "secret-test-key");
+assert.equal(initialized.features.dynamic_call_chain.max_steps, 5);
+assert.equal(initialized.features.context_delta.enabled, true);
+assert.equal(initialized.features.llm_capability_recognizer.enabled, true);
+assert.equal(initialized.logging.level, "debug");
+assert.equal(initialized.logging.modules.orchestration, "trace");
+assert.equal(initialized.logging.modules.mcp, "info");
+const initCheckAfter = JSON.parse(run(["-file", configFile, "-format", "json", "-init", "-check"]));
+assert.equal(initCheckAfter.ok, true);
 
 const shown = run(["-file", configFile, "-config", "-show"]);
 assert.match(shown, /<redacted>/);

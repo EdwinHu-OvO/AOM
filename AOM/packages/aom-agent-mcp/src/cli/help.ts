@@ -11,6 +11,9 @@ export function helpFor(scope?: string): string {
     case "-config":
     case "config":
       return configHelp();
+    case "-init":
+    case "init":
+      return initHelp();
     default:
       return rootHelp();
   }
@@ -24,6 +27,7 @@ function rootHelp(): string {
     "  ./AOM-cli -feature -list|-show|-enable|-disable|-set ...",
     "  ./AOM-cli -log -show|-level|-set|-audit-level ...",
     "  ./AOM-cli -config -show|-validate|-path",
+    "  ./AOM-cli -init [-check|-write-default]",
     "",
     "Global options:",
     "  -file <path>          Use a config file instead of AOM_CONFIG/default.",
@@ -34,6 +38,7 @@ function rootHelp(): string {
     "  ./AOM-cli -feature -help",
     "  ./AOM-cli -log -help",
     "  ./AOM-cli -config -help",
+    "  ./AOM-cli -init -help",
     "",
     "Boundary:",
     "  This CLI does not manage sessions, launch targets, run analyzers, or invoke actions.",
@@ -88,5 +93,22 @@ function configHelp(): string {
     "  ./AOM-cli -config -validate",
     "",
     "Use -file <path> or AOM_CONFIG to select a non-default config file.",
+  ].join("\n");
+}
+
+function initHelp(): string {
+  return [
+    "Setup guide commands:",
+    "",
+    "  ./AOM-cli -init",
+    "  ./AOM-cli -init -check",
+    "  ./AOM-cli -init -write-default",
+    "",
+    "Behavior:",
+    "  -init prints a setup guide for AOM feature/logging configuration.",
+    "  -init -check validates the selected config path and reports missing baseline sections.",
+    "  -init -write-default merges safe defaults into the selected config file without overwriting secrets.",
+    "",
+    "The init guide is configuration-only. It does not launch targets, manage sessions, run analysis, or invoke actions.",
   ].join("\n");
 }

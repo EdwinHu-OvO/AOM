@@ -51,6 +51,8 @@
 - 新增 `AOM-cli` 配置控制面，范围收窄为 feature flags/参数与日志等级/audit verbosity；
   不承担 session、target、调试、分析或脚本入口。各层级支持 `-help`，设计记录见
   `AOM/docs/design/cli-config-control.md`。
+- `AOM-cli -init` 作为 setup guide：支持配置引导、baseline 检查和安全默认配置合并，
+  仍保持配置面边界。
 
 ### 2026-06-27
 
