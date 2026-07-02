@@ -74,6 +74,8 @@ export class AOMMcpServer {
         return this.service.routeContext(requireContextRoute(args));
       case "aom.context_window":
         return this.service.contextWindow(requireContextWindow(args));
+      case "aom.context_windows":
+        return this.service.contextWindows(requireContextWindows(args));
       case "aom.context_delta":
         return this.service.contextDelta(requireSession(args));
       case "aom.call_chain":
@@ -163,6 +165,51 @@ function requireContextWindow(args: Record<string, unknown>): {
     ...requireContextRoute(args),
     ...(typeof args.windowId === "string" ? { windowId: args.windowId } : {}),
     ...(typeof args.offset === "number" ? { offset: args.offset } : {}),
+  };
+}
+
+function requireContextWindows(args: Record<string, unknown>): {
+  sessionId: string;
+  task?: string;
+  requests: Array<{
+    cursorId?: string;
+    windowId?: string;
+    offset?: number;
+    limit?: number;
+    direction?: "current" | "next" | "previous" | "reset";
+  }>;
+  avoidCollisions?: boolean;
+  defaultLimit?: number;
+} {
+  const requests = Array.isArray(args.requests)
+    ? args.requests.filter((item) => item && typeof item === "object").map(contextWindowRequest)
+    : [];
+  return {
+    sessionId: String(args.sessionId ?? "platerun"),
+    requests,
+    ...(typeof args.task === "string" ? { task: args.task } : {}),
+    ...(typeof args.avoidCollisions === "boolean" ? { avoidCollisions: args.avoidCollisions } : {}),
+    ...(typeof args.defaultLimit === "number" ? { defaultLimit: args.defaultLimit } : {}),
+  };
+}
+
+function contextWindowRequest(value: object): {
+  cursorId?: string;
+  windowId?: string;
+  offset?: number;
+  limit?: number;
+  direction?: "current" | "next" | "previous" | "reset";
+} {
+  const request = value as Record<string, unknown>;
+  const direction = request.direction;
+  return {
+    ...(typeof request.cursorId === "string" ? { cursorId: request.cursorId } : {}),
+    ...(typeof request.windowId === "string" ? { windowId: request.windowId } : {}),
+    ...(typeof request.offset === "number" ? { offset: request.offset } : {}),
+    ...(typeof request.limit === "number" ? { limit: request.limit } : {}),
+    ...(direction === "current" || direction === "next" || direction === "previous" || direction === "reset"
+      ? { direction }
+      : {}),
   };
 }
 

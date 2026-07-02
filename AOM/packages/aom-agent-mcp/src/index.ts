@@ -1,5 +1,6 @@
 export * from "./config.js";
 export * from "./context/delta.js";
+export * from "./context/multi-windows.js";
 export * from "./context/windows.js";
 export * from "./interaction/service.js";
 export * from "./mcp/audit.js";

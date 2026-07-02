@@ -65,6 +65,8 @@ function summarizeArgs(args: Record<string, unknown>): Record<string, unknown> {
     "offset",
     "limit",
     "maxSteps",
+    "defaultLimit",
+    "avoidCollisions",
   ];
   const summary: Record<string, unknown> = {};
   for (const key of keys) {
@@ -72,6 +74,7 @@ function summarizeArgs(args: Record<string, unknown>): Record<string, unknown> {
   }
   if (typeof args.cdpUrl === "string") summary.cdpUrl = redactUrl(args.cdpUrl);
   if (args.inputs && typeof args.inputs === "object") summary.inputs = args.inputs;
+  if (Array.isArray(args.requests)) summary.requests = args.requests;
   return summary;
 }
 
@@ -104,6 +107,17 @@ function summarizeResult(value: unknown): Record<string, unknown> {
   }
   if (result.graphSummary || result.contextPack || result.capabilities) {
     return { type: "analysis", ...analysisSummary(result), nextCallChain: callChainSummary(result.nextCallChain) };
+  }
+  if (result.strategy === "agent_directed_multi_cursor_windows" && Array.isArray(result.windows)) {
+    return {
+      type: "context_windows",
+      graphId: result.graphId,
+      task: result.task,
+      collisionPolicy: result.collisionPolicy,
+      cursorCount: Array.isArray(result.cursors) ? result.cursors.length : undefined,
+      windows: result.windows.map(windowSummary),
+      nextCallChain: callChainSummary(result.nextCallChain),
+    };
   }
   if (Array.isArray(result.windows)) {
     return {

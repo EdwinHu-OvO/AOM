@@ -6,7 +6,7 @@ export const tools: ToolDefinition[] = [
     description: [
       "Launch a debuggable app and attach AOM without closing it later.",
       "Returns compact readiness/analysis summary only; do not expect full context here.",
-      "After this succeeds, prefer aom.route_context for task planning instead of reading the full launch analysis.",
+      "After this succeeds, call aom.call_chain or aom.route_context, then use aom.context_windows for agent-selected multi-area inspection.",
       "The returned readiness only means AOM can observe/analyze; still verify action effects after execution.",
     ].join(" "),
     inputSchema: objectSchema({
@@ -20,8 +20,8 @@ export const tools: ToolDefinition[] = [
     name: "aom.attach_existing",
     description: [
       "Attach to an already-running debuggable app by CDP URL without owning or closing it.",
-      "Returns compact readiness/analysis summary only; call aom.route_context for planning.",
-      "After attach, call aom.route_context with the user task to get compact UI/data-flow windows.",
+      "Returns compact readiness/analysis summary only; call aom.call_chain or aom.route_context for planning.",
+      "After attach, use aom.context_windows to inspect the UI/data-flow/capability regions the agent chooses.",
       "Do not relaunch or close a user-owned app through AOM.",
     ].join(" "),
     inputSchema: objectSchema({
@@ -35,7 +35,7 @@ export const tools: ToolDefinition[] = [
     name: "aom.snapshot",
     description: [
       "Debug tool: collect the raw runtime snapshot for an active AOM session.",
-      "This can be large and low-level. Prefer aom.route_context or aom.context_window for normal task planning.",
+      "This can be large and low-level. Prefer aom.call_chain plus aom.context_windows for normal task planning.",
       "Use snapshot only when you need raw node values/attributes that are not present in context windows.",
     ].join(" "),
     inputSchema: sessionSchema(),
@@ -44,33 +44,33 @@ export const tools: ToolDefinition[] = [
     name: "aom.context_pack",
     description: [
       "Legacy/debug context: return the full AnalysisService context pack, capabilities, data flows, and graph summary.",
-      "This may be large and can distract planning agents. Prefer aom.route_context first.",
-      "Use this when route_context/context_window is insufficient or when auditing full context.",
+      "This may be large and can distract planning agents. Prefer aom.route_context for a window directory and aom.context_windows for focused inspection.",
+      "Use this when context_windows/context_delta are insufficient or when auditing full context.",
     ].join(" "),
     inputSchema: sessionSchema(),
   },
   {
     name: "aom.route_context",
     description: [
-      "Preferred planning entry after launch/attach and after every meaningful action.",
-      "Return multiple task-routed windows; each window is beforeSummary + exact items + afterSummary.",
-      "Use this to understand current UI, capabilities, recent effects, and data-flow hints without loading the full graph.",
+      "Compact window directory and starting overview after launch/attach and after meaningful actions.",
+      "Use this to discover available window ids, current screen summary, lastContextDelta, and initial suggested windows.",
+      "Do not rely on route_context alone for detailed exploration; use aom.context_windows to open the exact regions and cursor count you need.",
       "If the previous action returned contextDelta, combine that delta outcome with this current-state view before planning.",
       "If lastContextDelta.outcome is verified, follow its recommendedTargets/recommendedNext before retrying the same action.",
-      "For search/navigation tasks, inspect ui:primary_actions, ui:header, and dataflow:all before invoking actions.",
+      "For search/navigation tasks, normally follow with aom.context_windows over ui:primary_actions, ui:header or ui:main, and dataflow:all.",
     ].join(" "),
     inputSchema: objectSchema({
       sessionId: stringSchema("Active AOM session id."),
       task: stringSchema("User task goal, e.g. 'search 科技资讯' or 'open profile'. Helps route UI/data-flow/event windows."),
-      limit: numberSchema("Maximum exact items per returned window. Keep small for planning; use context_window to expand."),
+      limit: numberSchema("Maximum exact items per returned overview window. Keep small; use context_windows for detailed multi-cursor inspection."),
     }, ["sessionId"]),
   },
   {
     name: "aom.context_window",
     description: [
-      "Expand one routed sliding window by windowId/offset/limit.",
-      "Use this after aom.route_context when a needed item is summarized outside the exact window.",
-      "Data-flow windows are first-class; use dataflow:all to inspect evidence-linked flow without loading the full graph.",
+      "Compatibility fallback: expand one sliding window by windowId/offset/limit.",
+      "Prefer aom.context_windows for normal work, because it maintains session cursors and prevents same-window collisions.",
+      "Use this only when you intentionally need a single explicit slice.",
     ].join(" "),
     inputSchema: objectSchema({
       sessionId: stringSchema("Active AOM session id."),
@@ -79,6 +79,39 @@ export const tools: ToolDefinition[] = [
       offset: numberSchema("Start offset within the window source."),
       limit: numberSchema("Maximum exact items in this window. Defaults to 12."),
     }, ["sessionId"]),
+  },
+  {
+    name: "aom.context_windows",
+    description: [
+      "Preferred detailed context tool: open multiple agent-selected sliding windows in one call while maintaining session-level cursors.",
+      "Use this after route_context/call_chain whenever you need to inspect page structure, candidate controls, results, capabilities, or data flow.",
+      "Choose the windows yourself; common sets are ui:primary_actions + dataflow:all, or ui:header + ui:main + dataflow:all.",
+      "Each request may provide cursorId/windowId/offset/limit/direction. Reuse cursorId with direction=next/previous/current/reset to move that cursor.",
+      "AOM prevents same-window collisions by shifting overlapping ranges when avoidCollisions is true, so context budget is not wasted on duplicate slices.",
+      "This is agent-directed: route_context can reveal available window ids, but the agent chooses which windows and how many cursors to open.",
+    ].join(" "),
+    inputSchema: objectSchema({
+      sessionId: stringSchema("Active AOM session id."),
+      task: stringSchema("Optional user task goal for relevance metadata."),
+      defaultLimit: numberSchema("Default item count for requests without limit. Defaults to 12."),
+      avoidCollisions: { type: "boolean", description: "Shift same-window overlapping ranges when possible. Defaults to true." },
+      requests: {
+        type: "array",
+        description:
+          "Window cursor requests. Example: [{cursorId:'main-a',windowId:'ui:main',offset:0,limit:8},{cursorId:'flow',windowId:'dataflow:all',direction:'current'}].",
+        items: {
+          type: "object",
+          properties: {
+            cursorId: stringSchema("Stable cursor id chosen by the agent."),
+            windowId: stringSchema("Window id, e.g. ui:primary_actions, ui:header, ui:main, dataflow:all, event:recent, capability:all."),
+            offset: numberSchema("Absolute start offset for this cursor."),
+            limit: numberSchema("Maximum exact items for this cursor."),
+            direction: enumSchema("Cursor movement relative to cursorId.", ["current", "next", "previous", "reset"]),
+          },
+          additionalProperties: false,
+        },
+      },
+    }, ["sessionId", "requests"]),
   },
   {
     name: "aom.context_delta",
@@ -97,7 +130,7 @@ export const tools: ToolDefinition[] = [
       "This tool does not execute anything and does not hide other AOM tools; it only proposes the next small sequence.",
       "Call it after every meaningful tool result before continuing autonomous work, because every invoke/route/window call can change the best chain.",
       "If the chain starts with invoke_* and that call verifies an effect, regenerate the chain instead of repeating prior actions.",
-      "Use this when the agent is looping, unsure which context window to open, or choosing between capability and view invocation.",
+      "Use this when the agent is looping, unsure whether to inspect context_windows or invoke a capability/view, or choosing the next tool.",
     ].join(" "),
     inputSchema: objectSchema({
       sessionId: stringSchema("Active AOM session id."),
@@ -109,7 +142,7 @@ export const tools: ToolDefinition[] = [
     name: "aom.analysis_graph",
     description: [
       "Debug/explanation tool: return the full current AOM graph from AnalysisService.",
-      "Prefer route_context/context_window for normal operation. Use analysis_graph for subgraph debugging, evidence tracing, or validator failures.",
+      "Prefer route_context/context_windows for normal operation. Use analysis_graph for subgraph debugging, evidence tracing, or validator failures.",
       "Do not choose executable targets from graph text alone; use invoke_capability or graph-backed invoke_view.",
     ].join(" "),
     inputSchema: sessionSchema(),
@@ -119,7 +152,7 @@ export const tools: ToolDefinition[] = [
     description: [
       "List current executable capabilities and risk metadata.",
       "Prefer invoking by stable capability name when possible, because LLM-generated ids may include current view ids and can become stale after UI changes.",
-      "If a capability disappears or becomes unknown, call route_context/capabilities again before retrying.",
+      "If a capability disappears or becomes unknown, call route_context and inspect current targets with context_windows before retrying.",
     ].join(" "),
     inputSchema: sessionSchema(),
   },
@@ -130,8 +163,8 @@ export const tools: ToolDefinition[] = [
       "Use this before low-level invoke_view when a matching capability exists.",
       "Pass capabilityId as a stable name like search_content when available, or a full capability id from the latest route_context/context_pack/capabilities result.",
       "Inspect contextDelta.outcome first: it explains what changed, whether the effect was verified, and what to do next.",
-      "The normal response is intentionally compact and does not include full contextPack; use route_context/context_delta next.",
-      "actionResult.ok means the low-level action was dispatched, not that the user task succeeded; use contextDelta plus route_context to verify before retrying.",
+      "The normal response is intentionally compact and does not include full contextPack; use context_delta, call_chain, or context_windows next.",
+      "actionResult.ok means the low-level action was dispatched, not that the user task succeeded; use contextDelta plus context_windows to verify before retrying.",
     ].join(" "),
     inputSchema: objectSchema({
       sessionId: stringSchema("Active AOM session id."),
@@ -149,9 +182,9 @@ export const tools: ToolDefinition[] = [
     description: [
       "Low-level fallback: invoke a current-screen AOM view by viewId, exact label, or rawId.",
       "Use only when no suitable capability exists or when deliberately probing a graph-backed view.",
-      "Prefer viewId/rawId from the latest route_context/context_window/context_pack; labels can be ambiguous.",
+      "Prefer viewId/rawId from the latest context_windows/route_context/context_pack; labels can be ambiguous.",
       "Inspect contextDelta.outcome after the action. If it says the intended effect is verified, move to the recommended next action instead of repeating the same click/text.",
-      "The normal response is intentionally compact and does not include full contextPack; use route_context/context_delta next.",
+      "The normal response is intentionally compact and does not include full contextPack; use context_delta, call_chain, or context_windows next.",
       "actionResult.ok only means the click/text action was dispatched. Verify effect via contextDelta and route_context before deciding the task is complete.",
     ].join(" "),
     inputSchema: objectSchema({
@@ -195,4 +228,8 @@ function stringSchema(description: string): Record<string, string> {
 
 function numberSchema(description: string): Record<string, string> {
   return { type: "number", description };
+}
+
+function enumSchema(description: string, values: string[]): Record<string, unknown> {
+  return { type: "string", description, enum: values };
 }

@@ -37,6 +37,10 @@
   - `aom.route_context` 根据 task 返回多个窗口，每个窗口都是
     `beforeSummary + exact window + afterSummary`。
   - `aom.context_window` 可按 `windowId`、`offset`、`limit` 展开任意窗口。
+  - `aom.context_windows` 现在提供 agent-directed 全局多滑动窗口：Agent 可一次指定多个
+    `cursorId/windowId/offset/limit/direction` 请求，AOM 在 session 中维护多个 cursor。
+  - 多 cursor 同源窗口会启用碰撞规避；同一个 `windowId` 内重叠的 slice 会尽量平移到
+    非重叠区间，并在 `collisionPolicy` 中报告。
   - 当前窗口包括 `ui:primary_actions`、`ui:header`、`ui:main`、`dataflow:all`、
     `event:recent` 和 `capability:all`。
   - 折叠只做结构折叠、重复折叠和任务路由折叠；低价值元素不全局删除，只是进入低优先级

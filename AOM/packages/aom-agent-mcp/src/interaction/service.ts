@@ -1,6 +1,7 @@
 import { attachElectronAnalyzer, launchElectronForHandoff } from "@aom/electron-probe";
 import type { AOMRuntimeConfig } from "../config.js";
 import { buildContextDelta, type ContextDeltaCause } from "../context/delta.js";
+import { contextWindows, type ContextWindowsInput } from "../context/multi-windows.js";
 import { contextWindow, routeContext } from "../context/windows.js";
 import { loadAomConfig } from "../config.js";
 import { agentPayload, analyzeSession, compactAgentPayload } from "./analysis.js";
@@ -101,6 +102,17 @@ export class AgentInteractionService {
     const analysis = await analyzeSession(session);
     return {
       ...contextWindow(analysis, input),
+      nextCallChain: this.refreshCallChain(session, analysis, input.task),
+    };
+  }
+
+  async contextWindows(input: ContextWindowsServiceInput): Promise<unknown> {
+    const session = this.requireSession(input.sessionId);
+    if (input.task) session.lastTask = input.task;
+    const analysis = await analyzeSession(session);
+    session.contextCursors ??= new Map();
+    return {
+      ...contextWindows(analysis, input, session.contextCursors),
       nextCallChain: this.refreshCallChain(session, analysis, input.task),
     };
   }
@@ -298,6 +310,8 @@ interface ContextWindowInput extends ContextRouteInput {
   windowId?: string;
   offset?: number;
 }
+
+interface ContextWindowsServiceInput extends SessionInput, ContextWindowsInput {}
 
 interface InvokeInput extends SessionInput {
   capabilityId: string;

@@ -53,6 +53,8 @@
   `AOM/docs/design/cli-config-control.md`。
 - `AOM-cli -init` 作为 setup guide：支持配置引导、baseline 检查和安全默认配置合并，
   仍保持配置面边界。
+- Agent context window 改为支持全局多 cursor：`aom.context_windows` 允许 Agent 自行选择
+  多个窗口来源和位置，并在同源窗口内做碰撞规避，数据流窗口仍作为一等上下文保留。
 
 ### 2026-06-27
 

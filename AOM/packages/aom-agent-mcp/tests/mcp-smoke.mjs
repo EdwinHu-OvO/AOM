@@ -8,6 +8,7 @@ import { runAnalysis } from "../dist/analysis/bridge.js";
 import { recognizeCapabilities } from "../dist/capability/llm.js";
 import { validateCandidates } from "../dist/capability/validate.js";
 import { buildContextDelta } from "../dist/context/delta.js";
+import { contextWindows } from "../dist/context/multi-windows.js";
 import { contextWindow, routeContext } from "../dist/context/windows.js";
 import { actionForCapability, actionForView } from "../dist/interaction/actions.js";
 import { compactAgentPayload } from "../dist/interaction/analysis.js";
@@ -35,12 +36,21 @@ try {
   assert.ok(toolNames.includes("aom.context_pack"));
   assert.ok(toolNames.includes("aom.route_context"));
   assert.ok(toolNames.includes("aom.context_window"));
+  assert.ok(toolNames.includes("aom.context_windows"));
   assert.ok(toolNames.includes("aom.context_delta"));
   assert.ok(toolNames.includes("aom.call_chain"));
   assert.ok(toolNames.includes("aom.analysis_graph"));
   assert.ok(toolNames.includes("aom.detach"));
   assert.ok(toolNames.includes("aom.invoke_capability"));
   assert.ok(toolNames.includes("aom.invoke_view"));
+  const contextWindowsTool = listed.result.tools.find((tool) => tool.name === "aom.context_windows");
+  assert.match(contextWindowsTool.description, /Preferred detailed context tool/);
+  assert.deepEqual(
+    contextWindowsTool.inputSchema.properties.requests.items.properties.direction.enum,
+    ["current", "next", "previous", "reset"],
+  );
+  const routeTool = listed.result.tools.find((tool) => tool.name === "aom.route_context");
+  assert.match(routeTool.description, /window directory/);
 
   const status = await request(3, "tools/call", {
     name: "aom.session_status",
@@ -80,6 +90,27 @@ try {
     clampedMainWindow.scope.total === 0 || clampedMainWindow.window.items.length > 0,
     "out-of-range context windows should clamp to a non-empty final page",
   );
+  const cursors = new Map();
+  const multi = contextWindows(analysis, {
+    task: "inspect menu and data flow",
+    defaultLimit: 2,
+    requests: [
+      { cursorId: "main-a", windowId: "ui:main", offset: 0, limit: 2 },
+      { cursorId: "main-b", windowId: "ui:main", offset: 1, limit: 2 },
+      { cursorId: "flow", windowId: "dataflow:all", offset: 0, limit: 1 },
+    ],
+  }, cursors);
+  assert.equal(multi.strategy, "agent_directed_multi_cursor_windows");
+  assert.equal(multi.windows.length, 3);
+  assert.ok(multi.collisionPolicy.resolvedCount >= 1, "overlapping same-window cursors should be shifted");
+  assert.equal(multi.windows[1].cursor.cursorId, "main-b");
+  assert.notEqual(multi.windows[1].cursor.resolvedOffset, 1);
+  assert.equal(cursors.get("main-a").offset, multi.windows[0].scope.offset);
+  const nextMulti = contextWindows(analysis, {
+    requests: [{ cursorId: "main-a", direction: "next" }],
+  }, cursors);
+  assert.equal(nextMulti.windows[0].cursor.cursorId, "main-a");
+  assert.ok(nextMulti.windows[0].scope.offset >= multi.windows[0].scope.offset);
   const compact = compactAgentPayload(analysis);
   assert.ok(!("contextPack" in compact), "compact agent payload must not include the full context pack");
   assert.ok(compact.contextSummary.dataFlowCount > 0);
